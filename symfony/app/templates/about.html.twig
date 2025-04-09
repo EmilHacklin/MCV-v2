@@ -1,0 +1,23 @@
+{% extends "base.html.twig" %}
+
+{% block title %}MVC: About{% endblock %}
+
+{% block body %}
+    <div class="content">
+        <div class="column" style="width: 70%">
+            <h1>About</h1>
+            <img src="{{ asset('build/images/background.jpg') }}" alt="">
+            <p>I kursen DV1608 Vt25 lp4 Objektorienterade webbteknologier skall vi lära oss programmera webbapplikationer på ett objektorienterat sätt med fokus på det arkitekturen med designmönstret MVC. </p>
+            <p>Vi kommer att använda ramverket Symfony som en bas då det är ett av det mer kända ramverken inom PHP och vidare använda oss av SQL databaser tillsammans med PHP Data Objects. Vi använder även JSON för att bygga en webbtjänst med ett så kallat RESTful API.</p>
+            <p>Vi lär oss också använda verktyg och tekniker som lämpar sig för utveckling av webbapplikationer, så som tex UNIX/Linux, installation på extern webbserver, ssh, ftp/sftp, databasklienter såsom PHPMyAdmin, MySQL Workbench och kommandoklienter.</p>
+        </div>
+        <div class="column" style="width: 30%;">
+            <h2>Länkar</h2>
+            <ul>
+                <li><a href="https://github.com/dbwebb-se/mvc">Länk till kursens Kursrepo</a></li>
+                <li><a href="">Länk till mitt github</a></li>
+            </ul>
+        </div>
+    </div>
+    
+{% endblock %}

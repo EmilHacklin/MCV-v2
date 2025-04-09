@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}MVC{% endblock %}</title>
+        <link rel="icon" href="{{ asset('img/favoicon.ico') }}">
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+            {% block importmap %}{{ importmap('app') }}{% endblock %}
+        {% endblock %}
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="site-head">
+                <header class="site-header">
+                    <span class="site-title">MVC: site</span>
+                </header>
+                <div class="site-menu">
+                    <nav>
+                        <ul>
+                            <li><a href="{{ path('home') }}">Home</a></li>
+                            <li><a href="{{ path('about') }}">About</a></li>
+                            <li><a href="{{ path('report') }}">Report</a></li>
+                            <li><a href="{{ path('lucky') }}">Lucky</a></li>
+                            <li><a href="{{ path('api') }}">Api</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            {% block body %}{% endblock %}
+            <footer>
+                <div class="img-logo">
+                    <img src="{{ asset('img/logo.png') }}" alt="Logo image">
+                </div>
+                <div class="linkList">
+                    <ul>
+                        <li><a href="https://github.com/dbwebb-se/mvc">Länk till kursens Kursrepo</a></li>
+                        <li><a href="">Länk till mitt github</a></li>
+                    </ul>
+                </div>
+            </footer>
+        </div>
+    </body>
+</html>
