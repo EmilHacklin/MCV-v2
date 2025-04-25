@@ -1,0 +1,25 @@
+{% extends "base.html.twig" %}
+
+{% block title %}MVC: Api{% endblock %}
+
+{% block body %}
+    <div class="content">
+        <div class="column">
+            <h1>Alla länkar till Jason api</h1>
+            <div class="center-box">
+                <table>
+                    <tr>
+                        <th>Namn</th>
+                        <th>Beskrivning</th>
+                        <th>Länk</th>
+                    </tr>
+                    <tr>
+                        <td>Quotes</td>
+                        <td>Skickar en jason inehållande ett slumpat sitat (quote,author,timestamp)</td>
+                        <td><a href="{{ path('quote') }}">Quotes</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
