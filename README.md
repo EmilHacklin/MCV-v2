@@ -12,7 +12,7 @@ För att installera denna websida så behöver man först clona detta repo från
 
 För att börja med installationen så krävs det att `php`, `npm` och `composer` är installerade.
 
-### Instalations steg
+### Installations steg
 
 1. Kör komandot `composer require webapp` och sedan `composer require twig`
 
