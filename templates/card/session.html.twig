@@ -1,0 +1,15 @@
+{% extends "card/base.html.twig" %}
+
+{% block title %}Card Game: Session info{% endblock %}
+
+{% block main %}
+<h1>Info about the session</h1>
+
+<ul class="deck">
+    {% for card in deck %}
+        <li class="card">{{ card }}</li>
+    {% endfor %}
+</ul>
+
+{{ include('flash.html.twig') }}
+{% endblock %}

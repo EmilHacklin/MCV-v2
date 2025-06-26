@@ -8,7 +8,6 @@
 @footerBgColor: rgb(75, 75, 75);
 @footerTextColor:rgb(255,255,255);
 
-
 body {
     background-color: @bgColor;
     margin: 0;
@@ -120,6 +119,32 @@ body {
                 border: 0.5em;
                 border-color: black;
             }
+
+            .img-uml {
+                float: right;
+                width: 40em;
+                border: 0.5em;
+                border-color: black;
+            }
+
+            input {
+                font-size: 1em;
+            }
+
+            .die {
+                font-size: 2em;
+            }
+
+            .deck {
+                list-style: none;
+                margin: 0;
+                padding: 0em, 1em, 0em , 0em;
+            }
+
+            .card {
+                font-size: 5em;
+                float: left;
+            }
     
             .column {
                 border-left: 0.5em;
@@ -175,4 +200,24 @@ body {
             }
         }
     }
+}
+
+.flash-notice {
+    padding: 0.5em;
+    color: #004085;
+    background-color: #cce5ff;
+    border-color: #b8daff;
+}
+.flash-notice:before {
+    content: "ⓘ";
+}
+
+.flash-warning {
+    padding: 0.5em;
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+}
+.flash-warning:before {
+    content: "⚠";
 }

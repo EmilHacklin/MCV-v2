@@ -95,6 +95,27 @@ body .wrapper .content .img-course {
   border: 0.5em;
   border-color: black;
 }
+body .wrapper .content .img-uml {
+  float: right;
+  width: 40em;
+  border: 0.5em;
+  border-color: black;
+}
+body .wrapper .content input {
+  font-size: 1em;
+}
+body .wrapper .content .die {
+  font-size: 2em;
+}
+body .wrapper .content .deck {
+  list-style: none;
+  margin: 0;
+  padding: 0em, 1em, 0em , 0em;
+}
+body .wrapper .content .card {
+  font-size: 5em;
+  float: left;
+}
 body .wrapper .content .column {
   border-left: 0.5em;
   border-right: 0.5em;
@@ -139,4 +160,22 @@ body .wrapper footer .linkList ul {
 }
 body .wrapper footer .linkList ul a {
   color: #ffffff;
+}
+.flash-notice {
+  padding: 0.5em;
+  color: #004085;
+  background-color: #cce5ff;
+  border-color: #b8daff;
+}
+.flash-notice:before {
+  content: "ⓘ";
+}
+.flash-warning {
+  padding: 0.5em;
+  color: #856404;
+  background-color: #fff3cd;
+  border-color: #ffeeba;
+}
+.flash-warning:before {
+  content: "⚠";
 }

@@ -1,0 +1,22 @@
+{% extends "card/base.html.twig" %}
+
+{% block title %}Card Game{% endblock %}
+
+{% block main %}
+<h1>About cards</h1>
+
+<img src="{{ asset('img/Cards-UML.png') }}" alt="UML chart of the cards classes" class="img-uml">
+
+<p>
+    The cards on this website utilise four classes to handle the cards, they are:
+</p>
+<ul>
+    <li>Card: The base card class that contains all information about the cards</li>
+    <li>CardGraphic: Internets from the base Card class but adds graphical style to the cards</li>
+    <li>CardHand: Contains multiple card objects and have the ability to keep track on there values</li>
+    <li>DeckOfCards: Manages an entire 52 card deck</li>    
+</ul>
+<p>
+    For more information pleas consult the UML diagram.
+</p>
+{% endblock %}

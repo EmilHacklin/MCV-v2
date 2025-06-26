@@ -3,23 +3,68 @@
 {% block title %}MVC: Api{% endblock %}
 
 {% block body %}
-    <div class="content">
-        <div class="column">
-            <h1>Alla länkar till Jason api</h1>
-            <div class="center-box">
-                <table>
-                    <tr>
-                        <th>Namn</th>
-                        <th>Beskrivning</th>
-                        <th>Länk</th>
-                    </tr>
-                    <tr>
-                        <td>Quotes</td>
-                        <td>Skickar en jason inehållande ett slumpat sitat (quote,author,timestamp)</td>
-                        <td><a href="{{ path('quote') }}">Quotes</a></td>
-                    </tr>
-                </table>
-            </div>
-        </div>
+<div class="column">
+    <h1>Alla länkar till Jason api</h1>
+    <div class="center-box">
+        <table>
+            <tr>
+                <th>Namn</th>
+                <th>Beskrivning</th>
+                <th>Länk</th>
+            </tr>
+            <tr>
+                <td>Quotes</td>
+                <td>Skickar en jason inehållande ett slumpat sitat (quote,author,timestamp)</td>
+                <td><a href="{{ path('quote') }}">Quotes</a></td>
+            </tr>
+            <tr>
+                <td>Deck</td>
+                <td>Skickar en jason inehållande en kortlek (deck)</td>
+                <td><a href="{{ path('api/deck') }}">Deck</a></td>
+            </tr>
+            <tr>
+                <td>Deck Shuffle</td>
+                <td>Skickar en jason inehållande ett slumpad kortlek (deck)</td>
+                <td>
+                    <form method="post" action="{{ path('api/deck/shuffle') }}" class="inline">
+                        <input type="hidden" name="extra_submit_param" value="extra_submit_value">
+                        <button type="submit" name="submit_param" value="submit_value" class="link-button">
+                            Shuffle
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <td>Deck Draw</td>
+                <td>Skickar en jason inehållande ett kort draget från kortleken (hand, deckNumber)</td>
+                <td>
+                    <form method="post" action="{{ path('api/deck/draw') }}" class="inline">
+                        <input type="hidden" name="extra_submit_param" value="extra_submit_value">
+                        <button type="submit" name="submit_param" value="submit_value" class="link-button">
+                            Draw
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <td>Deck Draw Number</td>
+                <td>Skickar en jason inehållande en :number många kort från kortleken (hand, deckNumber)</td>
+                <td>
+                    <form method="post" action="{{ path('api/deck/draw/:number', {num:3}) }}" class="inline">
+                        <input type="hidden" name="extra_submit_param" value="extra_submit_value">
+                        <button type="submit" name="submit_param" value="submit_value" class="link-button">
+                            Draw 3
+                        </button>
+                    </form>
+                    <form method="post" action="{{ path('api/deck/draw/:number', {num:5}) }}" class="inline">
+                        <input type="hidden" name="extra_submit_param" value="extra_submit_value">
+                        <button type="submit" name="submit_param" value="submit_value" class="link-button">
+                            Draw 5
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        </table>
     </div>
+</div>
 {% endblock %}

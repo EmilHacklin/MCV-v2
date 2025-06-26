@@ -1,0 +1,29 @@
+{% extends "card/base.html.twig" %}
+
+{% block title %}Card Game: Draw{% endblock %}
+
+{% block main %}
+<h1>Here we draw cards from the deck</h1>
+
+<ul class="deck">
+    {% for card in hand %}
+        <li class="card">{{ card }}</li>
+    {% endfor %}
+</ul>
+
+<h2>There is {{ deckNumber }} cards left in the deck</h2>
+
+<p>
+    Chose how many cards you want to draw
+</p>
+
+<p>
+    Try to draw 
+        <a href="{{ path('card_deck_draw') }}">1</a>
+        , 
+        <a href="{{ path('card_deck_draw_many', {num: 3}) }}">3</a>
+        or 
+        <a href="{{ path('card_deck_draw_many', {num: 5}) }}">5</a>
+        cards.
+</p>
+{% endblock %}
