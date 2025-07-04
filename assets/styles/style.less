@@ -8,50 +8,20 @@
 @footerBgColor: rgb(75, 75, 75);
 @footerTextColor:rgb(255,255,255);
 
+html, body { 
+    height: 100%;
+    margin: 0;   
+}
+
 body {
     background-color: @bgColor;
     margin: 0;
     padding: 0;
-    height: 100%;
-    
-    h1 {
-        font-family: 'Times New Roman', Times, serif;
-        text-align: center;
-        clear: both;
-    }
-
-    h2 {
-        font-family: 'Times New Roman', Times, serif;
-        text-align: center;
-        clear: both;
-    }
-
-    p {
-        font-family: 'Courier New', Courier, monospace;
-    }
-
-    table {
-        text-align: center;
-
-        th {
-            padding: .5em;
-        }
-
-        td {
-            padding: .5em;
-        }
-    }
-
-    .center-box {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
 
     .wrapper {
-        display: flex;
-        flex-flow: column;
-        height: 100%;
+        display: flex; /* displays flex-items (children) inline */
+        flex-direction: column; /* stacks them vertically */
+        height: 100%; /* needs to take the parents height, alternative: body {display: flex} */
 
         .site-head {
             flex: 0 1 auto;
@@ -65,6 +35,8 @@ body {
                     color: @siteTitleColor;
                     font-size: 7.5em;
                     text-align: center;
+                    display: flex;
+                    justify-content: center;
                 }
             }
 
@@ -73,6 +45,7 @@ body {
                 width: 100%;
                 background-color: @menuBgColor;
                 ul {
+                    flex-direction: row;
                     list-style-type: none;
                     margin: 0;
                     padding: 0;
@@ -100,60 +73,24 @@ body {
         }
     
         .content {
-            flex: 1 1 auto;
+            border-left: 0.5em;
+            border-right: 0.5em;
+            border-top: 0;
+            border-bottom: 0;
+            border-style: groove;
+            border-color: black;
             margin-left: 5em;
             margin-right: 5em;
             background-color: @siteBodyBgColor;
             display: flex;
-    
-            .img-me {
-                float: right;
-                width: 20em;
-                border: 0.5em;
-                border-color: black;
-            }
-
-            .img-course {
-                float: left;
-                width: 20em;
-                border: 0.5em;
-                border-color: black;
-            }
-
-            .img-uml {
-                float: right;
-                width: 40em;
-                border: 0.5em;
-                border-color: black;
-            }
-
-            input {
-                font-size: 1em;
-            }
-
-            .die {
-                font-size: 2em;
-            }
-
-            .deck {
-                list-style: none;
-                margin: 0;
-                padding: 0em, 1em, 0em , 0em;
-            }
-
-            .card {
-                font-size: 5em;
-                float: left;
-            }
+            flex-direction: row;
+            flex: 1; /* takes the remaining height of the "wrapper" div */
+            overflow: auto; /* to scroll just the "main" div */
     
             .column {
-                border-left: 0.5em;
-                border-right: 0.5em;
-                border-top: 0;
-                border-bottom: 0;
-                border-style: groove;
-                border-color: black;
-                padding: 5em;
+                padding-left: 5em;
+                padding-right: 5em;
+                height: 100%; /* takes the visible area of the "main" div */
                 width: 100%;
 
                 .row {
@@ -164,11 +101,11 @@ body {
     
         footer {
             display: flex;
+            flex: 0 1 auto;
             width: 100%;
+            padding-top: 0.5em;
+            padding-bottom: 0.5em;
             background-color: @footerBgColor;
-            padding-top: 2em;
-            padding-bottom: 2em;
-            flex: 0 1 15em;
             
             .img-logo {
                 flex: 40%;
@@ -177,21 +114,18 @@ body {
                     display: block;
                     margin-left: auto;
                     margin-right: auto;
-                    width: 10em;
+                    width: 8em;
                 }
             }
         
             .linkList {
                 flex: 60%;
-                text-align: center;
     
                 ul {
                     list-style: none;
                     padding: 0;
                     border: 0.5em;
                     border-color: black;
-                    display: flex;
-                    justify-content: center;
 
                     a {
                         color: @footerTextColor;
@@ -200,6 +134,109 @@ body {
             }
         }
     }
+}
+
+h1 {
+font-family: 'Times New Roman', Times, serif;
+text-align: center;
+clear: both;
+}
+
+h2 {
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    clear: both;
+}
+
+p {
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+}
+
+table {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+
+    th {
+        padding: .5em;
+    }
+
+    td {
+        padding: .5em;
+    }
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+pre {
+    background: #f4f4f4;
+    border: 1px solid #ddd;
+    border-left: 3px solid #f36d33;
+    color: #666;
+    page-break-inside: avoid;
+    font-family: monospace;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 1.6em;
+    max-width: 100%;
+    overflow: auto;
+    padding: 1em 1.5em;
+    display: block;
+    word-wrap: break-word;
+}
+
+.img-me {
+    float: right;
+    width: 20em;
+    border: 0.5em;
+    border-color: black;
+}
+
+.img-course {
+    float: left;
+    width: 20em;
+    border: 0.5em;
+    border-color: black;
+}
+
+.img-uml {
+    float: right;
+    width: 30em;
+    border: 0.5em;
+    border-color: black;
+}
+
+.img-black-jack-flowchart {
+    width: 100%;
+    border: 0.5em;
+    border-color: black;
+}
+
+input {
+    font-size: 1em;
+}
+
+.die {
+    font-size: 2em;
+}
+
+.cardHand, .deck {
+    flex-direction: row;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 0em, 1em, 0em , 0em;
+}
+
+.card {
+    font-size: 5em;
 }
 
 .flash-notice {

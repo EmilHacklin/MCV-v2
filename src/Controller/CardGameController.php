@@ -2,10 +2,10 @@
 
 namespace App\Controller;
 
+use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\ErrorHandler\Exception;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use App\Cards\CardHand;
@@ -14,15 +14,13 @@ use App\Cards\DeckOfCards;
 class CardGameController extends AbstractController
 {
     #[Route("/game/card", name: "card_start")]
-    public function home(
+    public function cardHome(
         SessionInterface $session
     ): Response {
-        $deck = $session->get("cards_deck");
+        /** @var DeckOfCards $deck */
+        $deck = $session->get("cards_deck") ?? new DeckOfCards();
 
-        if ($deck != null) {
-            $deck = new DeckOfCards();
-            $session->set("cards_deck", $deck);
-        }
+        $session->set("cards_deck", $deck);
 
         return $this->render('card/home.html.twig');
     }
@@ -31,12 +29,10 @@ class CardGameController extends AbstractController
     public function session(
         SessionInterface $session
     ): Response {
-        $deck = $session->get("cards_deck");
-        $info = "";
+        /** @var DeckOfCards $deck */
+        $deck = $session->get("cards_deck") ?? new DeckOfCards();
 
-        if ($deck != null) {
-            $info = $deck->getString();
-        }
+        $info = $deck->getString();
 
         $data = [
             "deck" => $info,
@@ -67,17 +63,15 @@ class CardGameController extends AbstractController
     public function deck(
         SessionInterface $session
     ): Response {
-        $deck = $session->get("cards_deck");
+        /** @var DeckOfCards $deck */
+        $deck = $session->get("cards_deck") ?? new DeckOfCards();
 
-        if ($deck != null) {
-            $deck->resetDeck();
-        } else {
-            $deck = new DeckOfCards();
-        }
+        $deck->resetDeck();
 
         $session->set("cards_deck", $deck);
 
         $data = [
+
             "deck" => $deck->getString(),
         ];
 
@@ -88,14 +82,10 @@ class CardGameController extends AbstractController
     public function deckShuffle(
         SessionInterface $session
     ): Response {
-        $deck = $session->get("cards_deck");
+        /** @var DeckOfCards $deck */
+        $deck = $session->get("cards_deck") ?? new DeckOfCards();
 
-        if ($deck != null) {
-            $deck->reshuffleDeck();
-        } else {
-            $deck = new DeckOfCards();
-            $deck->shuffleDeck();
-        }
+        $deck->reshuffleDeck();
 
         $session->set("cards_deck", $deck);
 
@@ -110,19 +100,13 @@ class CardGameController extends AbstractController
     public function deckDraw(
         SessionInterface $session
     ): Response {
-        $deck = $session->get("cards_deck");
+        /** @var DeckOfCards $deck */
+        $deck = $session->get("cards_deck") ?? new DeckOfCards();
         $hand = new CardHand();
 
-        if ($deck != null) {
-            if ($deck->numberOfCards() > 0) {
-                $hand->addCard($deck->drawCard());
-            } else {
-                throw new Exception("Can not draw more cards as the deck is empty!");
-            }
-        } else {
-            $deck = new DeckOfCards();
-            $hand->addCard($deck->drawCard());
-        }
+        ($deck->numberOfCards() > 0) ?
+        $hand->addCard($deck->drawCard()) :
+        throw new Exception("Can not draw more cards as the deck is empty!");
 
         $session->set("cards_deck", $deck);
 
@@ -146,27 +130,22 @@ class CardGameController extends AbstractController
             throw new Exception("Can not draw less than 1 card!");
         }
 
-        $deck = $session->get("cards_deck");
-
+        /** @var DeckOfCards $deck */
+        $deck = $session->get("cards_deck") ?? new DeckOfCards();
         $hand = new CardHand();
 
-        if ($deck != null) {
-            $numberOfCards = $deck->numberOfCards();
-            if ($numberOfCards == 0) {
-                throw new Exception("Can not draw more cards as the deck is empty!");
-            } elseif ($numberOfCards < $num) {
-                throw new Exception("Can not draw more cards as the deck currently have!\n
-                The deck currently have ". $numberOfCards . " many cards in the deck.");
-            } else {
-                for ($i = 0; $i < $num; $i++) {
-                    $hand->addCard($deck->drawCard());
-                }
-            }
-        } else {
-            $deck = new DeckOfCards();
-            for ($i = 0; $i < $num; $i++) {
-                $hand->addCard($deck->drawCard());
-            }
+        $numberOfCards = $deck->numberOfCards();
+
+        if ($numberOfCards == 0) {
+            throw new Exception("Can not draw more cards as the deck is empty!");
+        }
+        if ($numberOfCards < $num) {
+            throw new Exception("Can not draw more cards as the deck currently have!\n
+            The deck currently have ". $numberOfCards . " many cards in the deck.");
+        }
+
+        for ($i = 0; $i < $num; $i++) {
+            $hand->addCard($deck->drawCard());
         }
 
         $session->set("cards_deck", $deck);

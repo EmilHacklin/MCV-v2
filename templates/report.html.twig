@@ -78,6 +78,42 @@
     </div>
     <div class="row">
         <h2 id="Kmom03">Kmom03</h2>
+        <p>
+            Under detta Kmom så har vi skapat ett Black Jack kortspel genom att först modellera det med flödesdiagram och psudedokod. 
+            Detta var något som jag inte ofta brukara göra då jag mest föredrar att bara börja skriva kod och iterera på den tills jag inte kan förbättra koden.
+        </p>
+        <p>
+            Jag tror nog inte att skriva psuedokod är något som jag tycker hjälpte mig med implementeringen av min kod då för mig så känns den överflödig då jag får samma inblick av att skriva riktig kod eller av att kommentera kod.
+        </p>
+        <p>
+            Flödesdiagram kan däremot vara ett smart verktyg för större eller krångligare uppgifter för att bryta ner dem till mindre delar. 
+            Till exempel om man skall få en mer översiktlig bild av hur ett system skall fungera utan att behöva tänka på implementationen.
+        </p>
+        <p>
+            Implementationen av Black Jack spelet blev att jag skapade en klass BlackJack som använde sig av klasserna vi skapade i förra Kmom med några små förändringar. 
+            Då i detta Kmom så har vi använt oss av verktyg som phpstan och phpmd för att snygga upp vår kod så den följer mera kod standarden. 
+            Detta gjorde att vissa av klasserna behövde förändras för att klara dessa verktygs kontrollerna.
+        </p>
+        <p>
+            BlackJack klassen hanterar tre huvudvariabler vilka är kortleken av klass Deck och spelarens och dealerns kort händer av klassen CardHand. 
+            När ett nytt spel skapas eller återställs så blandas kortleken, spelaren och dealern drar varsit kort tills de har två kort var i den årdningen.
+        </p>
+        <p>
+            Sedan så frågas spelaren om han vill dra ett till kort (Hit) eller stanna (Stay), 
+            om han drar ett kort så kalkyleras värdet av hans hand och om det är över 21 så är spelet slut och dealern vann annars frågas han igen.
+        </p>
+        <p>
+            Om han i stället väljer någon gång att stanna så är det dealerns tur att spela. 
+            Om hans hands värde är över 16 så stannar han annars drar han ett nytt kort. 
+            Om dealer inte fick över 21 och den stannar så jämför värdet på spelarens och dealerns händer för att finna en vinnare eller om det blev lika.
+        </p>
+        <p>
+            Det går nog inte att förbättra denna implementation så mycket men det går att implementera mer av Black Jack spelet till denna klass som att kunna satsa krediter och nya saker en spelare kan i stället göra som Double down, Split, Surrender eller Insurance.
+        </p>
+        <p>
+            Att koda i detta kortspel i ramverket Symfony var rätt så enkelt förutom CSS delen då det tar mycket tid att i mitt fall göra en ändring i LESS fil bygga om den till CSS och sedan npm run build för varje ändring. 
+            Det som jag tycker jag mest lärt mig denna Kmom är att bygga flödesdiagram för att få en bättre översikt av system.
+        </p>
     </div>
     <div class="row">
         <h2 id="Kmom04">Kmom04</h2>

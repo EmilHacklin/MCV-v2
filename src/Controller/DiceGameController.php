@@ -2,10 +2,10 @@
 
 namespace App\Controller;
 
+use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\ErrorHandler\Exception;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use App\Dice\Dice;
@@ -33,13 +33,14 @@ class DiceGameController extends AbstractController
     ): Response {
         $numDice = $request->request->get('num_dices');
 
+        /** @var DiceHand $hand */
         $hand = new DiceHand();
         for ($i = 1; $i <= $numDice; $i++) {
             $hand->add(new DiceGraphic());
         }
         $hand->roll();
 
-        $session->set("pig_dicehand", $hand);
+        $session->set("pig_diceHand", $hand);
         $session->set("pig_dices", $numDice);
         $session->set("pig_round", 0);
         $session->set("pig_total", 0);
@@ -51,13 +52,14 @@ class DiceGameController extends AbstractController
     public function play(
         SessionInterface $session
     ): Response {
-        $dicehand = $session->get("pig_dicehand");
+        /** @var DiceHand $hand */
+        $hand = $session->get("pig_diceHand");
 
         $data = [
             "pigDices" => $session->get("pig_dices"),
             "pigRound" => $session->get("pig_round"),
             "pigTotal" => $session->get("pig_total"),
-            "diceValues" => $dicehand->getString()
+            "diceValues" => $hand->getString()
         ];
 
         return $this->render('pig/play.html.twig', $data);
@@ -67,20 +69,26 @@ class DiceGameController extends AbstractController
     public function roll(
         SessionInterface $session
     ): Response {
-        $hand = $session->get("pig_dicehand");
+        /** @var DiceHand $hand */
+        $hand = $session->get("pig_diceHand");
+
         $hand->roll();
 
+        /** @var int $ roundTotal*/
         $roundTotal = $session->get("pig_round");
         $round = 0;
+
         $values = $hand->getValues();
         foreach ($values as $value) {
             if ($value === 1) {
                 $round = 0;
                 $roundTotal = 0;
+
                 $this->addFlash(
                     'warning',
                     'You got a 1 and you lost the round points!'
                 );
+
                 break;
             }
             $round += $value;
@@ -95,10 +103,13 @@ class DiceGameController extends AbstractController
     public function save(
         SessionInterface $session
     ): Response {
+        /** @var int $ roundTotal*/
         $roundTotal = $session->get("pig_round");
+        /** @var int $ gameTotal*/
         $gameTotal = $session->get("pig_total");
 
         $session->set("pig_round", 0);
+
         $session->set("pig_total", $roundTotal + $gameTotal);
 
         $this->addFlash(
@@ -160,12 +171,9 @@ class DiceGameController extends AbstractController
         }
 
         $hand = new DiceHand();
+
         for ($i = 1; $i <= $num; $i++) {
-            if ($i % 2 === 1) {
-                $hand->add(new DiceGraphic());
-            } else {
-                $hand->add(new Dice());
-            }
+            ($i % 2 === 1) ? $hand->add(new DiceGraphic()) : $hand->add(new Dice());
         }
 
         $hand->roll();

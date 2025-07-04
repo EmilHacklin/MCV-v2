@@ -1,0 +1,56 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Black Jack: Game{% endblock %}
+
+{% block body %}
+<div class="column">
+    {{ include('flash.html.twig') }}
+    <h1>Dealer's Cards:</h1>
+
+    <ul class="cardHand">
+        {% for card in dealer %}
+            <li class="card">{{ card }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Value: {{ dealerValue }}</h2>
+
+    <h1>Player's Cards:</h1>
+
+    <ul class="cardHand">
+        {% for card in player %}
+            <li class="card">{{ card }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Value: {{ playerValue }}</h2>
+
+    {% if winner == "Undecided"%}
+        <form method="post" action="">
+            <p>
+                <input type="submit" name="hit" value="Hit" 
+                onClick="this.form.action='{{ path('black_jack_hit') }}';">
+                <input type="submit" name="stay" value="Stay" 
+                onClick="this.form.action='{{ path('black_jack_stay') }}';">
+            </p>
+        </form>
+    {% else %} 
+        {% if winner == "Tie"%}
+            <h1>The game is over, it resulted in a {{ winner }}</h1>
+        {% else %}
+            <h1>The game is over, it resulted in a victory for the: {{ winner }}</h1>
+        {% endif %}
+
+        <h2>Do you want to play again?</h2>
+            
+        <form method="post" action="">
+            <p>
+                <input type="submit" name="yes" value="Yes" 
+                onClick="this.form.action='{{ path('black_jack_reset') }}';">
+                <input type="submit" name="No" value="No" 
+                onClick="this.form.action='{{ path('game_start') }}';this.form.method='get';">
+            </p>
+        </form>
+    {% endif %}
+</div>
+{% endblock %}

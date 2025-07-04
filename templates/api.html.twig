@@ -15,7 +15,7 @@
             <tr>
                 <td>Quotes</td>
                 <td>Skickar en jason inehållande ett slumpat sitat (quote,author,timestamp)</td>
-                <td><a href="{{ path('quote') }}">Quotes</a></td>
+                <td><a href="{{ path('api/quote') }}">Quotes</a></td>
             </tr>
             <tr>
                 <td>Deck</td>
@@ -63,6 +63,11 @@
                         </button>
                     </form>
                 </td>
+            </tr>
+            <tr>
+                <td>Game</td>
+                <td>Skickar en jason inehållande stälningen i Black Jack spelet (bankHand, bankHandValue, playerHand, playerHandValue)</td>
+                <td><a href="{{ path('api/game') }}">Game</a></td>
             </tr>
         </table>
     </div>

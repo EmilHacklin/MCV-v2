@@ -4,7 +4,7 @@ namespace App\Dice;
 
 class DiceGraphic extends Dice
 {
-    private $representation = [
+    public const GRAPHIC_REPRESENTATION = [
         '⚀',
         '⚁',
         '⚂',
@@ -13,13 +13,24 @@ class DiceGraphic extends Dice
         '⚅',
     ];
 
+    /**
+     * __construct
+     *
+     * @return void
+     */
     public function __construct()
     {
         parent::__construct();
     }
 
+    /**
+     * getAsString
+     *
+     * @return string
+     */
     public function getAsString(): string
     {
-        return $this->representation[$this->value - 1];
+        $value = $this->value;
+        return ($value >= 1 and $value <= 6) ? self::GRAPHIC_REPRESENTATION[$value - 1] : parent::getAsString();
     }
 }

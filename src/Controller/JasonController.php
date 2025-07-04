@@ -2,14 +2,15 @@
 
 namespace App\Controller;
 
+use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\ErrorHandler\Exception;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use App\Cards\CardHand;
 use App\Cards\DeckOfCards;
+use App\Cards\BlackJack;
 
 class JasonController extends AbstractController
 {
@@ -19,7 +20,7 @@ class JasonController extends AbstractController
         return $this->render('api.html.twig');
     }
 
-    #[Route("/api/quote", name: "quote")]
+    #[Route("/api/quote", name: "api/quote")]
     public function quote(): Response
     {
         $quotes = array(
@@ -49,11 +50,11 @@ class JasonController extends AbstractController
             )
         );
 
-        $i = random_int(0, count($quotes) - 1);
+        $randInt = random_int(0, count($quotes) - 1);
 
         $data = [
-            'quote' => $quotes[$i]["quote"],
-            'author' => $quotes[$i]["author"],
+            'quote' => $quotes[$randInt]["quote"],
+            'author' => $quotes[$randInt]["author"],
             'timestamp' => date("d/m-y H:i:s", time())
         ];
 
@@ -111,24 +112,21 @@ class JasonController extends AbstractController
     public function apiDeckDraw(
         SessionInterface $session
     ): Response {
-        $deck = $session->get("cards_deck");
+        /** @var DeckOfCards $deck */
+        $deck = $session->get("cards_deck") ?? new DeckOfCards();
         $hand = new CardHand();
 
-        if ($deck != null) {
-            if ($deck->numberOfCards() > 0) {
-                $hand->addCard($deck->drawCard());
-            } else {
-                throw new Exception("Can not draw more cards as the deck is empty!");
-            }
-        } else {
-            $deck = new DeckOfCards();
-            $hand->addCard($deck->drawCard());
+        if ($deck->numberOfCards() < 0) {
+            throw new Exception("Can not draw more cards as the deck is empty!");
         }
+
+        $hand->addCard($deck->drawCard());
 
         $session->set("cards_deck", $deck);
 
         $data = [
             "hand" => $hand->getString(),
+
             "deckNumber" => $deck->numberOfCards(),
         ];
 
@@ -153,27 +151,21 @@ class JasonController extends AbstractController
             throw new Exception("Can not draw less than 1 card!");
         }
 
-        $deck = $session->get("cards_deck");
-
+        /** @var DeckOfCards $deck */
+        $deck = $session->get("cards_deck") ?? new DeckOfCards();
         $hand = new CardHand();
 
-        if ($deck != null) {
-            $numberOfCards = $deck->numberOfCards();
-            if ($numberOfCards == 0) {
-                throw new Exception("Can not draw more cards as the deck is empty!");
-            } elseif ($numberOfCards < $num) {
-                throw new Exception("Can not draw more cards as the deck currently have!\n
-                The deck currently have ". $numberOfCards . " many cards in the deck.");
-            } else {
-                for ($i = 0; $i < $num; $i++) {
-                    $hand->addCard($deck->drawCard());
-                }
-            }
-        } else {
-            $deck = new DeckOfCards();
-            for ($i = 0; $i < $num; $i++) {
-                $hand->addCard($deck->drawCard());
-            }
+        $numberOfCards = $deck->numberOfCards();
+        if ($numberOfCards == 0) {
+            throw new Exception("Can not draw more cards as the deck is empty!");
+        }
+        if ($numberOfCards < $num) {
+            throw new Exception("Can not draw more cards as the deck currently have!\n
+            The deck currently have ". $numberOfCards . " many cards in the deck.");
+        }
+
+        for ($i = 0; $i < $num; $i++) {
+            $hand->addCard($deck->drawCard());
         }
 
         $session->set("cards_deck", $deck);
@@ -182,6 +174,25 @@ class JasonController extends AbstractController
             "hand" => $hand->getString(),
             "deckNumber" => $deck->numberOfCards(),
         ];
+
+        $response = new JsonResponse($data);
+
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+
+        return $response;
+    }
+
+    #[Route("/api/game", name: "api/game", methods: ['GET'])]
+    public function apiGame(
+        SessionInterface $session
+    ): Response {
+        /** @var BlackJack $blackJack */
+        $blackJack = $session->get("black_jack") ?? new BlackJack();
+
+        $data = $blackJack->stateOfGame();
+        ;
 
         $response = new JsonResponse($data);
 

@@ -1,0 +1,153 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Black Jack: Doc{% endblock %}
+
+{% block body %}
+    <div class="column">
+        <h1>About Black Jack</h1>
+
+        <h2>Classes</h2>
+
+        <p>
+            The Black Jack game on this website utilise five classes, they are:
+        </p>
+        <ul>
+            <li>Card: The base card class that contains all information about the cards</li>
+            <li>CardGraphic: Internets from the base Card class but adds graphical style to the cards</li>
+            <li>CardHand: Contains multiple card objects and have the ability to keep track on there values</li>
+            <li>DeckOfCards: Manages an entire 52 card deck</li>
+            <li>BlackJack: Manges the entire logic of the game of BlackJack</li>   
+        </ul>
+
+        <h2>Flowchart of how the Black Jack class operate</h2>
+
+        <img src="{{ asset('img/BlackJackFlowchart.png') }}" alt="Flowchart of how a Black Jack Game works" class="img-black-jack-flowchart">
+
+        <h2>Pseudocode of how i tough the BlackJack class would work</h2>
+
+        <pre>
+            <code>
+                Class BlackJack
+
+                Create the object
+                BEGIN
+                    INIT the deck
+                    INIT the player hand
+                    INIT the dealer hand
+                    Shuffle the deck
+                    FORE the dealer hand is less than 2 cards
+                        Player draw card
+                        Dealers draw card
+                    ENDFORE
+                    GET value of player’s hand
+                    SET the value of player's hand
+                    GET value of dealer’s hand
+                    SET the value of dealer’s hand
+                    SET the dealers hand do hide
+                END
+            </code>
+        </pre>
+        
+        <pre>
+            <code>
+                Send state of game
+                BEGIN
+                    GET player’s cards from hand
+                    GET value of player’s hand
+                    GET dealer’s cards from hand
+                    GET hidden status of dealer
+                    IF dealer’s hand is hidden
+                        Don’t send the dealer’s last card
+                        Don’t send the value of the dealer’s hand
+                    ENDIF
+                RETURN player’s cards, value of hand, dealer’s cards and value of hand if not hidden
+                END
+            </code>
+        </pre>
+
+        <pre>
+            <code>
+                Hit the player
+                BEGIN
+                    Player draws a card
+                    IF player hand low ace value is bust
+                        The player is bust
+                ENDIF
+                IF player hand high ace value is bust
+                    SET value of player’s hand to low ace value
+                    ELSE
+                        SET value of player's hand to high ace value
+                    ENDIF
+                    Send new game state
+                END
+            </code>
+        </pre>
+        
+        <pre>
+            <code>
+                Hit the dealer
+                BEGIN
+                    Deler’s hand is not hidden anymore
+                    Dealer draws a card
+                    IF dealer hand low ace value is bust
+                        The dealer is bust
+                ENDIF
+                IF dealer hand high ace value is bust
+                    SET value of dealer’s hand to low ace value
+                    ELSE
+                        SET value of dealer’s hand to high ace value
+                    ENDIF
+                    Send new game state
+                END
+            </code>
+        </pre>
+
+        <pre>
+            <code>
+                Bust
+                BEGIN
+                    IF player is bust
+                        The dealer wins
+                    ELSE
+                        The player wins
+                    ENDIF
+                END
+            </code>
+        </pre>
+        
+        <pre>
+            <code>
+                Calculate the winner
+                BEGIN
+                    IF dealer’s hand value is greater than player’s
+                        The dealer wins
+                    ELSEIF dealer’s hand value is equal of player’s
+                        It is a tie
+                    ELSE
+                        The player wins
+                    ENDIF
+                END
+            </code>
+        </pre>
+
+        <pre>
+            <code>
+                Reset game
+                BEGIN
+                    The player’s hand is emptied
+                    The dealer’s hand is emptied
+                    The deck is reshuffled
+                    FORE the dealer hand is less than 2 cards
+                        Player draw card
+                        Dealers draw card
+                    ENDFORE
+                    GET value of player’s hand
+                    SET the value of player's hand
+                    GET value of dealer’s hand
+                    SET the value of dealer’s hand
+                    SET the dealers hand do hide
+                END
+            </code>
+        </pre>
+    </div>
+{% endblock %}

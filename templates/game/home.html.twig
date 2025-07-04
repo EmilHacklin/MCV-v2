@@ -1,0 +1,43 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Black Jack{% endblock %}
+
+{% block body %}
+    <div class="column">
+        <h1>BlackJack</h1>
+
+        <h2>Rules of the game</h2>
+        
+        <ul>
+            <li>Objective: The goal of the game is to have a higher value hand then the dealer without going over 21</li>
+            <li>Deck: The deck used is a standard 52 card deck</li>
+            <li>Value: The values of the cards is the same as the face value except for ace's, jack's, queen's and king's</li>
+            <li>Ace's: Ace's is valued as 1 or 11 depending on which gives the larger hand value without going over 21</li>
+            <li>Jack's, queen's and king's: The value of all of these cards is 10</li>
+            <li>Game start: The game starts with the player and dealer drawing two cards each but only one of the dealers cards is reveled</li>
+            <li>Bust: If the value of a hand is lager then 21 the hand is a bust</li>
+            <li>BlackJack: If the value of a hand att the game start is 21 (Ace and a 10 value card) it is called a BlackJack</li>
+            <li>
+                Dealer: The dealer have some inbuilt advantages and disadvantages over a player, these are:
+                <ul>
+                    <li>Advantage: The player gets to chose to stay or draw first and if the player draws and goes bust the dealer wins.</li>
+                    <li>Disadvantage: The dealer can only draw cards until it's hand value is greater then 16</li>
+                </ul>
+            </li> 
+            <li>Tie: If the dealer and the player end up with equal value of their hands</li>
+        </ul>
+
+        <p>
+            For more information about the implementation please consult the <a href="{{ path('game_doc') }}">Documentation</a>.
+        </p>
+
+        <h2>Press here to play Black Jack</h2>
+        
+        <form method="post" action="">
+            <p>
+                <input type="submit" name="blackJack" value="Black Jack" 
+                onClick="this.form.action='{{ path('black_jack_reset') }}';">
+            </p>
+        </form>
+    </div>
+{% endblock %}
