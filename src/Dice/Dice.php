@@ -9,15 +9,19 @@ class Dice
     /**
      * __construct
      *
+     * Constructor of the class
+     *
      * @return void
      */
     public function __construct()
     {
-        $this->value = 0;
+        $this->value = random_int(1, 6);
     }
 
     /**
      * roll
+     *
+     * Roll a new value for the dice (1-6)
      *
      * @return int
      */
@@ -30,6 +34,8 @@ class Dice
     /**
      * getValue
      *
+     * Returns the value of the dice
+     *
      * @return int
      */
     public function getValue(): int
@@ -38,11 +44,13 @@ class Dice
     }
 
     /**
-     * getAsString
+     * getString
+     *
+     * Returns the value of the dice as a string
      *
      * @return string
      */
-    public function getAsString(): string
+    public function getString(): string
     {
         return "[{$this->value}]";
     }

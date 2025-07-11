@@ -6,19 +6,28 @@ use App\Cards\CardGraphic;
 
 /**
  * DeckOfCards
+ *
+ * Class that generates a deck of cards and it's functions
+ *
  */
 class DeckOfCards
 {
-    public const RANKS = array("A", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "J", "Q", "K");
+    /**
+     * Constant arrays that contain all ranks and suites in the deck
+     */
+    public const RANKS = array("A", "2", "3", "4", "5", "6", "7", "8", "8", "10", "J", "Q", "K");
     public const SUITES = array("Hearts", "Diamonds", "Clubs", "Spades");
 
     /**
     * @var array<CardGraphic> $deck
+    * Is an array that contains the CardGraphic objects
     */
     private array $deck = [];
 
     /**
      * __construct
+     *
+     * Constructor of the class
      *
      * @return void
      */
@@ -30,19 +39,23 @@ class DeckOfCards
     /**
      * createDeck
      *
+     * Creates a deck containing all card combinations of ranks and suites
+     *
      * @return void
      */
     private function createDeck(): void
     {
-        foreach (self::SUITES as $suite) {
+        foreach (self::SUITES as $suit) {
             foreach (self::RANKS as $rank) {
-                $this->deck[] = new CardGraphic($rank, $suite);
+                $this->deck[] = new CardGraphic($rank, $suit);
             }
         }
     }
 
     /**
      * resetDeck
+     *
+     * Resets the deck to the original state
      *
      * @return void
      */
@@ -56,6 +69,8 @@ class DeckOfCards
     /**
      * shuffleDeck
      *
+     * Shuffles the cards in the deck around
+     *
      * @return void
      */
     public function shuffleDeck(): void
@@ -65,6 +80,8 @@ class DeckOfCards
 
     /**
      * reshuffleDeck
+     *
+     * Resets the deck and then shuffles it again
      *
      * @return void
      */
@@ -80,6 +97,8 @@ class DeckOfCards
     /**
      * drawCard
      *
+     * Draws a card from the deck an returns it
+     *
      * @return CardGraphic
      */
     public function drawCard(): CardGraphic
@@ -87,24 +106,28 @@ class DeckOfCards
         $card = array_shift($this->deck);
 
         if ($card == null) {
-            $card = new CardGraphic("no rank", "no suite");
+            $card = new CardGraphic(CardGraphic::NO_RANK, CardGraphic::NO_SUIT);
         }
 
         return $card;
     }
 
     /**
-     * numberOfCards
+     * cardCount
+     *
+     * Returns the number of cards left in the deck
      *
      * @return int
      */
-    public function numberOfCards(): int
+    public function cardCount(): int
     {
         return count($this->deck);
     }
 
     /**
      * getString
+     *
+     * Returns all the cards in the deck as strings array
      *
      * @return array<string>
      */

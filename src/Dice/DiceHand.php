@@ -8,22 +8,41 @@ class DiceHand
 {
     /**
     * @var array<Dice> $hand
+    * Is an array that contains the Dice objects
     */
     private array $hand = [];
 
     /**
-     * add
+     * addDie
+     *
+     * Add a die to the hand
      *
      * @param  Dice $die
      * @return void
      */
-    public function add(Dice $die): void
+    public function addDie(Dice $die): void
     {
         $this->hand[] = $die;
     }
 
     /**
+     * removeDice
+     *
+     * Remove the top dice from hand
+     *
+     * @return void
+     */
+    public function removeDie(): void
+    {
+        if (Count($this->hand) > 0) {
+            array_shift($this->hand);
+        }
+    }
+
+    /**
      * roll
+     *
+     * Roll all the Dice in the hand
      *
      * @return void
      */
@@ -37,6 +56,8 @@ class DiceHand
     /**
      * getNumberDices
      *
+     * Return the number of dice in the hand
+     *
      * @return int
      */
     public function getNumberDices(): int
@@ -46,6 +67,8 @@ class DiceHand
 
     /**
      * getValues
+     *
+     * Return an array of all the Dice values in hand
      *
      * @return array<int>
      */
@@ -59,7 +82,25 @@ class DiceHand
     }
 
     /**
+     * sum
+     *
+     * Returns the sum of all Dice values in hand
+     *
+     * @return int
+     */
+    public function sum(): int
+    {
+        $sum = 0;
+        foreach ($this->hand as $die) {
+            $sum += $die->getValue();
+        }
+        return $sum;
+    }
+
+    /**
      * getString
+     *
+     * Returns an string array containing all the Dice
      *
      * @return array<string>
      */
@@ -67,7 +108,7 @@ class DiceHand
     {
         $values = [];
         foreach ($this->hand as $die) {
-            $values[] = $die->getAsString();
+            $values[] = $die->getString();
         }
         return $values;
     }

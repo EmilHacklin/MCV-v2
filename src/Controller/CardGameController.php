@@ -104,15 +104,15 @@ class CardGameController extends AbstractController
         $deck = $session->get("cards_deck") ?? new DeckOfCards();
         $hand = new CardHand();
 
-        ($deck->numberOfCards() > 0) ?
+        ($deck->cardCount() > 0) ?
         $hand->addCard($deck->drawCard()) :
-        throw new Exception("Can not draw more cards as the deck is empty!");
+        throw new Exception("Can't draw more cards as the deck is empty!");
 
         $session->set("cards_deck", $deck);
 
         $data = [
             "hand" => $hand->getString(),
-            "deckNumber" => $deck->numberOfCards(),
+            "deckNumber" => $deck->cardCount(),
         ];
 
         return $this->render('card/deck_draw.html.twig', $data);
@@ -124,24 +124,24 @@ class CardGameController extends AbstractController
         SessionInterface $session
     ): Response {
         if ($num > 52) {
-            throw new Exception("Can not draw more than cards in deck!");
+            throw new Exception("Can't draw more than cards in deck!");
         }
         if ($num < 1) {
-            throw new Exception("Can not draw less than 1 card!");
+            throw new Exception("Can't draw less than 1 card!");
         }
 
         /** @var DeckOfCards $deck */
         $deck = $session->get("cards_deck") ?? new DeckOfCards();
         $hand = new CardHand();
 
-        $numberOfCards = $deck->numberOfCards();
+        $cardCount = $deck->cardCount();
 
-        if ($numberOfCards == 0) {
-            throw new Exception("Can not draw more cards as the deck is empty!");
+        if ($cardCount == 0) {
+            throw new Exception("Can't draw more cards as the deck is empty!");
         }
-        if ($numberOfCards < $num) {
-            throw new Exception("Can not draw more cards as the deck currently have!\n
-            The deck currently have ". $numberOfCards . " many cards in the deck.");
+        if ($cardCount < $num) {
+            throw new Exception("Can't draw more cards as the deck currently have!\n
+            The deck currently have ". $cardCount . " many cards in the deck.");
         }
 
         for ($i = 0; $i < $num; $i++) {
@@ -152,7 +152,7 @@ class CardGameController extends AbstractController
 
         $data = [
             "hand" => $hand->getString(),
-            "deckNumber" => $deck->numberOfCards(),
+            "deckNumber" => $deck->cardCount(),
         ];
 
         return $this->render('card/deck_draw.html.twig', $data);

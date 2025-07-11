@@ -36,7 +36,7 @@ class DiceGameController extends AbstractController
         /** @var DiceHand $hand */
         $hand = new DiceHand();
         for ($i = 1; $i <= $numDice; $i++) {
-            $hand->add(new DiceGraphic());
+            $hand->addDie(new DiceGraphic());
         }
         $hand->roll();
 
@@ -128,7 +128,7 @@ class DiceGameController extends AbstractController
 
         $data = [
             "dice" => $die->roll(),
-            "diceString" => $die->getAsString()
+            "diceString" => $die->getString()
         ];
 
         return $this->render('pig/test/roll.html.twig', $data);
@@ -138,10 +138,10 @@ class DiceGameController extends AbstractController
     public function testRollDices(int $num): Response
     {
         if ($num > 99) {
-            throw new Exception("Can not roll more than 99 dices!");
+            throw new Exception("Can't roll more than 99 dices!");
         }
         if ($num < 1) {
-            throw new Exception("Can not roll less than 1 die!");
+            throw new Exception("Can't roll less than 1 die!");
         }
 
         $diceRolls = [];
@@ -149,7 +149,7 @@ class DiceGameController extends AbstractController
             //$die = new Dice();
             $die = new DiceGraphic();
             $die->roll();
-            $diceRolls[] = $die->getAsString();
+            $diceRolls[] = $die->getString();
         };
 
         $data = [
@@ -164,16 +164,16 @@ class DiceGameController extends AbstractController
     public function testDiceHand(int $num): Response
     {
         if ($num > 99) {
-            throw new Exception("Can not roll more than 99 dices!");
+            throw new Exception("Can't roll more than 99 dices!");
         }
         if ($num < 1) {
-            throw new Exception("Can not roll less than 1 die!");
+            throw new Exception("Can't roll less than 1 die!");
         }
 
         $hand = new DiceHand();
 
         for ($i = 1; $i <= $num; $i++) {
-            ($i % 2 === 1) ? $hand->add(new DiceGraphic()) : $hand->add(new Dice());
+            ($i % 2 === 1) ? $hand->addDie(new DiceGraphic()) : $hand->addDie(new Dice());
         }
 
         $hand->roll();

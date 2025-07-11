@@ -117,6 +117,42 @@
     </div>
     <div class="row">
         <h2 id="Kmom04">Kmom04</h2>
+        <p>
+            I detta Kmom så har vi implementerat enhetstester med PHPUnit för att testa vår kod så den fungerar. 
+            Jag har inte tidigare använt mig av enhetstester tidigare, jag hade trott att det skulle blivit jobbigt att lista ut vad man behövde testa. 
+        </p>
+        <p>
+            Men med PHPUnit så skapar den en websida som visar exakt vad i koden som har testat och vad som inte har testats. 
+            Det gör att det är lätt att skriva tester för vad som man behöver och inte för alla metoder då det kan på kallas på andra ställen.
+        </p>
+        <p>
+            På detta sätt lyckades jag skapa tester för 100% av min kod och genom att skriva dessa tester fann jag flera ställen 
+            i min kod som kunde förbättras på små sätt som till exempel namn på metoder eller variabler. 
+        </p>
+        <p>
+            Jag lyckades också skapa enhetstester för våra Controllers trots att det var mycket svårare att skapa tester för dem då jag hela tiden stötte på problem, särskilt med tester för alla Exceptions. 
+            Trots detta lyckades jag skapa tester för 100% av Controllers vilket var en bra sak då under skapandet av testerna så hittade jag fel i vissa Routs som jag inte hade upptäckt tidigare.
+        </p>
+        <p>
+            Trots att det tog ett bra tag att skriva alla dessa tester så tyckte jag att min kod ändå var ganska testbar då jag inte upptäckte några särskilda svårigheter med att testa koden. 
+            Detta kan nog märkas av att jag inte använde mig av många stubs och mockobjects för att testa koden.
+        </p>
+        <p>
+            Dom flesta ändringarna jag behövde göra var mer att döpa om metoder eller variabler, 
+            på ett ställe i JasonController så var en IF sats för att kolla om kortleken är tom fel så den aldrig trodde att kortleken var tom. 
+        </p>
+        <p>
+            Detta är för övrigt en av det bästa exemplet för hur enhetstester kan användas för att finna fel. 
+            Om jag inte gjort tester för Controllern så hade jag nog inte märkt att det fanns en bugg i koden såvida jag inte tryckt på att dra kort från API 52 gånger.
+        </p>
+        <p>
+            Om det går att säga att testbar kod är “snygg och ren kod” så skulle jag säga att testbar kod är en del utav “snygg och ren kod” men inte helheten. 
+            Bara för att kod är testbar så betyder inte det att koden automatiskt är “snygg och ren kod” utan det kan finnas kod som är testbar men inte är skrivet på ett bra sätt.
+        </p>
+        <p>
+            Det som jag tycker jag lärt mig mest om för detta Kmom är att skriva enhetstester för 
+            Symfony Controllers då det var något som jag definitivt inte visste om innan men har redan förbättrat min kod.
+        </p>
     </div>
     <div class="row">
         <h2 id="Kmom05">Kmom05</h2>

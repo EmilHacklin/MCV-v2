@@ -22,6 +22,13 @@ class BlackJack
     // -1 = Undecided, 0 = Tie, 1 = Player, 2 = Dealer
     private int $winner;
 
+    /**
+     * __construct
+     *
+     * Constructor of the class
+     *
+     * @return void
+     */
     public function __construct()
     {
         $this->deck = new DeckOfCards();
@@ -35,6 +42,8 @@ class BlackJack
 
     /**
      * setupGame
+     *
+     * Sets up a game of Black Jack by dealing out the cards and setting upp the variables
      *
      * @return void
      */
@@ -57,6 +66,8 @@ class BlackJack
 
     /**
      * calculateWinner
+     *
+     * Calculates the winner of the game
      *
      * @return void
      */
@@ -86,6 +97,8 @@ class BlackJack
     /**
      * playDealer
      *
+     * The logic for the dealer to play
+     *
      * @return void
      */
     private function playDealer(): void
@@ -108,6 +121,8 @@ class BlackJack
 
     /**
      * stateOfGame
+     *
+     * Returns a mixed array containing the current state of the game
      *
      * @return array<mixed>
      */
@@ -147,6 +162,8 @@ class BlackJack
     /**
      * isPlayerBust
      *
+     * Returns if the player's hand value is over 21
+     *
      * @return bool
      */
     public function isPlayerBust(): bool
@@ -157,6 +174,8 @@ class BlackJack
     /**
      * isDealerBust
      *
+     * Returns if the dealer's hand value is over 21
+     *
      * @return bool
      */
     public function isDealerBust(): bool
@@ -166,6 +185,8 @@ class BlackJack
 
     /**
      * resetGame
+     *
+     * Resets the game to a new game
      *
      * @return void
      */
@@ -181,6 +202,8 @@ class BlackJack
 
     /**
      * hitPlayer
+     *
+     * The player draws a card and we check if the player is bust and update the hand value
      *
      * @return void
      */
@@ -205,6 +228,8 @@ class BlackJack
 
     /**
      * stayPlayer
+     *
+     * The player stay and we call upon the dealer to play
      *
      * @return void
      */

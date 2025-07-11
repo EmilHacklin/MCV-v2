@@ -83,9 +83,18 @@
         "csfix:tests:dry": "tools/php-cs-fixer/vendor/bin/php-cs-fixer --dry-run -v --config=tools/php-cs-fixer/.php-cs-fixer.dist.php fix src tests",
         "phpmd": "tools/phpmd/vendor/bin/phpmd . text tools/phpmd/phpmd.xml || true",
         "phpstan": "tools/phpstan/vendor/bin/phpstan analyse -c tools/phpstan/phpstan.neon || true",
+        "phpdoc": "tools/phpdoc/phpdoc --config=tools/phpdoc/phpdoc.xml",
+        "phpunit": "XDEBUG_MODE=coverage vendor/bin/phpunit",
         "lint": [
             "@phpmd",
             "@phpstan"
+        ],
+        "test": [
+            "@csfix",
+            "@csfix:tests",
+            "@phpmd",
+            "@phpstan",
+            "@phpunit"
         ],
         "auto-scripts": {
             "cache:clear": "symfony-cmd",

@@ -14,6 +14,10 @@
 .phpunit.result.cache
 ###< phpunit/phpunit ###
 
+###> phpdoc/phpdoc ###
+.phpdoc/
+###> phpdoc/phpdoc ###
+
 ###> symfony/phpunit-bridge ###
 .phpunit.result.cache
 /phpunit.xml

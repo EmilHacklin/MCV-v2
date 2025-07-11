@@ -11,11 +11,14 @@ class CardHand
 {
     /**
     * @var array<Card> $hand
+    * Is an array that contains the Card objects
     */
     private array $hand = [];
 
     /**
      * addCard
+     *
+     * Add a card to the hand array
      *
      * @param  Card $card
      * @return void
@@ -26,18 +29,22 @@ class CardHand
     }
 
     /**
-     * numberOfCards
+     * cardCount
+     *
+     * Returns the number of cards in hand
      *
      * @return int
      */
-    public function numberOfCards(): int
+    public function cardCount(): int
     {
         return Count($this->hand);
     }
 
 
     /**
-     * getValueOfHand
+     * getValueOfHand'
+     *
+     * Return the value of the hand
      *
      * @return int
      */
@@ -52,6 +59,8 @@ class CardHand
 
     /**
      * getValueOfHandAceHigh
+     *
+     * Return the value of the hand if the Ace cards have a high value (14)
      *
      * @return int
      */
@@ -68,6 +77,8 @@ class CardHand
     /**
      * getBlackJackValueOfHand
      *
+     * Return the Black Jack value of the hand (J,Q,K = 10)
+     *
      * @return int
      */
     public function getBlackJackValue(): int
@@ -82,6 +93,8 @@ class CardHand
 
     /**
      * getBlackJackValueOfHandAceHigh
+     *
+     * Return the Black Jack value of the hand (J,Q,K = 10) if the Ace cards have a high value (11)
      *
      * @return int
      */
@@ -98,6 +111,8 @@ class CardHand
 
     /**
      * getString
+     *
+     * Return the hand as an array of strings
      *
      * @return array<string>
      */
