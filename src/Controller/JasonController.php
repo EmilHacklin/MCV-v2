@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use App\Cards\CardHand;
 use App\Cards\DeckOfCards;
 use App\Cards\BlackJack;
+use App\Repository\BookRepository;
 
 class JasonController extends AbstractController
 {
@@ -190,6 +191,37 @@ class JasonController extends AbstractController
 
         $data = $blackJack->stateOfGame();
         ;
+
+        $response = new JsonResponse($data);
+
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+
+        return $response;
+    }
+
+    #[Route("api/library/books", name: "api/library/books", methods: ['GET'])]
+    public function apiLibraryBooks(
+        BookRepository $bookRepository
+    ): Response {
+        $data = $bookRepository->readAllBooks();
+
+        $response = new JsonResponse($data);
+
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+
+        return $response;
+    }
+
+    #[Route("api/library/book/{isbn<\d+>}", name: "api/library/book/isbn", methods: ['GET'])]
+    public function apiLibraryBookISBN(
+        string $isbn,
+        BookRepository $bookRepository
+    ): Response {
+        $data = $bookRepository->readOneBookISBN($isbn);
 
         $response = new JsonResponse($data);
 

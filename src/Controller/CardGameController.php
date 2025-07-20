@@ -71,7 +71,6 @@ class CardGameController extends AbstractController
         $session->set("cards_deck", $deck);
 
         $data = [
-
             "deck" => $deck->getString(),
         ];
 

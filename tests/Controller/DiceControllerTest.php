@@ -23,8 +23,6 @@ class DiceControllerTest extends WebTestCase
         /** @var RouterInterface $router */
         $router = static::getContainer()->get('router');
 
-        //pig_init_post
-
         // Generate URL from route name
         $url = $router->generate('pig_init_post');
 
@@ -57,8 +55,6 @@ class DiceControllerTest extends WebTestCase
         /** @var RouterInterface $router */
         $router = static::getContainer()->get('router');
 
-        //pig_start
-
         // Generate URL from route name
         $url = $router->generate('pig_start');
 
@@ -87,8 +83,6 @@ class DiceControllerTest extends WebTestCase
         // Retrieve router service
         /** @var RouterInterface $router */
         $router = static::getContainer()->get('router');
-
-        //pig_init_get
 
         // Generate URL from route name
         $url = $router->generate('pig_init_get');
@@ -122,8 +116,6 @@ class DiceControllerTest extends WebTestCase
         //Needed or the server code becomes 500
         $this->testPigInitPOST($client);
 
-        //pig_play
-
         // Generate URL from route name
         $url = $router->generate('pig_play');
 
@@ -152,8 +144,6 @@ class DiceControllerTest extends WebTestCase
         // Retrieve router service
         /** @var RouterInterface $router */
         $router = static::getContainer()->get('router');
-
-        //pig_save
 
         // Generate URL from route name
         $url = $router->generate('pig_save');
@@ -185,8 +175,6 @@ class DiceControllerTest extends WebTestCase
         //Needed or the server code becomes 500
         $this->testPigInitPOST($client);
 
-        //pig_roll
-
         // Generate URL from route name
         $url = $router->generate('pig_roll');
 
@@ -215,8 +203,6 @@ class DiceControllerTest extends WebTestCase
         // Retrieve router service
         /** @var RouterInterface $router */
         $router = static::getContainer()->get('router');
-
-        //test_roll_dice
 
         // Generate URL from route name
         $url = $router->generate('test_roll_dice');
@@ -247,8 +233,6 @@ class DiceControllerTest extends WebTestCase
         /** @var RouterInterface $router */
         $router = static::getContainer()->get('router');
 
-        //test_roll_num_dices
-
         // Generate URL from route name
         $url = $router->generate('test_roll_num_dices', ['num' => 3]);
 
@@ -277,8 +261,6 @@ class DiceControllerTest extends WebTestCase
         // Retrieve router service
         /** @var RouterInterface $router */
         $router = static::getContainer()->get('router');
-
-        //test_dicehand
 
         // Generate URL from route name
         $url = $router->generate('test_dicehand', ['num' => 3]);

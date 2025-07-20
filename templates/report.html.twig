@@ -156,6 +156,41 @@
     </div>
     <div class="row">
         <h2 id="Kmom05">Kmom05</h2>
+        <p>
+            Under detta Kmom så har vi implementerat en databas till vår websida samt ett ORM (Object Relational Mapping) lager som sköter vår interaktion med databasen. 
+            Jag valde att skapa en SQLite databas i stället för att koppla mig mot studentserverns MySQL eller MariaDB då dels det är enklare att jobba med en lokal databas. 
+            Men mest för att när jag skulle börja med detta Kmom då jag var sen med uppgiften så var studentservern nere (troligen för underhåll) så jag inte kunde skapa ett konto.
+        </p>
+        <p>
+            Det gick trots detta rätt så bra att jobba igenom övningen då jag inte stötte på några större problem. 
+            Men ORM var ett mycket smidigt sätt att skapa en databas samt sätta upp en mall för att skriva frågor till databasen. 
+        </p>
+        <p>
+            För själva applikationen för uppgiften så tyckte jag inte instruktionerna var det bästa för att komma i gång med själva uppgiften. 
+            Det mesta var saker jag har gjort tidigare men instruktionen att spara en bild på boken till databasen var vag &quot;<i><strong>med deras titel, ISBN och författare samt en bild som representerar boken</strong></i>&quot;. 
+        </p>
+        <p>
+            Förs trodde jag att detta betydde att jag skulle spara bilden rent i databasen som ett BLOB objekt 
+            men när jag väl kom till delen att visa upp den insparade bilden så kunde jag inte lista ut hur jag kunde visa den i twig template filen.
+        </p>
+        <p>
+            Till slut så kom jag fram till att spara bilderna i en fil /public/uploads/ och spara bildernas path i databasen var den bästa lösningen.
+            Även om det krävde att controller filen blev större än jag skulle velat då logiken att för att spara och ta bort bilderna behövde ligga i controller namespace. 
+        </p>
+        <p>
+            När det kom till Book klassen så behövde jag inte ändra mycket från template filen annat en att lägga till validering för set metoderna. 
+            För BookRepository så lade jag till metoder föra att se alla böker eller för att hitta en specifik bok. 
+            Men jag lade också en metod för att skapa ett Book objekt likt en konstruktör. 
+            Anledningen till att jag gjorde detta var att jag inte visste om jag lade en konstruktör i Book, om den skulle leda till problem för tilldelningen av id då jag då skrev över default konstruktören.
+        </p>
+        <p>
+            Att använda ett ORM för att ställa frågor till databasen gjorde det mycket enklare att jobba med den en om jag behövt skriva dem direkt till databasen. 
+            Då jag inte behövde skapa SQL statements utan kunde i stället nästan behandla databasen som en klass med dess metoder. 
+            Jag behövde inte heller skriva SQL för att skapa databasen och tabellerna vilket jag föredrog över att behöva manuella SQL statements som jag behövt göra förr.
+        </p>
+        <p>
+            Det som jag tycker mig ha lärt mig mest om i detta Kmom är att använda ORM för att hantera en databas på ett enklare sätt.
+        </p>
     </div>
     <div class="row">
         <h2 id="Kmom06">Kmom06</h2>

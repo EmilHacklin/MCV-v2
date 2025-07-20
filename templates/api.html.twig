@@ -69,6 +69,16 @@
                 <td>Skickar en jason inehållande stälningen i Black Jack spelet (bankHand, bankHandValue, playerHand, playerHandValue)</td>
                 <td><a href="{{ path('api/game') }}">Game</a></td>
             </tr>
+            <tr>
+                <td>Books</td>
+                <td>Skickar en jason inehållande alla böcker i biblioteket (books)</td>
+                <td><a href="{{ path('api/library/books') }}">Books</a></td>
+            </tr>
+            <tr>
+                <td>Books ISBN</td>
+                <td>Skickar en jason inehållande boken i biblioteket som innehåller ett specifik ISBN(book)</td>
+                <td><a href="{{ path('api/library/book/isbn', {'isbn': 9780395489314}) }}">Book ISBN</a></td>
+            </tr>
         </table>
     </div>
 </div>

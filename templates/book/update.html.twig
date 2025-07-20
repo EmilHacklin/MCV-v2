@@ -1,0 +1,25 @@
+{% extends 'book/base.html.twig' %}
+
+{% block title %}Book: Update book{% endblock %}
+
+{% block main %}
+{{ include('flash.html.twig') }}
+<h1>Update Book</h1>
+
+<form method="post" action="" enctype="multipart/form-data">
+    <p>
+        <label for="id">Id:</label><br>
+        <input type="number" id="id" name="id" min="0" value="{{ book['id'] }}" autofocus required><br>
+        <label for="title">Title:</label><br>
+        <input type="text" id="title" name="title" value="{{ book['title'] }}" maxlength="255" autofocus required><br>
+        <label for="isbn">ISBN:</label><br>
+        <input type="text" pattern="[0-9]+" id="isbn" name="isbn" value="{{ book['isbn'] }}" minlength="13" maxlength="13"><br>
+        <label for="author">Author:</label><br>
+        <input type="text" id="author" name="author" value="{{ book['author'] }}" maxlength="255"><br>
+        <label for="img">Image:</label><br>
+        <input type="file" id="img" name="img" accept="image/jpeg"><br><br>
+        <input type="submit" value="Update" 
+        onClick="this.form.action='{{ path('book_update_post') }}';">
+    </p>
+</form>
+{% endblock %}

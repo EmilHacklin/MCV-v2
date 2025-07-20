@@ -11,7 +11,7 @@ use App\Dice\Dice;
 class DiceTest extends TestCase
 {
     /**
-     * testCreateDice
+     * testCreateObject
      *
      * Construct object and verify that the object has the expected
      * properties, use no arguments.

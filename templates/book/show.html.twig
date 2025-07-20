@@ -1,0 +1,26 @@
+{% extends 'book/base.html.twig' %}
+
+{% block title %}Book: Show Library{% endblock %}
+
+{% block main %}
+<h1>Shows books in the Library</h1>
+
+<div class="center-box">
+    <table>
+        <tr>
+            <th>Image</th>
+            <th>Title</th>
+            <th>ISBN</th>
+            <th>Author</th>
+        </tr>
+        {% for book in books %}
+            <tr>
+                <td><img src="{{ asset(book['img']|default('/uploads/default.jpg'))}}" alt="Cover image of {{ book['title'] }}" class="img-book"></td>
+                <td><a href="{{ path('book_show_one', {'id': book['id']}) }}">{{ book['title'] }}</a></td>
+                <td><a href="{{ path('book_show_one', {'id': book['id']}) }}">{{ book['isbn'] }}</a></td>
+                <td><a href="{{ path('book_show_one', {'id': book['id']}) }}">{{ book['author'] }}</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'book/base.html.twig' %}
+
+{% block title %}Book: Show Update{% endblock %}
+
+{% block main %}
+{{ include('flash.html.twig') }}
+<h1>Update a book</h1>
+
+<h2>Update by id</h2>
+<form method="get" id="searchForm" action="">
+    <p>
+        <label for="id">Id:</label><br>
+        <input type="text" pattern="[0-9]+" id="id" name="id" min="0" autofocus required><br>
+        <button type="submit" onclick="setFormAction()">Search</button>
+    </p>
+</form>
+
+<script>
+    // Generate URL template with a placeholder
+    const urlTemplate = "{{ path('book_update_get', {'id': '1'}) }}";
+
+    function setFormAction() {
+        const idValue = document.getElementById('id').value;
+        const form = document.getElementById('searchForm');
+        // Replace the placeholder with the actual id
+        form.action = urlTemplate.replace('1', encodeURIComponent(idValue));
+    }
+</script>
+
+<h2>Shows books in the Library</h2>
+
+<div class="center-box">
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>ISBN</th>
+        </tr>
+        {% for book in books %}
+            <tr>
+                <td><a href="{{ path('book_update_get', {'id': book['id']}) }}">{{ book['id'] }}</a></td>
+                <td><a href="{{ path('book_update_get', {'id': book['id']}) }}">{{ book['title'] }}</a></td>
+                <td><a href="{{ path('book_update_get', {'id': book['id']}) }}">{{ book['isbn'] }}</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

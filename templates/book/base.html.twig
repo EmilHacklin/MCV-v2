@@ -1,0 +1,18 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<div class="column" style="width: 70%">
+    {% block main %}
+    {% endblock %}
+</div>
+<div class="column" style="width: 30%">
+    <h2>Links</h2>
+    <ul>
+        <li><a href="{{ path('library') }}">Library Start Page</a></li>
+        <li><a href="{{ path('book_create_get') }}">Create a book for the library</a></li>
+        <li><a href="{{ path('book_show_all') }}">Show all the books in the library</a></li>
+        <li><a href="{{ path('book_show_all_update') }}">Show all the books to update one</a></li>
+        <li><a href="{{ path('book_show_all_delete_get') }}">Show all the books to delete one</a></li>
+    </ul>
+</div>
+{% endblock %}
