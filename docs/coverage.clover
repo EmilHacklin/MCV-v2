@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1753276230">
-  <project timestamp="1753276230">
+<coverage generated="1753281167">
+  <project timestamp="1753281167">
     <file name="/home/ubuntu/dbwebbkurser/mvc/me/report/src/Cards/BlackJack.php">
       <class name="App\Cards\BlackJack" namespace="global">
         <metrics complexity="28" methods="10" coveredmethods="10" conditionals="0" coveredconditionals="0" statements="76" coveredstatements="76" elements="86" coveredelements="86"/>
@@ -53,8 +53,8 @@
       <line num="136" type="stmt" count="6"/>
       <line num="137" type="stmt" count="6"/>
       <line num="139" type="stmt" count="6"/>
-      <line num="140" type="stmt" count="5"/>
-      <line num="141" type="stmt" count="5"/>
+      <line num="140" type="stmt" count="4"/>
+      <line num="141" type="stmt" count="4"/>
       <line num="144" type="stmt" count="6"/>
       <line num="145" type="stmt" count="3"/>
       <line num="146" type="stmt" count="3"/>
