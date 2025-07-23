@@ -20,6 +20,15 @@ build:
                 override:
                     - php-scrutinizer-run
                     #- phpcs-run # Not used, missing config file
+        coverage:
+            tests:
+                override:
+                - command: ./run-my-tests
+                coverage:
+                    file: "docs/coverage.clover"   # <- Set this to where we find the coverage data.
+                                                #    The path is relative to the current directory.
+                    format: "clover"
+
     tests:
         override:
             -   command: "composer phpunit"
