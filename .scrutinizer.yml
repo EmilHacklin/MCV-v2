@@ -23,11 +23,11 @@ build:
         coverage:
             tests:
                 override:
-                - command: ./run-my-tests
-                coverage:
-                    file: "docs/coverage.clover"   # <- Set this to where we find the coverage data.
-                                                #    The path is relative to the current directory.
-                    format: "clover"
+                    - command: ./run-my-tests
+                      coverage:
+                        file: "docs/coverage.clover"   # <- Set this to where we find the coverage data.
+                                                    #    The path is relative to the current directory.
+                        format: "clover"
 
     tests:
         override:
