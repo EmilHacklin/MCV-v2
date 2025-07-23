@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1753281167">
-  <project timestamp="1753281167">
+<coverage generated="1753283399">
+  <project timestamp="1753283399">
     <file name="/home/ubuntu/dbwebbkurser/mvc/me/report/src/Cards/BlackJack.php">
       <class name="App\Cards\BlackJack" namespace="global">
         <metrics complexity="28" methods="10" coveredmethods="10" conditionals="0" coveredconditionals="0" statements="76" coveredstatements="76" elements="86" coveredelements="86"/>
@@ -37,12 +37,12 @@
       <line num="92" type="stmt" count="1"/>
       <line num="104" type="method" name="playDealer" visibility="private" complexity="4" crap="4" count="3"/>
       <line num="106" type="stmt" count="3"/>
-      <line num="107" type="stmt" count="1"/>
-      <line num="109" type="stmt" count="1"/>
-      <line num="110" type="stmt" count="1"/>
-      <line num="112" type="stmt" count="1"/>
+      <line num="107" type="stmt" count="2"/>
+      <line num="109" type="stmt" count="2"/>
+      <line num="110" type="stmt" count="2"/>
+      <line num="112" type="stmt" count="2"/>
       <line num="113" type="stmt" count="1"/>
-      <line num="116" type="stmt" count="1"/>
+      <line num="116" type="stmt" count="2"/>
       <line num="119" type="stmt" count="3"/>
       <line num="129" type="method" name="stateOfGame" visibility="public" complexity="6" crap="6" count="6"/>
       <line num="131" type="stmt" count="6"/>
@@ -223,12 +223,12 @@
       <line num="71" type="stmt" count="1"/>
       <line num="72" type="stmt" count="1"/>
       <line num="74" type="stmt" count="1"/>
-      <line num="84" type="method" name="getBlackJackValue" visibility="public" complexity="3" crap="3" count="4"/>
-      <line num="86" type="stmt" count="4"/>
-      <line num="87" type="stmt" count="4"/>
-      <line num="88" type="stmt" count="4"/>
-      <line num="89" type="stmt" count="4"/>
-      <line num="91" type="stmt" count="4"/>
+      <line num="84" type="method" name="getBlackJackValue" visibility="public" complexity="3" crap="3" count="5"/>
+      <line num="86" type="stmt" count="5"/>
+      <line num="87" type="stmt" count="5"/>
+      <line num="88" type="stmt" count="5"/>
+      <line num="89" type="stmt" count="5"/>
+      <line num="91" type="stmt" count="5"/>
       <line num="101" type="method" name="getBlackJackValueAceHigh" visibility="public" complexity="4" crap="4" count="11"/>
       <line num="103" type="stmt" count="11"/>
       <line num="104" type="stmt" count="11"/>

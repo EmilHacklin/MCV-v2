@@ -8,3 +8,6 @@ require dirname(__DIR__).'/vendor/autoload.php';
 if (method_exists(Dotenv::class, 'bootEnv')) {
     (new Dotenv())->bootEnv(dirname(__DIR__).'/.env');
 }
+
+// Run migrations via CLI
+passthru('php bin/console doctrine:migrations:migrate --no-interaction --quiet');
