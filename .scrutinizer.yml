@@ -22,8 +22,6 @@ build:
                     #- phpcs-run # Not used, missing config file
     tests:
         override:
-            # -   command: "composer phpunit" 
-                # command: "XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-clover=docs/coverage.clover",
-                coverage:
-                    file: "docs/coverage.clover"
-                    format: "php-clover"
+            -   # Do not run tests, just load coverage
+                # command: ""
+                load-coverage: "docs/coverage.clover"
