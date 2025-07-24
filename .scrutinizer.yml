@@ -22,6 +22,7 @@ build:
                     #- phpcs-run # Not used, missing config file
     tests:
         override:
-            - coverage:
+            - command: "true"  # Or "exit 0"
+              coverage:
                 file: "docs/coverage.clover"
                 format: "php-clover"
