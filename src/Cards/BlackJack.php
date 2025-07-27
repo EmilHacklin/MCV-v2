@@ -2,11 +2,8 @@
 
 namespace App\Cards;
 
-use App\Cards\CardHand;
-use App\Cards\DeckOfCards;
-
 /**
- * BlackJack
+ * BlackJack.
  */
 class BlackJack
 {
@@ -23,7 +20,7 @@ class BlackJack
     private int $winner;
 
     /**
-     * __construct
+     * __construct.
      *
      * Constructor of the class
      *
@@ -41,15 +38,13 @@ class BlackJack
     }
 
     /**
-     * setupGame
+     * setupGame.
      *
      * Sets up a game of Black Jack by dealing out the cards and setting upp the variables
-     *
-     * @return void
      */
     private function setupGame(): void
     {
-        for ($i = 0; $i < 2; $i++) {
+        for ($i = 0; $i < 2; ++$i) {
             $this->player->addCard($this->deck->drawCard());
             $this->dealer->addCard($this->deck->drawCard());
         }
@@ -65,22 +60,22 @@ class BlackJack
     }
 
     /**
-     * calculateWinner
+     * calculateWinner.
      *
      * Calculates the winner of the game
-     *
-     * @return void
      */
     private function calculateWinner(): void
     {
         // -1 = Undecided, 0 = Tie, 1 = Player, 2 = Dealer
         if ($this->playerBust) {
             $this->winner = 2;
+
             return;
         }
 
         if ($this->dealerBust) {
             $this->winner = 1;
+
             return;
         }
 
@@ -93,13 +88,10 @@ class BlackJack
         }
     }
 
-
     /**
-     * playDealer
+     * playDealer.
      *
      * The logic for the dealer to play
-     *
-     * @return void
      */
     private function playDealer(): void
     {
@@ -120,7 +112,7 @@ class BlackJack
     }
 
     /**
-     * stateOfGame
+     * stateOfGame.
      *
      * Returns a mixed array containing the current state of the game
      *
@@ -129,29 +121,29 @@ class BlackJack
     public function stateOfGame(): array
     {
         $data = [
-            "player" => $this->player->getString(),
-            "playerValue" => strval($this->playerValue),
-            "dealer" => $this->dealer->getString(),
-            "dealerValue" => strval($this->dealerValue),
-            "winner" => "Undecided",
+            'player' => $this->player->getString(),
+            'playerValue' => strval($this->playerValue),
+            'dealer' => $this->dealer->getString(),
+            'dealerValue' => strval($this->dealerValue),
+            'winner' => 'Undecided',
         ];
 
         if ($this->dealerHidden) {
-            $data["dealer"] = [$this->dealer->getString()[0], "🂠"];
-            $data["dealerValue"] = "0";
+            $data['dealer'] = [$this->dealer->getString()[0], '🂠'];
+            $data['dealerValue'] = '0';
         }
 
         if ($this->gameOver) {
             $this->calculateWinner();
             switch ($this->winner) {
                 case 0:
-                    $data["winner"] = "Tie";
+                    $data['winner'] = 'Tie';
                     break;
                 case 1:
-                    $data["winner"] = "Player";
+                    $data['winner'] = 'Player';
                     break;
                 case 2:
-                    $data["winner"] = "Dealer";
+                    $data['winner'] = 'Dealer';
                     break;
             }
         }
@@ -160,11 +152,9 @@ class BlackJack
     }
 
     /**
-     * isPlayerBust
+     * isPlayerBust.
      *
      * Returns if the player's hand value is over 21
-     *
-     * @return bool
      */
     public function isPlayerBust(): bool
     {
@@ -172,11 +162,9 @@ class BlackJack
     }
 
     /**
-     * isDealerBust
+     * isDealerBust.
      *
      * Returns if the dealer's hand value is over 21
-     *
-     * @return bool
      */
     public function isDealerBust(): bool
     {
@@ -184,11 +172,9 @@ class BlackJack
     }
 
     /**
-     * resetGame
+     * resetGame.
      *
      * Resets the game to a new game
-     *
-     * @return void
      */
     public function resetGame(): void
     {
@@ -201,16 +187,14 @@ class BlackJack
     }
 
     /**
-     * hitPlayer
+     * hitPlayer.
      *
      * The player draws a card and we check if the player is bust and update the hand value
-     *
-     * @return void
      */
     public function hitPlayer(): void
     {
-        //Stops drawing new cards if game is over
-        if ($this->gameOver == false) {
+        // Stops drawing new cards if game is over
+        if (false === $this->gameOver) {
             $this->player->addCard($this->deck->drawCard());
 
             $lowValue = $this->player->getBlackJackValue();
@@ -227,16 +211,14 @@ class BlackJack
     }
 
     /**
-     * stayPlayer
+     * stayPlayer.
      *
      * The player stay and we call upon the dealer to play
-     *
-     * @return void
      */
     public function stayPlayer(): void
     {
-        //Stops dealer doing anything if game is over
-        if ($this->gameOver == false) {
+        // Stops dealer doing anything if game is over
+        if (false === $this->gameOver) {
             $this->dealerHidden = false;
             $this->playDealer();
         }

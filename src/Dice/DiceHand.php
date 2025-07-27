@@ -2,23 +2,18 @@
 
 namespace App\Dice;
 
-use App\Dice\Dice;
-
 class DiceHand
 {
     /**
-    * @var array<Dice> $hand
-    * Is an array that contains the Dice objects
-    */
+     * @var array<Dice>
+     *                  Is an array that contains the Dice objects
+     */
     private array $hand = [];
 
     /**
-     * addDie
+     * addDie.
      *
      * Add a die to the hand
-     *
-     * @param  Dice $die
-     * @return void
      */
     public function addDie(Dice $die): void
     {
@@ -26,25 +21,21 @@ class DiceHand
     }
 
     /**
-     * removeDice
+     * removeDice.
      *
      * Remove the top dice from hand
-     *
-     * @return void
      */
     public function removeDie(): void
     {
-        if (Count($this->hand) > 0) {
+        if (count($this->hand) > 0) {
             array_shift($this->hand);
         }
     }
 
     /**
-     * roll
+     * roll.
      *
      * Roll all the Dice in the hand
-     *
-     * @return void
      */
     public function roll(): void
     {
@@ -54,11 +45,9 @@ class DiceHand
     }
 
     /**
-     * getNumberDices
+     * getNumberDices.
      *
      * Return the number of dice in the hand
-     *
-     * @return int
      */
     public function getNumberDices(): int
     {
@@ -66,7 +55,7 @@ class DiceHand
     }
 
     /**
-     * getValues
+     * getValues.
      *
      * Return an array of all the Dice values in hand
      *
@@ -78,15 +67,14 @@ class DiceHand
         foreach ($this->hand as $die) {
             $values[] = $die->getValue();
         }
+
         return $values;
     }
 
     /**
-     * sum
+     * sum.
      *
      * Returns the sum of all Dice values in hand
-     *
-     * @return int
      */
     public function sum(): int
     {
@@ -94,11 +82,12 @@ class DiceHand
         foreach ($this->hand as $die) {
             $sum += $die->getValue();
         }
+
         return $sum;
     }
 
     /**
-     * getString
+     * getString.
      *
      * Returns an string array containing all the Dice
      *
@@ -110,6 +99,7 @@ class DiceHand
         foreach ($this->hand as $die) {
             $values[] = $die->getString();
         }
+
         return $values;
     }
 }

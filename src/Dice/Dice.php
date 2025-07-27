@@ -7,7 +7,7 @@ class Dice
     protected int $value;
 
     /**
-     * __construct
+     * __construct.
      *
      * Constructor of the class
      *
@@ -19,24 +19,21 @@ class Dice
     }
 
     /**
-     * roll
+     * roll.
      *
      * Roll a new value for the dice (1-6)
-     *
-     * @return int
      */
     public function roll(): int
     {
         $this->value = random_int(1, 6);
+
         return $this->value;
     }
 
     /**
-     * getValue
+     * getValue.
      *
      * Returns the value of the dice
-     *
-     * @return int
      */
     public function getValue(): int
     {
@@ -44,11 +41,9 @@ class Dice
     }
 
     /**
-     * getString
+     * getString.
      *
      * Returns the value of the dice as a string
-     *
-     * @return string
      */
     public function getString(): string
     {

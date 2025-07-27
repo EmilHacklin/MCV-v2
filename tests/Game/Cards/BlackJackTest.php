@@ -61,7 +61,7 @@ class BlackJackTest extends TestCase
         $res = $blackJack->stateOfGame();
         $this->assertEquals(3, count((array)$res["player"]));
 
-        while ($blackJack->isPlayerBust() == false) {
+        while ($blackJack->isPlayerBust() === false) {
             $blackJack->hitPlayer();
         }
 
@@ -104,12 +104,12 @@ class BlackJackTest extends TestCase
                 $tie = true;
                 $this->assertEquals("Tie", $res["winner"]);
             }
-            if ($res["winner"] == "Player" and $blackJack->isDealerBust() == false) {
+            if ($res["winner"] == "Player" and $blackJack->isDealerBust() === false) {
                 $playerWins = true;
                 $this->assertEquals("Player", $res["winner"]);
             }
             $blackJack->resetGame();
-        } while ($dealerBust == false or $tie == false or $playerWins == false);
+        } while ($dealerBust === false or $tie === false or $playerWins === false);
 
         $blackJack->resetGame();
         $res = $blackJack->stateOfGame();

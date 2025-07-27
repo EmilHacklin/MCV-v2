@@ -49,7 +49,7 @@
 <div class="page">
     <div class="content content-first">
         <div class="report-details">
-            Created at 2025-07-23 16:28:30        , with PHPMetrics v2.9.0 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
+            Created at 2025-07-27 13:21:58        , with PHPMetrics v2.9.0 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
         </div>
 
         
@@ -380,7 +380,7 @@
             "\\App\\Cards\\DeckOfCards",
             "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface",
             "\\App\\Cards\\CardHand",
-            "\\Exception",
+            "\\RuntimeException",
             "\\App\\Cards\\BlackJack",
             "\\App\\Repository\\BookRepository"
         ]
@@ -391,9 +391,17 @@
         "relations": []
     },
     {
-        "name": "\\Exception",
+        "name": "\\RuntimeException",
         "size": 3000,
         "relations": []
+    },
+    {
+        "name": "\\App\\Controller\\MetricsController",
+        "size": 3000,
+        "relations": [
+            "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
+            "\\Symfony\\Component\\HttpFoundation\\Response"
+        ]
     },
     {
         "name": "\\App\\Controller\\BaseController",
@@ -413,7 +421,7 @@
             "\\App\\Cards\\DeckOfCards",
             "\\Symfony\\Component\\HttpFoundation\\Request",
             "\\App\\Cards\\CardHand",
-            "\\Exception"
+            "\\RuntimeException"
         ]
     },
     {
@@ -434,11 +442,6 @@
         ]
     },
     {
-        "name": "\\RuntimeException",
-        "size": 3000,
-        "relations": []
-    },
-    {
         "name": "\\App\\Controller\\DiceGameController",
         "size": 3000,
         "relations": [
@@ -448,7 +451,7 @@
             "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface",
             "\\App\\Dice\\DiceHand",
             "\\App\\Dice\\DiceGraphic",
-            "\\Exception",
+            "\\RuntimeException",
             "\\App\\Dice\\Dice"
         ]
     },

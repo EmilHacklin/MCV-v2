@@ -17,7 +17,9 @@
     <exclude-pattern>migrations/*</exclude-pattern>
 
     <rule ref="rulesets/design.xml" />
-    <rule ref="rulesets/cleancode.xml" />
+    <rule ref="rulesets/cleancode.xml">
+        <exclude name="MissingImport" />
+    </rule>
     <rule ref="rulesets/codesize.xml" />
     <rule ref="rulesets/controversial.xml"/>
 
@@ -39,5 +41,11 @@
     </rule>
 
     <rule ref="rulesets/unusedcode.xml" />
+
+    <rule ref="rulesets/cleancode.xml/MissingImport">
+        <properties>
+            <property name="ignore-global" value="true"/>
+        </properties>
+    </rule>
 
 </ruleset>

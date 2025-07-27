@@ -1,0 +1,162 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Metrics{% endblock %}
+
+{% block body %}
+<h1>Metrics</h1>
+
+<p>
+    Metrics eller <q>quality metrics</q> handlar om att förbättra vår kod genom att undersöka den med tanke på ett antal olika test. 
+    Med hjälp av dem så kan vi sedan finna var i vår kod som problem kan uppstå för att sedan skapa en mer robust kod. 
+</p>
+
+<h2>Introduction</h2>
+
+<p>
+    Vi börjar med att berätta om dom sex mät tal som utgör grunden för hur vi mäter kvalitén på vår kod. Dem är:
+</p>
+
+<ul>
+    <li>
+        Codestyle: handlar om att ha ett konstant format på hur koden skall se ut. 
+        Detta gäller för saker som linjeindragning, radavstånd, namnkonventioner som till exempel camleCase och kommentarer av kod. 
+        En bra <q>Codestyle</q> leder till bättre läsbarhet och underhållbarhet.
+        Detta ökar direkt värdet på koden då den minskar tiden det tar att förstå koden och förhindrar missförstånd.
+    </li>
+    <li>
+        Coverage: mäter om hur mycket av koden testas av våra automatiserade enhetstester. 
+        Högre <q>Coverage</q> leder till att mera av koden testas vilket leder till färre buggar och till att förändringar i koden kommer till högre grad att fungera utan problem.
+        Detta gör att det blir enklare att underhålla koden på långt sikt.
+    </li>
+    <li>
+        Complexity: representerar hur komplex vår kodlogik är. 
+        Lägre <q>Complexity</q> gör koden enklare att förstå, underhålla och har mindre chans att innehålla buggar.
+    </li>
+    <li>
+        Cohesion: representerar hur relaterande funktioner är inom en klass. 
+        Högre <q>Cohesion</q> betyder att en klass har ett väl definierat ändamål och inte innehåller orelaterade funktioner. 
+        Detta leder till att koden blir mer återanvändbar och kan återanvändas mer.
+    </li>
+    <li>
+        Coupling: beskriver hur stor grad av klasser är oberoende av varandra. 
+        Låg <q>Coupling</q> betyder att klasserna är oberoende av varandra vilket leder till att det är enklare att modifiera och testa utan att det påverkar annan kod.
+    </li>
+    <li>
+        CRAP (Change Risk Anti-Patterns): samlar in hur stabilt koden är samt kvalitén på koden baserat på tidigare Metrics. 
+        Hög <q>CRAP</q> indikerar instabil kod som är svår att modifiera utan att påverka annan kod.
+    </li>
+</ul>
+
+<h2>Phpmetrics</h2>
+
+<a href="{{ relative_path(docs/old metrics/index))}}">PHPMetrics repport</a>
+
+<p>
+    Om man läser den gamla rapporten från phpMetrics så kan man finna svaga punkter i min kod genom att använda mät talen från tidigare. 
+</p>
+
+<ul>
+    <li>
+        Codestyle: PHPMetrics fokuserar primärt på strukturella mätvärden så <q>Codestyle</q> är inte relevant.
+    </li>
+    <li>
+        Coverage: Rapporten som genereras värkar vara buggad så den skriver att klasser som testas inte testas men om man jämför med PHPUnit rapporten så testas dom vist. 
+        Trots detta så kan man se att jag glömde skriva enhetstester för uppgiften i Kmom05 och att dessa klasser (<q>Book</q>, <q>BookRepository</q> och <q>BookController</q>) kan behöva enhetstester.
+    </li>
+    <li>
+        Complexity: Enligt rapporten så är klassen <q>BookController</q> och <q>BlackJack</q> väldigt komplext då den både innehåller många metoder, metoderna själva är komplexa.
+        <img class="img-metric" src="{{ asset('img/php-metrics-complexity.png') }}" alt="Table of complexity metrics">
+    </li>
+    <li>
+        Cohesion: PHPMetrics värkar inte mäta <q>Cohesion</q> på klasserna så det är inte relevant.
+    </li>
+    <li>
+        Coupling: Enligt rapporten så är klasserna som är mest beroende på andra klasser controllerklasserna då dem använder sig av mest andra klasser vilket inte är något som kan riktigt förbättras då det krävs för att fungera.
+    </li>
+    <li>
+        CRAP: PHPMetrics värkar inte mäta <q>CRAP </q> på klasserna så det är inte relevant.
+    </li>
+</ul>
+
+<h2>Scrutinizer</h2>
+
+<a href="https://scrutinizer-ci.com/g/EmilHacklin/MCV-v2/inspections/ba0ea4ed-2c47-439a-8084-39fc27a461be"><img class="img-badge" src="{{ asset('img/old-quality-score.svg') }}", alt="Scrutinizer quality score"></a>
+<a href="https://scrutinizer-ci.com/g/EmilHacklin/MCV-v2/inspections/ba0ea4ed-2c47-439a-8084-39fc27a461be"><img class="img-badge" src="{{ asset('img/old-coverage.svg') }}", alt="Scrutinizer coverage score"></a>
+<a href="https://scrutinizer-ci.com/g/EmilHacklin/MCV-v2/inspections/ba0ea4ed-2c47-439a-8084-39fc27a461be/log"><img class="img-badge" src="{{ asset('img/old-build.svg') }}", alt="Scrutinizer build"></a>
+<a href="https://scrutinizer-ci.com/code-intelligence"><img class="img-badge" src="{{ asset('img/old-code-intelligence.svg') }}", alt="Scrutinizer code inteligence"></a>
+
+<p>
+    Om man läser den gamla rapporten från Scrutinizer så kan man finna svaga punkter i min kod genom att använda mät talen från tidigare.
+</p>
+
+<ul>
+    <li>
+        Codestyle:  Enligt rapporten så finns det <q>Codestyle</q> fel i klasserna <q>BlackJack</q> och <q>BlackJackTest</q> som behövs åtgärdas.
+        <img class="img-metric" src="{{ asset('img/scrutinizer-codestyle.png') }}" alt="Codestyle errors found">
+    </li>
+    <li>
+        Coverage: Samma problem med att jag saknar enhetstester för uppgiften i Kmom05 som i PHPMetrics sectionen.
+    </li>
+    <li>
+        Complexity: Enligt rapporten så är klassen <q>BookController</q> och <q>BlackJack</q> väldigt komplext vilket vi såg tidigare.
+        <img class="img-metric" src="{{ asset('img/scrutinizer-complexity.png') }}" alt="Table of complexity metrics">
+    </li>
+    <li>
+        Cohesion: Scrutinizer värkar inte mäta <q>Cohesion</q> på klasserna så det är inte relevant.
+    </li>
+    <li>
+        Coupling: Scrutinizer värkar inte mäta <q>Coupling</q> på klasserna så det är inte relevant.
+    </li>
+    <li>
+        CRAP:  Enligt rapporten så är <q>BookController</q> classens <q>uppdateBook</q> och <q>saveUploadedJPEG</q> metoderna mest CRAP.
+        <img class="img-metric" src="{{ asset('img/scrutinizer-complexity.png') }}" alt="Table of complexity metrics">
+    </li>
+</ul>
+
+<h2>Förbättringar</h2>
+
+<p>
+    Dessa är förbättringar jag skall göra till min kod utifrån problem och möjliga problem som PHPMetrics och Scrutinizer har hittat med min kod
+</p>
+
+<h3>Fixa issues</h3>
+
+<p>
+    Jag skall fixa alla problem som Scrutinizer på visade med min kod då dem stämmer från små fel som att inte strikt jämföra i IF satser eller inte deklarera Implicite dependencies.
+    Jag tycker detta är ett enkelt sätt att förbättra koden det kommer att ha en större förbättring på <q>Codestyle</q> mätvärdet.
+</p>
+
+<h3>Minska komplexiteten</h3>
+
+<p>
+    Jag skall minska komplexiteten i classerna <q>BookController</q> och <q>BlackJack</q> genom att bryta ut delar till mindre klasser. 
+    Detta kommer ha en stor påverkan på <q> Complexity</q> mätvärdet.
+</p>
+
+<h3>Mindre CRAP</h3>
+
+<p>
+    Jag skall minska metoderna <q>uppdateBook</q> och <q>saveUploadedJPEG</q> CRAP genom att bryta ut den till mindre delmetoder. 
+    Detta borde drastiskt minska min kods <q>CRAP </q> mätvärden.
+</p>
+
+<h3>Öka kodtekningen</h3>
+
+<p>
+    Jag skalla skriva enhetstester för att testa klasserna <q>Book</q>, <q>BookRepository</q> och <q>BookController</q> samt nya klasser. 
+    Detta borde öka <q>Coverage</q> mätvärdet.
+</p>
+
+<h2>Utverdering av förbättringarna</h2>
+
+<h3>Phpmetrics</h3>
+
+<h3>Scrutinizer</h3>
+
+<a href="https://scrutinizer-ci.com/g/EmilHacklin/MCV-v2/?branch=main"><img class="img-badge" src="https://scrutinizer-ci.com/g/EmilHacklin/MCV-v2/badges/quality-score.png?b=main", alt="Scrutinizer quality score"></a>
+<a href="https://scrutinizer-ci.com/g/EmilHacklin/MCV-v2/?branch=main"><img class="img-badge" src="https://scrutinizer-ci.com/g/EmilHacklin/MCV-v2/badges/coverage.png?b=main", alt="Scrutinizer coverage score"></a>
+<a href="https://scrutinizer-ci.com/g/EmilHacklin/MCV-v2/build-status/main"><img class="img-badge" src="https://scrutinizer-ci.com/g/EmilHacklin/MCV-v2/badges/code-intelligence.svg?b=main", alt="Scrutinizer build"></a>
+<a href="https://scrutinizer-ci.com/code-intelligence"><img class="img-badge" src="{{ asset('img/old-code-intelligence.svg') }}", alt="Scrutinizer code inteligence"></a>
+
+<h2>Diskussion</h2>
+{% endblock %}

@@ -2,26 +2,21 @@
 
 namespace App\Cards;
 
-use App\Cards\Card;
-
 /**
- * CardHand
+ * CardHand.
  */
 class CardHand
 {
     /**
-    * @var array<Card> $hand
-    * Is an array that contains the Card objects
-    */
+     * @var array<Card>
+     *                  Is an array that contains the Card objects
+     */
     private array $hand = [];
 
     /**
-     * addCard
+     * addCard.
      *
      * Add a card to the hand array
-     *
-     * @param  Card $card
-     * @return void
      */
     public function addCard(Card $card): void
     {
@@ -29,24 +24,19 @@ class CardHand
     }
 
     /**
-     * cardCount
+     * cardCount.
      *
      * Returns the number of cards in hand
-     *
-     * @return int
      */
     public function cardCount(): int
     {
-        return Count($this->hand);
+        return count($this->hand);
     }
 
-
     /**
-     * getValueOfHand'
+     * getValueOfHand'.
      *
      * Return the value of the hand
-     *
-     * @return int
      */
     public function getValue(): int
     {
@@ -54,32 +44,30 @@ class CardHand
         foreach ($this->hand as $card) {
             $value += $card->getValue();
         }
+
         return $value;
     }
 
     /**
-     * getValueOfHandAceHigh
+     * getValueOfHandAceHigh.
      *
      * Return the value of the hand if the Ace cards have a high value (14)
-     *
-     * @return int
      */
     public function getValueAceHigh(): int
     {
         $valueHand = 0;
         foreach ($this->hand as $card) {
             $valueCard = $card->getValue();
-            $valueHand += ($valueCard == 1) ? 14 : $valueCard;
+            $valueHand += (1 == $valueCard) ? 14 : $valueCard;
         }
+
         return $valueHand;
     }
 
     /**
-     * getBlackJackValueOfHand
+     * getBlackJackValueOfHand.
      *
      * Return the Black Jack value of the hand (J,Q,K = 10)
-     *
-     * @return int
      */
     public function getBlackJackValue(): int
     {
@@ -88,29 +76,29 @@ class CardHand
             $valueCard = $card->getValue();
             $valueHand += ($valueCard > 10) ? 10 : $valueCard;
         }
+
         return $valueHand;
     }
 
     /**
-     * getBlackJackValueOfHandAceHigh
+     * getBlackJackValueOfHandAceHigh.
      *
      * Return the Black Jack value of the hand (J,Q,K = 10) if the Ace cards have a high value (11)
-     *
-     * @return int
      */
     public function getBlackJackValueAceHigh(): int
     {
         $valueHand = 0;
         foreach ($this->hand as $card) {
             $valueCard = $card->getValue();
-            $valueHand += ($valueCard == 1) ? 11 :
+            $valueHand += (1 == $valueCard) ? 11 :
              (($valueCard > 10) ? 10 : $valueCard);
         }
+
         return $valueHand;
     }
 
     /**
-     * getString
+     * getString.
      *
      * Return the hand as an array of strings
      *
@@ -122,6 +110,7 @@ class CardHand
         foreach ($this->hand as $card) {
             $cards[] = $card->getString();
         }
+
         return $cards;
     }
 }

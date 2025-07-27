@@ -23,5 +23,9 @@ För att börja med installationen så krävs det att `php`, `npm` och `composer
 
 2. Kör komandot `npm install` och sedan `npm run build`.
 
-3. Kör komandot `symfony server:start` för att starta webbservern.
+3. Kör komandot `php bin/console doctrine:migrations:migrate`
+
+4. Kör komandot `symfony server:start` för att starta webbservern och `symfony server:stop` för att stänga ner den.
+
+
 

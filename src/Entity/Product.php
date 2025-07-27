@@ -24,9 +24,7 @@ class Product
     private ?int $value = null;
 
     /**
-     * getId
-     *
-     * @return int
+     * getId.
      */
     public function getId(): ?int
     {
@@ -34,9 +32,7 @@ class Product
     }
 
     /**
-     * getName
-     *
-     * @return string
+     * getName.
      */
     public function getName(): ?string
     {
@@ -44,10 +40,7 @@ class Product
     }
 
     /**
-     * setName
-     *
-     * @param  string $name
-     * @return static
+     * setName.
      */
     public function setName(string $name): static
     {
@@ -57,9 +50,7 @@ class Product
     }
 
     /**
-     * getValue
-     *
-     * @return int
+     * getValue.
      */
     public function getValue(): ?int
     {
@@ -67,10 +58,7 @@ class Product
     }
 
     /**
-     * setValue
-     *
-     * @param  int $value
-     * @return static
+     * setValue.
      */
     public function setValue(int $value): static
     {

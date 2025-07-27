@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\BookRepository;
-use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: BookRepository::class)]
@@ -28,9 +27,7 @@ class Book
     private ?string $img;
 
     /**
-     * getId
-     *
-     * @return int
+     * getId.
      */
     public function getId(): ?int
     {
@@ -38,9 +35,7 @@ class Book
     }
 
     /**
-     * getTitle
-     *
-     * @return string
+     * getTitle.
      */
     public function getTitle(): ?string
     {
@@ -48,23 +43,18 @@ class Book
     }
 
     /**
-     * setTitle
-     *
-     * @param  string $title
-     * @return static
+     * setTitle.
      */
     public function setTitle(string $title): static
     {
-        //If string to long cut it
+        // If string to long cut it
         (strlen($title) < 255) ? $this->title = $title : $this->title = substr($title, 0, 255);
 
         return $this;
     }
 
     /**
-     * getISBN
-     *
-     * @return string|null
+     * getISBN.
      */
     public function getISBN(): ?string
     {
@@ -72,30 +62,26 @@ class Book
     }
 
     /**
-     * setISBN
+     * setISBN.
      *
      * Set isbn of book if the param is 13 digits long
-     *
-     * @param  string|null $isbn
-     * @return static
      */
     public function setISBN(?string $isbn): static
     {
-        if ($isbn === null) {
+        if (null === $isbn) {
             $this->isbn = null;
+
             return $this;
         }
 
-        //isbn is 13 digits or else null
-        (strlen($isbn) == 13) ? $this->isbn = $isbn : $this->isbn = null;
+        // isbn is 13 digits or else null
+        (13 == strlen($isbn)) ? $this->isbn = $isbn : $this->isbn = null;
 
         return $this;
     }
 
     /**
-     * getAuthor
-     *
-     * @return string|null
+     * getAuthor.
      */
     public function getAuthor(): ?string
     {
@@ -103,26 +89,24 @@ class Book
     }
 
     /**
-     * setAuthor
-     *
-     * @param  string|null $author
-     * @return static
+     * setAuthor.
      */
     public function setAuthor(?string $author): static
     {
-        if ($author === null) {
+        if (null === $author) {
             $this->author = null;
+
             return $this;
         }
 
-        //If string to long cut it
+        // If string to long cut it
         (strlen($author) < 255) ? $this->author = $author : $this->author = substr($author, 0, 255);
 
         return $this;
     }
 
     /**
-     * getImg
+     * getImg.
      *
      * @return string|null
      */
@@ -132,19 +116,19 @@ class Book
     }
 
     /**
-     * setImg
+     * setImg.
      *
      * @param string|null $img
-     * @return static
      */
     public function setImg($img): static
     {
-        if ($img === null) {
+        if (null === $img) {
             $this->img = null;
+
             return $this;
         }
 
-        //If string to long null it
+        // If string to long null it
         (strlen($img) < 255) ? $this->img = $img : $this->img = null;
         $this->img = $img;
 

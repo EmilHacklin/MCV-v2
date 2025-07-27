@@ -65,7 +65,7 @@ class JasonControllerTest extends WebTestCase
         // Get the response content
         $content = $client->getResponse()->getContent();
 
-        $data = "";
+        $data = null;
 
         // Decode JSON
         if (is_string($content)) {
@@ -73,7 +73,8 @@ class JasonControllerTest extends WebTestCase
         }
 
         // Assert that JSON decoding was successful
-        $this->assertIsArray($data);
+        $this->assertNotNull($data, 'Failed to decode JSON.');
+        $this->assertIsArray($data, 'Decoded JSON data is not an array.');
 
         // Verify that required keys exist
         $this->assertArrayHasKey('quote', $data);
@@ -113,7 +114,7 @@ class JasonControllerTest extends WebTestCase
         // Get the response content
         $content = $client->getResponse()->getContent();
 
-        $data = "";
+        $data = null;
 
         // Decode JSON
         if (is_string($content)) {
@@ -122,7 +123,7 @@ class JasonControllerTest extends WebTestCase
 
         // Assert that JSON decoding was successful
         $this->assertNotNull($data, 'Failed to decode JSON.');
-        $this->assertIsArray($data);
+        $this->assertIsArray($data, 'Decoded JSON data is not an array.');
 
         // Verify that required keys exist
         $this->assertArrayHasKey('deck', $data);
@@ -156,7 +157,7 @@ class JasonControllerTest extends WebTestCase
         // Get the response content
         $content = $client->getResponse()->getContent();
 
-        $data = "";
+        $data = null;
 
         // Decode JSON
         if (is_string($content)) {
@@ -165,7 +166,7 @@ class JasonControllerTest extends WebTestCase
 
         // Assert that JSON decoding was successful
         $this->assertNotNull($data, 'Failed to decode JSON.');
-        $this->assertIsArray($data);
+        $this->assertIsArray($data, 'Decoded JSON data is not an array.');
 
         // Verify that required keys exist
         $this->assertArrayHasKey('deck', $data);
@@ -199,7 +200,7 @@ class JasonControllerTest extends WebTestCase
         // Get the response content
         $content = $client->getResponse()->getContent();
 
-        $data = "";
+        $data = null;
 
         // Decode JSON
         if (is_string($content)) {
@@ -208,7 +209,7 @@ class JasonControllerTest extends WebTestCase
 
         // Assert that JSON decoding was successful
         $this->assertNotNull($data, 'Failed to decode JSON.');
-        $this->assertIsArray($data);
+        $this->assertIsArray($data, 'Decoded JSON data is not an array.');
 
         // Verify that required keys exist
         $this->assertArrayHasKey('hand', $data);
@@ -246,7 +247,7 @@ class JasonControllerTest extends WebTestCase
         // Get the response content
         $content = $client->getResponse()->getContent();
 
-        $data = "";
+        $data = null;
 
         // Decode JSON
         if (is_string($content)) {
@@ -255,7 +256,7 @@ class JasonControllerTest extends WebTestCase
 
         // Assert that JSON decoding was successful
         $this->assertNotNull($data, 'Failed to decode JSON.');
-        $this->assertIsArray($data);
+        $this->assertIsArray($data, 'Decoded JSON data is not an array.');
 
         // Verify that required keys exist
         $this->assertArrayHasKey('hand', $data);
@@ -293,7 +294,7 @@ class JasonControllerTest extends WebTestCase
         // Get the response content
         $content = $client->getResponse()->getContent();
 
-        $data = "";
+        $data = null;
 
         // Decode JSON
         if (is_string($content)) {
@@ -302,7 +303,7 @@ class JasonControllerTest extends WebTestCase
 
         // Assert that JSON decoding was successful
         $this->assertNotNull($data, 'Failed to decode JSON.');
-        $this->assertIsArray($data);
+        $this->assertIsArray($data, 'Decoded JSON data is not an array.');
 
         // Verify that required keys exist
         $this->assertArrayHasKey('player', $data);

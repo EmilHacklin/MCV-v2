@@ -2,37 +2,32 @@
 
 namespace App\Controller;
 
-use RuntimeException;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use App\Entity\Book;
 use App\Repository\BookRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Attribute\Route;
 
 final class BookController extends AbstractController
 {
     /**
-     * saveBook
+     * saveBook.
      *
      * Saves the book to database
-     *
-     * @param  Request $request
-     * @param  ManagerRegistry $doctrine
-     * @param  BookRepository $bookRepository
-     * @return void
      */
     private function saveBook(Request $request, ManagerRegistry $doctrine, BookRepository $bookRepository): void
     {
         $title = htmlspecialchars((string) $request->request->get('title'));
-        if ($title === '') {
+        if ('' === $title) {
             $this->addFlash(
                 'warning',
                 'Could not read the title!'
             );
+
             return;
         }
 
@@ -46,11 +41,12 @@ final class BookController extends AbstractController
             try {
                 $img = $this->saveUploadedJpeg($file);
                 // After setting $img
-            } catch (RuntimeException $e) {
+            } catch (\RuntimeException $e) {
                 $this->addFlash(
                     'warning',
                     $e->getMessage()
                 );
+
                 return;
             }
         }
@@ -73,23 +69,19 @@ final class BookController extends AbstractController
     }
 
     /**
-     * updateBook
+     * updateBook.
      *
      * Update the book in database
-     *
-     * @param  Request $request
-     * @param  ManagerRegistry $doctrine
-     * @param  BookRepository $bookRepository
-     * @return void
      */
     private function updateBook(Request $request, ManagerRegistry $doctrine, BookRepository $bookRepository): void
     {
         $id = htmlspecialchars((string) $request->request->get('id'));
-        if ($id === '') {
+        if ('' === $id) {
             $this->addFlash(
                 'warning',
                 'Could not read the id!'
             );
+
             return;
         }
 
@@ -99,17 +91,19 @@ final class BookController extends AbstractController
         if (!$book) {
             $this->addFlash(
                 'warning',
-                'Book not found with ID '. $id
+                'Book not found with ID '.$id
             );
+
             return;
         }
 
         $title = htmlspecialchars((string) $request->request->get('title'));
-        if ($title === '') {
+        if ('' === $title) {
             $this->addFlash(
                 'warning',
                 'Could not read the title!'
             );
+
             return;
         }
 
@@ -123,14 +117,15 @@ final class BookController extends AbstractController
             try {
                 $img = $this->saveUploadedJpeg($file);
                 // After setting $img
-            } catch (RuntimeException $e) {
+            } catch (\RuntimeException $e) {
                 $this->addFlash(
                     'warning',
                     $e->getMessage()
                 );
+
                 return;
             }
-            if ($book->getImg() !== null) {
+            if (null !== $book->getImg()) {
                 if (!$this->deleteUploadedJpeg($book->getImg())) {
                     $this->addFlash(
                         'notice',
@@ -162,14 +157,9 @@ final class BookController extends AbstractController
     }
 
     /**
-     * deleteBook
+     * deleteBook.
      *
      * Update the book in database
-     *
-     * @param  int $id
-     * @param  ManagerRegistry $doctrine
-     * @param  BookRepository $bookRepository
-     * @return void
      */
     private function deleteBook(int $id, ManagerRegistry $doctrine, BookRepository $bookRepository): void
     {
@@ -178,16 +168,17 @@ final class BookController extends AbstractController
         if (!$book) {
             $this->addFlash(
                 'warning',
-                'Book not found with ID '. $id
+                'Book not found with ID '.$id
             );
+
             return;
         }
 
-        if ($book->getImg() !== null) {
+        if (null !== $book->getImg()) {
             if (!$this->deleteUploadedJpeg($book->getImg())) {
                 $this->addFlash(
                     'notice',
-                    'Could not remove old img: ' . $book->getImg()
+                    'Could not remove old img: '.$book->getImg()
                 );
             }
         }
@@ -206,21 +197,19 @@ final class BookController extends AbstractController
     }
 
     /**
-     * saveUploadedJpeg
+     * saveUploadedJpeg.
      *
      * Saves the uploaded JPEG file to the /public/uploads folder and returns the path
-     *
-     * @param  ?UploadedFile $file
-     * @return string
      */
     private function saveUploadedJpeg(?UploadedFile $file): ?string
     {
         $img = null;
 
         if ($file instanceof UploadedFile && $file->isValid()) {
-            if ($file->getMimeType() !== 'image/jpeg') {
-                throw new RuntimeException('Invalid file type. Please upload a JPEG image.');
+            if ('image/jpeg' !== $file->getMimeType()) {
+                throw new \RuntimeException('Invalid file type. Please upload a JPEG image.');
             }
+            /** @var string $originalFilename */
             $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
             $safeFilename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename);
             $newFilename = $safeFilename.'-'.uniqid().'.'.$file->guessExtension();
@@ -229,9 +218,9 @@ final class BookController extends AbstractController
             try {
                 $projectDir = $this->getParameter('kernel.project_dir');
                 if (!is_string($projectDir)) {
-                    throw new RuntimeException('The kernel.project_dir parameter is not set or not a string.');
+                    throw new \RuntimeException('The kernel.project_dir parameter is not set or not a string.');
                 }
-                $targetDirectory = $projectDir . '/public/uploads';
+                $targetDirectory = $projectDir.'/public/uploads';
 
                 // Make sure the directory exists
                 if (!is_dir($targetDirectory)) {
@@ -240,25 +229,27 @@ final class BookController extends AbstractController
 
                 // Check write permissions
                 if (!is_writable($targetDirectory)) {
-                    throw new RuntimeException('Uploads directory is not writable.');
+                    throw new \RuntimeException('Uploads directory is not writable.');
                 }
 
                 $file->move($targetDirectory, $newFilename);
                 // Save $newFilename and path to database
-                $img = '/uploads/' . $newFilename;
+                $img = '/uploads/'.$newFilename;
             } catch (FileException $e) {
-                throw new RuntimeException('Error uploading file: '.$e->getMessage());
+                throw new \RuntimeException('Error uploading file: '.$e->getMessage());
             }
         }
+
         return $img;
     }
 
     /**
-     * deleteUploadedJpeg
+     * deleteUploadedJpeg.
      *
      * Deletes the image file at the given path within the uploads directory.
      *
      * @param string $img The relative path to the image, e.g., '/uploads/filename.jpg'
+     *
      * @return bool True if deletion was successful, false otherwise
      */
     private function deleteUploadedJpeg(string $img): bool
@@ -266,11 +257,11 @@ final class BookController extends AbstractController
         // Get the project directory
         $projectDir = $this->getParameter('kernel.project_dir');
         if (!is_string($projectDir)) {
-            throw new RuntimeException('The kernel.project_dir parameter is not set or not a string.');
+            throw new \RuntimeException('The kernel.project_dir parameter is not set or not a string.');
         }
 
         // Full path to the file
-        $fullPath = $projectDir . '/public' . $img;
+        $fullPath = $projectDir.'/public'.$img;
 
         // Check if file exists
         if (!file_exists($fullPath)) {
@@ -281,12 +272,11 @@ final class BookController extends AbstractController
         // Attempt to delete the file
         try {
             return unlink($fullPath);
-        } catch (RuntimeException $e) {
+        } catch (\RuntimeException $e) {
             // Handle exceptions if needed
             return false;
         }
     }
-
 
     #[Route('/library', name: 'library')]
     public function library(): Response
@@ -304,7 +294,7 @@ final class BookController extends AbstractController
     public function createBookPost(
         Request $request,
         ManagerRegistry $doctrine,
-        BookRepository $bookRepository
+        BookRepository $bookRepository,
     ): Response {
         // Save book to database
         $this->saveBook($request, $doctrine, $bookRepository);
@@ -314,7 +304,7 @@ final class BookController extends AbstractController
 
     #[Route('/book/show', name: 'book_show_all')]
     public function showAllBooks(
-        BookRepository $bookRepository
+        BookRepository $bookRepository,
     ): Response {
         $data = $bookRepository->readAllBooks();
 
@@ -324,17 +314,16 @@ final class BookController extends AbstractController
     #[Route('/book/show/{id<\d+>}', name: 'book_show_one')]
     public function showOneBook(
         int $id,
-        BookRepository $bookRepository
+        BookRepository $bookRepository,
     ): Response {
         $data = $bookRepository->readOneBook($id);
 
         return $this->render('book/show_one.html.twig', $data);
     }
 
-
     #[Route('/book/show/update', name: 'book_show_all_update')]
     public function showAllBooksUpdate(
-        BookRepository $bookRepository
+        BookRepository $bookRepository,
     ): Response {
         $data = $bookRepository->readAllBooks();
 
@@ -344,7 +333,7 @@ final class BookController extends AbstractController
     #[Route('/book/update/{id<\d+>}', name: 'book_update_get', methods: ['GET'])]
     public function showAllBooksUpdateSpecific(
         int $id,
-        BookRepository $bookRepository
+        BookRepository $bookRepository,
     ): Response {
         $data = $bookRepository->readOneBook($id);
 
@@ -355,7 +344,7 @@ final class BookController extends AbstractController
     public function showAllBooksUpdatePost(
         Request $request,
         ManagerRegistry $doctrine,
-        BookRepository $bookRepository
+        BookRepository $bookRepository,
     ): Response {
         $id = htmlspecialchars((string) $request->request->get('id'));
 
@@ -367,7 +356,7 @@ final class BookController extends AbstractController
 
     #[Route('/book/show/delete', name: 'book_show_all_delete_get', methods: ['GET'])]
     public function showAllBooksDeleteGET(
-        BookRepository $bookRepository
+        BookRepository $bookRepository,
     ): Response {
         $data = $bookRepository->readAllBooks();
 
@@ -378,7 +367,7 @@ final class BookController extends AbstractController
     public function showAllBooksDeletePOST(
         int $id,
         ManagerRegistry $doctrine,
-        BookRepository $bookRepository
+        BookRepository $bookRepository,
     ): Response {
         // Delete book to database
         $this->deleteBook($id, $doctrine, $bookRepository);
