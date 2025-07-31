@@ -46,14 +46,13 @@ class BookTest extends TestCase
         $this->assertEquals("Test", $book->getImg());
 
         //Test the setters is null
+        $book = new Book();
         $book->setISBN(null);
         $book->setAuthor(null);
         $book->setImg(null);
 
-        // @scrutinizer ignore-start
         $this->assertNull($book->getISBN());
         $this->assertNull($book->getAuthor());
         $this->assertNull($book->getImg());
-        // @scrutinizer ignore-end
     }
 }
