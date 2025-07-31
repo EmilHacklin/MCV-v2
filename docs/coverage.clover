@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1753965314">
-  <project timestamp="1753965314">
+<coverage generated="1753973158">
+  <project timestamp="1753973158">
     <file name="/home/ubuntu/dbwebbkurser/mvc/me/report/src/Cards/Card.php">
       <class name="App\Cards\Card" namespace="global">
         <metrics complexity="13" methods="11" coveredmethods="11" conditionals="0" coveredconditionals="0" statements="71" coveredstatements="71" elements="82" coveredelements="82"/>
@@ -468,7 +468,7 @@
     </file>
     <file name="/home/ubuntu/dbwebbkurser/mvc/me/report/src/Controller/DiceGameController.php">
       <class name="App\Controller\DiceGameController" namespace="global">
-        <metrics complexity="19" methods="9" coveredmethods="9" conditionals="0" coveredconditionals="0" statements="79" coveredstatements="79" elements="88" coveredelements="88"/>
+        <metrics complexity="19" methods="9" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="79" coveredstatements="72" elements="88" coveredelements="80"/>
       </class>
       <line num="16" type="method" name="home" visibility="public" complexity="1" crap="1" count="1"/>
       <line num="19" type="stmt" count="1"/>
@@ -494,7 +494,7 @@
       <line num="61" type="stmt" count="1"/>
       <line num="62" type="stmt" count="1"/>
       <line num="64" type="stmt" count="1"/>
-      <line num="67" type="method" name="roll" visibility="public" complexity="3" crap="3" count="1"/>
+      <line num="67" type="method" name="roll" visibility="public" complexity="3" crap="3.63" count="1"/>
       <line num="72" type="stmt" count="1"/>
       <line num="74" type="stmt" count="1"/>
       <line num="77" type="stmt" count="1"/>
@@ -502,13 +502,13 @@
       <line num="80" type="stmt" count="1"/>
       <line num="81" type="stmt" count="1"/>
       <line num="82" type="stmt" count="1"/>
-      <line num="83" type="stmt" count="1"/>
-      <line num="84" type="stmt" count="1"/>
-      <line num="86" type="stmt" count="1"/>
-      <line num="87" type="stmt" count="1"/>
-      <line num="88" type="stmt" count="1"/>
-      <line num="89" type="stmt" count="1"/>
-      <line num="91" type="stmt" count="1"/>
+      <line num="83" type="stmt" count="0"/>
+      <line num="84" type="stmt" count="0"/>
+      <line num="86" type="stmt" count="0"/>
+      <line num="87" type="stmt" count="0"/>
+      <line num="88" type="stmt" count="0"/>
+      <line num="89" type="stmt" count="0"/>
+      <line num="91" type="stmt" count="0"/>
       <line num="93" type="stmt" count="1"/>
       <line num="96" type="stmt" count="1"/>
       <line num="98" type="stmt" count="1"/>
@@ -558,7 +558,7 @@
       <line num="182" type="stmt" count="1"/>
       <line num="183" type="stmt" count="1"/>
       <line num="185" type="stmt" count="1"/>
-      <metrics loc="188" ncloc="180" classes="1" methods="9" coveredmethods="9" conditionals="0" coveredconditionals="0" statements="79" coveredstatements="79" elements="88" coveredelements="88"/>
+      <metrics loc="188" ncloc="180" classes="1" methods="9" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="79" coveredstatements="72" elements="88" coveredelements="80"/>
     </file>
     <file name="/home/ubuntu/dbwebbkurser/mvc/me/report/src/Controller/JasonController.php">
       <class name="App\Controller\JasonController" namespace="global">
@@ -903,20 +903,20 @@
       <line num="79" type="stmt" count="13"/>
       <line num="85" type="method" name="calculateWinner" visibility="private" complexity="5" crap="5" count="8"/>
       <line num="90" type="stmt" count="8"/>
-      <line num="91" type="stmt" count="4"/>
-      <line num="93" type="stmt" count="4"/>
+      <line num="91" type="stmt" count="3"/>
+      <line num="93" type="stmt" count="3"/>
       <line num="97" type="stmt" count="6"/>
       <line num="98" type="stmt" count="1"/>
       <line num="100" type="stmt" count="1"/>
       <line num="103" type="stmt" count="5"/>
       <line num="104" type="stmt" count="5"/>
       <line num="107" type="stmt" count="5"/>
-      <line num="108" type="stmt" count="2"/>
-      <line num="110" type="stmt" count="2"/>
-      <line num="113" type="stmt" count="3"/>
+      <line num="108" type="stmt" count="1"/>
+      <line num="110" type="stmt" count="1"/>
+      <line num="113" type="stmt" count="4"/>
       <line num="114" type="stmt" count="2"/>
       <line num="116" type="stmt" count="2"/>
-      <line num="120" type="stmt" count="1"/>
+      <line num="120" type="stmt" count="2"/>
       <line num="128" type="method" name="playDealer" visibility="private" complexity="2" crap="2" count="5"/>
       <line num="130" type="stmt" count="5"/>
       <line num="131" type="stmt" count="3"/>
@@ -944,11 +944,11 @@
       <line num="197" type="stmt" count="5"/>
       <line num="198" type="stmt" count="5"/>
       <line num="199" type="stmt" count="8"/>
-      <line num="200" type="stmt" count="1"/>
-      <line num="201" type="stmt" count="1"/>
-      <line num="202" type="stmt" count="7"/>
-      <line num="203" type="stmt" count="3"/>
-      <line num="204" type="stmt" count="3"/>
+      <line num="200" type="stmt" count="2"/>
+      <line num="201" type="stmt" count="2"/>
+      <line num="202" type="stmt" count="6"/>
+      <line num="203" type="stmt" count="2"/>
+      <line num="204" type="stmt" count="2"/>
       <line num="205" type="stmt" count="4"/>
       <line num="206" type="stmt" count="4"/>
       <line num="207" type="stmt" count="4"/>
@@ -1173,6 +1173,6 @@
       <line num="93" type="stmt" count="1"/>
       <metrics loc="96" ncloc="63" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="24" coveredstatements="24" elements="27" coveredelements="27"/>
     </file>
-    <metrics files="23" loc="3050" ncloc="2328" classes="22" methods="148" coveredmethods="144" conditionals="0" coveredconditionals="0" statements="886" coveredstatements="856" elements="1034" coveredelements="1000"/>
+    <metrics files="23" loc="3050" ncloc="2328" classes="22" methods="148" coveredmethods="143" conditionals="0" coveredconditionals="0" statements="886" coveredstatements="849" elements="1034" coveredelements="992"/>
   </project>
 </coverage>

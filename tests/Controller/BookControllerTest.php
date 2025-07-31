@@ -167,6 +167,8 @@ class BookControllerTest extends WebTestCase
         $data = $bookRepository->readOneBook((int) $this->createdBookId);
 
         $this->assertEquals('test book 2', $data['book']['title']);
+        $this->assertEquals('0000000000001', $data['book']['isbn']);
+        $this->assertEquals('test author 2', $data['book']['author']);
 
         //Test if book don't exist
         $data = $bookRepository->readAllBooks();
@@ -229,6 +231,8 @@ class BookControllerTest extends WebTestCase
         $data = $bookRepository->readOneBook((int) $this->createdBookId);
 
         $this->assertEquals('test book 2', $data['book']['title']);
+        $this->assertEquals('0000000000001', $data['book']['isbn']);
+        $this->assertEquals('test author 2', $data['book']['author']);
     }
 
     /**
