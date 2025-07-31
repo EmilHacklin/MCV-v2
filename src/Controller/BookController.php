@@ -71,7 +71,6 @@ class BookController extends AbstractController
             return;
         }
 
-        $img = null;
         /** @var string $projectDir */
         $projectDir = $this->getParameter('kernel.project_dir');
         $uploadManager = new UploadManager($projectDir);
@@ -153,7 +152,6 @@ class BookController extends AbstractController
         }
 
         // Save new image
-        $img = null;
         /** @var string $projectDir */
         $projectDir = $this->getParameter('kernel.project_dir');
         $uploadManager = new UploadManager($projectDir);

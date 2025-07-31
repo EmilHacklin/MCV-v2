@@ -117,10 +117,8 @@ class Book
 
     /**
      * setImg.
-     *
-     * @param string|null $img
      */
-    public function setImg($img): static
+    public function setImg(?string $img): static
     {
         if (null === $img) {
             $this->img = null;
@@ -130,7 +128,6 @@ class Book
 
         // If string to long null it
         (strlen($img) < 255) ? $this->img = $img : $this->img = null;
-        $this->img = $img;
 
         return $this;
     }

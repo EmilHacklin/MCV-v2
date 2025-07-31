@@ -131,6 +131,8 @@ class BlackJackTest extends TestCase
 
         $res = $blackJack->stateOfGame();
 
+        $this->assertNotEquals("Undecided", $res["gameStates"][0]);
+
         $blackJack->resetGame();
 
         $res = $blackJack->stateOfGame();

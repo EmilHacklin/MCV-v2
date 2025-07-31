@@ -135,16 +135,26 @@ class BookRepository extends ServiceEntityRepository
     /**
      * readAllBooks.
      *
-     * Reads all books from the database and returns a array of books
+     * Reads all books from the database and returns an array of books.
      *
-     * @return array{
-     *  books: array<array{
-     *    id: int|null,
-     *    title: string|null,
-     *    isbn: string|null,
-     *    author: string|null,
-     *    img: string|null
-     *  }>
+     * @return array
+     *               An associative array with a key 'books' containing an array of book details:
+     *               - books: array<array{
+     *               id: int|null,
+     *               title: string|null,
+     *               isbn: string|null,
+     *               author: string|null,
+     *               img: string|null
+     *               }>
+     *
+     * @phpstan-return array{
+     *   books: array<array{
+     *     id: int|null,
+     *     title: string|null,
+     *     isbn: string|null,
+     *     author: string|null,
+     *     img: string|null
+     *   }>
      * }
      */
     public function readAllBooks(): array
@@ -171,7 +181,17 @@ class BookRepository extends ServiceEntityRepository
     /**
      * readOneBook.
      *
-     * @return array{
+     * @return array
+     *               An associative array with key 'book' containing the details of a single book:
+     *               - book: array{
+     *               id: int,
+     *               title: string|null,
+     *               isbn: string|null,
+     *               author: string|null,
+     *               img: string|null
+     *               }
+     *
+     * @phpstan-return array{
      *   book: array{
      *     id: int,
      *     title: string|null,
@@ -216,11 +236,21 @@ class BookRepository extends ServiceEntityRepository
     /**
      * readOneBookISBN.
      *
-     * @return array{
+     * @return array
+     *               An associative array with key 'book' containing the details of a single book:
+     *               - book: array{
+     *               id: int|null,
+     *               title: string|null,
+     *               isbn: string,
+     *               author: string|null,
+     *               img: string|null
+     *               }
+     *
+     * @phpstan-return array{
      *   book: array{
      *     id: int|null,
      *     title: string|null,
-     *     isbn: string|null,
+     *     isbn: string,
      *     author: string|null,
      *     img: string|null
      *   }

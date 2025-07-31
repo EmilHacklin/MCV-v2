@@ -152,9 +152,18 @@ class BlackJack
     /**
      * stateOfGame.
      *
-     * Returns a array containing the current state of the game
+     * Returns the current game state.
      *
-     * @return array{
+     * @return array
+     *               Descriptive list of array contents:
+     *               - numOfPlayers (string)
+     *               - playersCards (array<int, array<string>>)
+     *               - playersHandValue (array<string>)
+     *               - dealerCards (array<string>)
+     *               - dealerHandValue (string)
+     *               - gameStates (array<string>)
+     *
+     * @phpstan-return array{
      *   numOfPlayers: string,
      *   playersCards: array<int, array<string>>,
      *   playersHandValue: array<string>,
@@ -200,7 +209,7 @@ class BlackJack
         }
 
         // If all players are not done
-        if (false == $this->dealersTurn) {
+        if (false === $this->dealersTurn) {
             $data['dealerCards'] = [$this->dealer->getString()[0], '🂠'];
             $data['dealerHandValue'] = '0';
         }

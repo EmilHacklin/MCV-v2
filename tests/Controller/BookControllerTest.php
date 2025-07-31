@@ -13,24 +13,71 @@ use Symfony\Component\Routing\RouterInterface;
 
 class BookControllerTest extends WebTestCase
 {
-    private ?KernelBrowser $client = null;
+    private KernelBrowser $client;
+    private RouterInterface $router;
+    private ManagerRegistry $doctrine;
     private ?int $createdBookId = null; // Store created book ID
+
+    /**
+     * setUp
+     *
+     * @return void
+     */
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        // Retrieve the client
+        $this->client = static::createClient();
+
+        // Retrieve the container
+        $container = $this->client->getContainer();
+
+        // Retrieve router service
+        // @phpstan-ignore-next-line
+        $this->router = $container->get('router');
+
+        // Get the ManagerRegistry service from container
+        // @phpstan-ignore-next-line
+        $this->doctrine = $container->get('doctrine');
+    }
+
+    /**
+     * tearDown
+     *
+     * @return void
+     */
+    protected function tearDown(): void
+    {
+        parent::tearDown();
+
+        if ($this->createdBookId !== null) {
+            // Generate delete URL
+            $deleteUrl = $this->router->generate('book_delete_post', ['id' => $this->createdBookId]);
+
+            // Send delete request
+            $this->client->request('POST', $deleteUrl, ['id' => $this->createdBookId]);
+
+            // Reset the ID to prevent repeated deletions
+            $this->createdBookId = null;
+        }
+    }
 
     /**
      * testBookCreatePOST
      *
      * Test book_create_post route
-     * @param  RouterInterface $router
-     * @param  BookRepository $bookRepository
+     *
      * @return void
      */
-    private function testBookCreatePOST(RouterInterface $router, BookRepository $bookRepository): void
+    private function testBookCreatePOST(): void
     {
+        $bookRepository = new BookRepository($this->doctrine);
+
         // book_create_post
-        $this->assertNotNull($this->client);
 
         // Generate URL from route name
-        $url = $router->generate('book_create_post');
+        $url = $this->router->generate('book_create_post');
 
         // Create a mock UploadedFile
         $file = $this->createMock(UploadedFile::class);
@@ -64,7 +111,6 @@ class BookControllerTest extends WebTestCase
         $this->createdBookId = $data['book']['id'];
 
         // Test if title is null
-        $this->assertNotNull($this->client);
 
         $formData = [
             'id' => 0,
@@ -87,13 +133,11 @@ class BookControllerTest extends WebTestCase
      *
      * Test book_update_post route
      *
-     * @param  RouterInterface $router
-     * @param  BookRepository $bookRepository
      * @return void
      */
-    private function testBookUpdatePOST(RouterInterface $router, BookRepository $bookRepository): void
+    private function testBookUpdatePOST(): void
     {
-        $this->assertNotNull($this->client);
+        $bookRepository = new BookRepository($this->doctrine);
 
         // Create a mock UploadedFile
         $file = $this->createMock(UploadedFile::class);
@@ -111,7 +155,7 @@ class BookControllerTest extends WebTestCase
         ];
 
         // Generate URL from route name
-        $url = $router->generate('book_update_post', ['id' => (int) $this->createdBookId]);
+        $url = $this->router->generate('book_update_post', ['id' => (int) $this->createdBookId]);
 
         // Send POST request to the route
         $this->client->request('POST', $url, $formData);
@@ -125,8 +169,6 @@ class BookControllerTest extends WebTestCase
         $this->assertEquals('test book 2', $data['book']['title']);
 
         //Test if book don't exist
-        $this->assertNotNull($this->client);
-
         $data = $bookRepository->readAllBooks();
 
         // Extract all existing IDs
@@ -152,7 +194,7 @@ class BookControllerTest extends WebTestCase
         ];
 
         // Generate URL from route name
-        $url = $router->generate('book_update_post', ['id' => (int) $missingId]);
+        $url = $this->router->generate('book_update_post', ['id' => (int) $missingId]);
 
         // Send POST request to the route
         $this->client->request('POST', $url, $formData);
@@ -166,8 +208,6 @@ class BookControllerTest extends WebTestCase
         $this->assertNull($data['book']['author']);
 
         // Test if title is null
-        $this->assertNotNull($this->client);
-
         $formData = [
             'id' => $this->createdBookId,
             'title' => '',
@@ -177,7 +217,7 @@ class BookControllerTest extends WebTestCase
         ];
 
         // Generate URL from route name
-        $url = $router->generate('book_update_post', ['id' => (int) $this->createdBookId]);
+        $url = $this->router->generate('book_update_post', ['id' => (int) $this->createdBookId]);
 
         // Send POST request to the route
         $this->client->request('POST', $url, $formData);
@@ -196,13 +236,10 @@ class BookControllerTest extends WebTestCase
      *
      * Test book_delete_post route
      *
-     * @param  RouterInterface $router
      * @return void
      */
-    private function testBookDeletePOST(RouterInterface $router): void
+    private function testBookDeletePOST(): void
     {
-        $this->assertNotNull($this->client);
-
         $formData = [
             'id' => (int) $this->createdBookId,
         ];
@@ -210,7 +247,7 @@ class BookControllerTest extends WebTestCase
         //book_delete_post
 
         // Generate URL from route name
-        $url = $router->generate('book_delete_post', ['id' => (int)$this->createdBookId]);
+        $url = $this->router->generate('book_delete_post', ['id' => (int)$this->createdBookId]);
 
         // Send POST request to the route
         $this->client->request('POST', $url, $formData);
@@ -223,7 +260,6 @@ class BookControllerTest extends WebTestCase
         $this->createdBookId = null;
 
         //Test to delete book that don't exists
-        $this->assertNotNull($this->client);
 
         // Send POST request to the route
         $this->client->request('POST', $url, $formData);
@@ -234,68 +270,20 @@ class BookControllerTest extends WebTestCase
     }
 
     /**
-     * tearDown
-     *
-     * @return void
-     */
-    protected function tearDown(): void
-    {
-        parent::tearDown();
-
-        if ($this->createdBookId !== null) {
-            if (null === $this->client) {
-                // Create a client to browse the application
-                $this->client = static::createClient();
-            }
-
-            // Get the router
-            /** @var RouterInterface $router */
-            $router = static::getContainer()->get('router');
-
-            // Generate delete URL
-            $deleteUrl = $router->generate('book_delete_post', ['id' => $this->createdBookId]);
-
-            // Send delete request
-            $this->client->request('POST', $deleteUrl, ['id' => $this->createdBookId]);
-
-            // Reset the ID to prevent repeated deletions
-            $this->createdBookId = null;
-        }
-    }
-
-    /**
      * testCRUD
      *
      * @return void
      */
     public function testCRUD(): void
     {
-        if (null === $this->client) {
-            // Create a client to browse the application
-            $this->client = static::createClient();
-        }
-
-        // Retrieve the container
-        $container = $this->client->getContainer();
-
-        // Retrieve router service
-        /** @var RouterInterface $router */
-        $router = $container->get('router');
-
-        // Get the ManagerRegistry service from container
-        /** @var ManagerRegistry $doctrine */
-        $doctrine = $container->get('doctrine');
-
-        $bookRepository = new BookRepository($doctrine);
-
         // Test Create Book
-        $this->testBookCreatePOST($router, $bookRepository);
+        $this->testBookCreatePOST();
 
         // Test Update Book
-        $this->testBookUpdatePOST($router, $bookRepository);
+        $this->testBookUpdatePOST();
 
         // Test Delete Book
-        $this->testBookDeletePOST($router);
+        $this->testBookDeletePOST();
     }
 
     /**
@@ -307,19 +295,10 @@ class BookControllerTest extends WebTestCase
      */
     public function testLibrary(): void
     {
-        if (null === $this->client) {
-            // Create a client to browse the application
-            $this->client = static::createClient();
-        }
-
-        // Retrieve router service
-        /** @var RouterInterface $router */
-        $router = static::getContainer()->get('router');
-
         //library
 
         // Generate URL from route name
-        $url = $router->generate('library');
+        $url = $this->router->generate('library');
 
         // Send a GET request to the route
         $crawler = $this->client->request('GET', $url);
@@ -340,19 +319,10 @@ class BookControllerTest extends WebTestCase
      */
     public function testBookCreateGET(): void
     {
-        if (null === $this->client) {
-            // Create a client to browse the application
-            $this->client = static::createClient();
-        }
-
-        // Retrieve router service
-        /** @var RouterInterface $router */
-        $router = static::getContainer()->get('router');
-
         //book_create_get
 
         // Generate URL from route name
-        $url = $router->generate('book_create_get');
+        $url = $this->router->generate('book_create_get');
 
         // Send a GET request to the route
         $crawler = $this->client->request('GET', $url);
@@ -373,19 +343,10 @@ class BookControllerTest extends WebTestCase
      */
     public function testShowAll(): void
     {
-        if (null === $this->client) {
-            // Create a client to browse the application
-            $this->client = static::createClient();
-        }
-
-        // Retrieve router service
-        /** @var RouterInterface $router */
-        $router = static::getContainer()->get('router');
-
         //book_show_all
 
         // Generate URL from route name
-        $url = $router->generate('book_show_all');
+        $url = $this->router->generate('book_show_all');
 
         // Send a GET request to the route
         $crawler = $this->client->request('GET', $url);
@@ -406,21 +367,13 @@ class BookControllerTest extends WebTestCase
      */
     public function testShowOne(): void
     {
-        if (null === $this->client) {
-            // Create a client to browse the application
-            $this->client = static::createClient();
-        }
-
-        // Retrieve router service
-        /** @var RouterInterface $router */
-        $router = static::getContainer()->get('router');
-
-        // Boot the kernel
-        $kernel = self::bootKernel();
+        // Retrieve the container
+        $container = $this->client->getContainer();
 
         // Get the ManagerRegistry service from container
         /** @var ManagerRegistry $doctrine */
-        $doctrine = $kernel->getContainer()->get('doctrine');
+        $doctrine = $container->get('doctrine');
+
         $bookRepository = new BookRepository($doctrine);
 
         $data = $bookRepository->readAllBooks();
@@ -439,7 +392,7 @@ class BookControllerTest extends WebTestCase
         //book_show_one
 
         // Generate URL from route name
-        $url = $router->generate('book_show_one', ['id' => $id]);
+        $url = $this->router->generate('book_show_one', ['id' => $id]);
 
         // Send a GET request to the route
         $crawler = $this->client->request('GET', $url);
@@ -460,19 +413,10 @@ class BookControllerTest extends WebTestCase
      */
     public function testShowAllUpdate(): void
     {
-        if (null === $this->client) {
-            // Create a client to browse the application
-            $this->client = static::createClient();
-        }
-
-        // Retrieve router service
-        /** @var RouterInterface $router */
-        $router = static::getContainer()->get('router');
-
         //book_show_all_update
 
         // Generate URL from route name
-        $url = $router->generate('book_show_all_update');
+        $url = $this->router->generate('book_show_all_update');
 
         // Send a GET request to the route
         $crawler = $this->client->request('GET', $url);
@@ -493,22 +437,7 @@ class BookControllerTest extends WebTestCase
      */
     public function testBookUpdateGET(): void
     {
-        if (null === $this->client) {
-            // Create a client to browse the application
-            $this->client = static::createClient();
-        }
-
-        // Retrieve router service
-        /** @var RouterInterface $router */
-        $router = static::getContainer()->get('router');
-
-        // Boot the kernel
-        $kernel = self::bootKernel();
-
-        // Get the ManagerRegistry service from container
-        /** @var ManagerRegistry $doctrine */
-        $doctrine = $kernel->getContainer()->get('doctrine');
-        $bookRepository = new BookRepository($doctrine);
+        $bookRepository = new BookRepository($this->doctrine);
 
         $data = $bookRepository->readAllBooks();
 
@@ -526,7 +455,7 @@ class BookControllerTest extends WebTestCase
         //book_update_get
 
         // Generate URL from route name
-        $url = $router->generate('book_update_get', ['id' => $id]);
+        $url = $this->router->generate('book_update_get', ['id' => $id]);
 
         // Send a GET request to the route
         $crawler = $this->client->request('GET', $url);
@@ -547,19 +476,10 @@ class BookControllerTest extends WebTestCase
      */
     public function testBookShowAllDeleteGET(): void
     {
-        if (null === $this->client) {
-            // Create a client to browse the application
-            $this->client = static::createClient();
-        }
-
-        // Retrieve router service
-        /** @var RouterInterface $router */
-        $router = static::getContainer()->get('router');
-
         //book_show_all_delete_get
 
         // Generate URL from route name
-        $url = $router->generate('book_show_all_delete_get');
+        $url = $this->router->generate('book_show_all_delete_get');
 
         // Send a GET request to the route
         $crawler = $this->client->request('GET', $url);
