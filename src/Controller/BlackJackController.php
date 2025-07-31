@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Cards\BlackJack;
+use App\Game\BlackJack;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;

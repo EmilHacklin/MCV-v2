@@ -2,10 +2,11 @@
 
 namespace App\Controller;
 
-use App\Cards\BlackJack;
 use App\Cards\CardHand;
 use App\Cards\DeckOfCards;
+use App\Game\BlackJack;
 use App\Repository\BookRepository;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,9 +16,28 @@ use Symfony\Component\Routing\Annotation\Route;
 class JasonController extends AbstractController
 {
     #[Route('/api', name: 'api')]
-    public function api(): Response
-    {
-        return $this->render('api.html.twig');
+    public function api(
+        ManagerRegistry $doctrine,
+    ): Response {
+        $bookRepository = new BookRepository($doctrine);
+
+        $data = $bookRepository->readAllBooks();
+
+        // If there is books in the library
+        $isbn = null;
+        if (count($data['books']) > 0) {
+            $isbn = $data['books'][0]['isbn'];
+        }
+
+        if (null === $isbn) {
+            $isbn = '0';
+        }
+
+        $data = [
+            'isbn' => $isbn,
+        ];
+
+        return $this->render('api.html.twig', $data);
     }
 
     #[Route('/api/quote', name: 'api/quote', methods: ['GET'])]
@@ -201,8 +221,10 @@ class JasonController extends AbstractController
 
     #[Route('api/library/books', name: 'api/library/books', methods: ['GET'])]
     public function apiLibraryBooks(
-        BookRepository $bookRepository,
+        ManagerRegistry $doctrine,
     ): Response {
+        $bookRepository = new BookRepository($doctrine);
+
         $data = $bookRepository->readAllBooks();
 
         $response = new JsonResponse($data);
@@ -217,8 +239,10 @@ class JasonController extends AbstractController
     #[Route("api/library/book/{isbn<\d+>}", name: 'api/library/book/isbn', methods: ['GET'])]
     public function apiLibraryBookISBN(
         string $isbn,
-        BookRepository $bookRepository,
+        ManagerRegistry $doctrine,
     ): Response {
+        $bookRepository = new BookRepository($doctrine);
+
         $data = $bookRepository->readOneBookISBN($isbn);
 
         $response = new JsonResponse($data);

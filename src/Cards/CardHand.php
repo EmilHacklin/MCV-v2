@@ -8,10 +8,9 @@ namespace App\Cards;
 class CardHand
 {
     /**
-     * @var array<Card>
-     *                  Is an array that contains the Card objects
+     * @var array<Card> Is an array that contains the Card objects
      */
-    private array $hand = [];
+    protected array $hand = [];
 
     /**
      * addCard.

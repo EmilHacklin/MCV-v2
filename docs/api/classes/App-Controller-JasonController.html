@@ -77,6 +77,10 @@
                 
             </li>
                     <li>
+                <a href="namespaces/app-game.html" class="">Game</a>
+                
+            </li>
+                    <li>
                 <a href="namespaces/app-repository.html" class="">Repository</a>
                 
             </li>
@@ -260,13 +264,23 @@
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">api</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Symfony\Component\HttpFoundation\Response">Response</abbr></span></code>
+                    <span class="phpdocumentor-signature__name">api</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\Doctrine\Persistence\ManagerRegistry">ManagerRegistry</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$doctrine</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Symfony\Component\HttpFoundation\Response">Response</abbr></span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
     
     
-    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$doctrine</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\Doctrine\Persistence\ManagerRegistry">ManagerRegistry</abbr></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
     
 
     
@@ -280,10 +294,10 @@
         #[<abbr title="\Symfony\Component\Routing\Annotation\Route">Route</abbr>]
     </dt>
         <dd class="phpdocumentor-argument-list__entry">
-        &quot;/api&quot;
+        &#039;/api&#039;
     </dd>
         <dd class="phpdocumentor-argument-list__entry">
-        $name: &quot;api&quot;
+        $name: &#039;api&#039;
     </dd>
     </dl>
             </section>
@@ -308,7 +322,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Controller/JasonController.php"><a href="files/src-controller-jasoncontroller.html"><abbr title="src/Controller/JasonController.php">JasonController.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">71</span>
+    <span class="phpdocumentor-element-found-in__line">90</span>
 
     </aside>
 
@@ -335,10 +349,10 @@
         #[<abbr title="\Symfony\Component\Routing\Annotation\Route">Route</abbr>]
     </dt>
         <dd class="phpdocumentor-argument-list__entry">
-        &quot;/api/deck&quot;
+        &#039;/api/deck&#039;
     </dd>
         <dd class="phpdocumentor-argument-list__entry">
-        $name: &quot;api/deck&quot;
+        $name: &#039;api/deck&#039;
     </dd>
         <dd class="phpdocumentor-argument-list__entry">
         $methods: [&#039;GET&#039;]
@@ -366,7 +380,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Controller/JasonController.php"><a href="files/src-controller-jasoncontroller.html"><abbr title="src/Controller/JasonController.php">JasonController.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">112</span>
+    <span class="phpdocumentor-element-found-in__line">131</span>
 
     </aside>
 
@@ -403,10 +417,10 @@
         #[<abbr title="\Symfony\Component\Routing\Annotation\Route">Route</abbr>]
     </dt>
         <dd class="phpdocumentor-argument-list__entry">
-        &quot;/api/deck/draw&quot;
+        &#039;/api/deck/draw&#039;
     </dd>
         <dd class="phpdocumentor-argument-list__entry">
-        $name: &quot;api/deck/draw&quot;
+        $name: &#039;api/deck/draw&#039;
     </dd>
         <dd class="phpdocumentor-argument-list__entry">
         $methods: [&#039;POST&#039;]
@@ -434,7 +448,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Controller/JasonController.php"><a href="files/src-controller-jasoncontroller.html"><abbr title="src/Controller/JasonController.php">JasonController.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">140</span>
+    <span class="phpdocumentor-element-found-in__line">159</span>
 
     </aside>
 
@@ -481,7 +495,7 @@
         &quot;/api/deck/draw/{num&lt;\\d+&gt;}&quot;
     </dd>
         <dd class="phpdocumentor-argument-list__entry">
-        $name: &quot;api/deck/draw/:number&quot;
+        $name: &#039;api/deck/draw/:number&#039;
     </dd>
         <dd class="phpdocumentor-argument-list__entry">
         $methods: [&#039;POST&#039;]
@@ -509,7 +523,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Controller/JasonController.php"><a href="files/src-controller-jasoncontroller.html"><abbr title="src/Controller/JasonController.php">JasonController.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">89</span>
+    <span class="phpdocumentor-element-found-in__line">108</span>
 
     </aside>
 
@@ -546,10 +560,10 @@
         #[<abbr title="\Symfony\Component\Routing\Annotation\Route">Route</abbr>]
     </dt>
         <dd class="phpdocumentor-argument-list__entry">
-        &quot;/api/deck/shuffle&quot;
+        &#039;/api/deck/shuffle&#039;
     </dd>
         <dd class="phpdocumentor-argument-list__entry">
-        $name: &quot;api/deck/shuffle&quot;
+        $name: &#039;api/deck/shuffle&#039;
     </dd>
         <dd class="phpdocumentor-argument-list__entry">
         $methods: [&#039;POST&#039;]
@@ -577,7 +591,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Controller/JasonController.php"><a href="files/src-controller-jasoncontroller.html"><abbr title="src/Controller/JasonController.php">JasonController.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">185</span>
+    <span class="phpdocumentor-element-found-in__line">204</span>
 
     </aside>
 
@@ -614,10 +628,10 @@
         #[<abbr title="\Symfony\Component\Routing\Annotation\Route">Route</abbr>]
     </dt>
         <dd class="phpdocumentor-argument-list__entry">
-        &quot;/api/game&quot;
+        &#039;/api/game&#039;
     </dd>
         <dd class="phpdocumentor-argument-list__entry">
-        $name: &quot;api/game&quot;
+        $name: &#039;api/game&#039;
     </dd>
         <dd class="phpdocumentor-argument-list__entry">
         $methods: [&#039;GET&#039;]
@@ -645,14 +659,14 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Controller/JasonController.php"><a href="files/src-controller-jasoncontroller.html"><abbr title="src/Controller/JasonController.php">JasonController.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">219</span>
+    <span class="phpdocumentor-element-found-in__line">239</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">apiLibraryBookISBN</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$isbn</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Repository-BookRepository.html"><abbr title="\App\Repository\BookRepository">BookRepository</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$bookRepository</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Symfony\Component\HttpFoundation\Response">Response</abbr></span></code>
+                    <span class="phpdocumentor-signature__name">apiLibraryBookISBN</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$isbn</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type"><abbr title="\Doctrine\Persistence\ManagerRegistry">ManagerRegistry</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$doctrine</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Symfony\Component\HttpFoundation\Response">Response</abbr></span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -668,8 +682,8 @@
                 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$bookRepository</span>
-                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Repository-BookRepository.html"><abbr title="\App\Repository\BookRepository">BookRepository</abbr></a></span>
+                <span class="phpdocumentor-signature__argument__name">$doctrine</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\Doctrine\Persistence\ManagerRegistry">ManagerRegistry</abbr></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
                 
@@ -692,7 +706,7 @@
         &quot;api/library/book/{isbn&lt;\\d+&gt;}&quot;
     </dd>
         <dd class="phpdocumentor-argument-list__entry">
-        $name: &quot;api/library/book/isbn&quot;
+        $name: &#039;api/library/book/isbn&#039;
     </dd>
         <dd class="phpdocumentor-argument-list__entry">
         $methods: [&#039;GET&#039;]
@@ -720,14 +734,14 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Controller/JasonController.php"><a href="files/src-controller-jasoncontroller.html"><abbr title="src/Controller/JasonController.php">JasonController.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">204</span>
+    <span class="phpdocumentor-element-found-in__line">222</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">apiLibraryBooks</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Repository-BookRepository.html"><abbr title="\App\Repository\BookRepository">BookRepository</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$bookRepository</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Symfony\Component\HttpFoundation\Response">Response</abbr></span></code>
+                    <span class="phpdocumentor-signature__name">apiLibraryBooks</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\Doctrine\Persistence\ManagerRegistry">ManagerRegistry</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$doctrine</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Symfony\Component\HttpFoundation\Response">Response</abbr></span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -736,8 +750,8 @@
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$bookRepository</span>
-                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Repository-BookRepository.html"><abbr title="\App\Repository\BookRepository">BookRepository</abbr></a></span>
+                <span class="phpdocumentor-signature__argument__name">$doctrine</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\Doctrine\Persistence\ManagerRegistry">ManagerRegistry</abbr></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
                 
@@ -757,10 +771,10 @@
         #[<abbr title="\Symfony\Component\Routing\Annotation\Route">Route</abbr>]
     </dt>
         <dd class="phpdocumentor-argument-list__entry">
-        &quot;api/library/books&quot;
+        &#039;api/library/books&#039;
     </dd>
         <dd class="phpdocumentor-argument-list__entry">
-        $name: &quot;api/library/books&quot;
+        $name: &#039;api/library/books&#039;
     </dd>
         <dd class="phpdocumentor-argument-list__entry">
         $methods: [&#039;GET&#039;]
@@ -788,7 +802,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Controller/JasonController.php"><a href="files/src-controller-jasoncontroller.html"><abbr title="src/Controller/JasonController.php">JasonController.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">24</span>
+    <span class="phpdocumentor-element-found-in__line">43</span>
 
     </aside>
 
@@ -815,10 +829,10 @@
         #[<abbr title="\Symfony\Component\Routing\Annotation\Route">Route</abbr>]
     </dt>
         <dd class="phpdocumentor-argument-list__entry">
-        &quot;/api/quote&quot;
+        &#039;/api/quote&#039;
     </dd>
         <dd class="phpdocumentor-argument-list__entry">
-        $name: &quot;api/quote&quot;
+        $name: &#039;api/quote&#039;
     </dd>
         <dd class="phpdocumentor-argument-list__entry">
         $methods: [&#039;GET&#039;]

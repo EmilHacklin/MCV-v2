@@ -136,4 +136,32 @@ class BaseControllerTest extends WebTestCase
         // Assert that certain content exists in the response
         $this->assertStringContainsString('MVC: Lucky', $crawler->filter('title')->text());
     }
+
+    /**
+     * testMetrics
+     *
+     * Test metrics route
+     *
+     * @return void
+     */
+    public function testMetrics(): void
+    {
+        // Retrieve router service
+        /** @var RouterInterface $router */
+        $router = static::getContainer()->get('router');
+
+        //about
+
+        // Generate URL from route name
+        $url = $router->generate('metrics');
+
+        // Send a GET request to the route you want to test
+        $crawler = $this->client->request('GET', $url);
+
+        // Assert the response status code
+        $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
+
+        // Assert that certain content exists in the response
+        $this->assertStringContainsString('MVC: Metrics', $crawler->filter('title')->text());
+    }
 }

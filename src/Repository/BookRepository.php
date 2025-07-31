@@ -11,15 +11,24 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class BookRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
+    private ManagerRegistry $doctrine;
+
+    /**
+     * __construct.
+     *
+     * @return void
+     */
+    public function __construct(ManagerRegistry $doctrine)
     {
-        parent::__construct($registry, Book::class);
+        $this->doctrine = $doctrine;
+
+        parent::__construct($doctrine, Book::class);
     }
 
     /**
      * returnBook.
      *
-     * Return book object (works like a constructor)
+     * Return book object (works like a pseudo constructor)
      */
     public function returnBook(string $title, ?string $isbn = null, ?string $author = null, ?string $img = null): Book
     {
@@ -34,11 +43,109 @@ class BookRepository extends ServiceEntityRepository
     }
 
     /**
+     * saveBook.
+     *
+     * Saves a book to the database
+     */
+    public function saveBook(string $title, ?string $isbn = null, ?string $author = null, ?string $img = null): void
+    {
+        // If title is empty
+        if ('' === $title) {
+            return;
+        }
+
+        $book = $this->returnBook($title, $isbn, $author, $img);
+
+        $entityManager = $this->doctrine->getManager();
+
+        // tell Doctrine you want to (eventually) save the Book
+        // (no queries yet)
+        $entityManager->persist($book);
+
+        // actually executes the queries (i.e. the INSERT query)
+        $entityManager->flush();
+    }
+
+    /**
+     * updateBook.
+     *
+     * Saves a book to the database
+     */
+    public function updateBook(int $id, string $title, ?string $isbn = null, ?string $author = null, ?string $img = null): void
+    {
+        $book = $this->findOneBy(['id' => $id]);
+
+        // If the book can't be found
+        if (null === $book) {
+            return;
+        }
+
+        // If title is empty
+        if ('' === $title) {
+            return;
+        }
+
+        $book->setTitle($title);
+
+        // If you have new ISBN
+        if (null !== $isbn) {
+            $book->setIsbn($isbn);
+        }
+
+        // If you have new Author
+        if (null !== $author) {
+            $book->setAuthor($author);
+        }
+
+        // If you have new image
+        if (null !== $img) {
+            $book->setImg($img);
+        }
+
+        // Get the entity manager
+        $entityManager = $this->doctrine->getManager();
+
+        // Persist is optional for existing entities, but it doesn't hurt
+        $entityManager->persist($book);
+
+        // Flush to save changes
+        $entityManager->flush();
+    }
+
+    /**
+     * deleteBook.
+     */
+    public function deleteBook(int $id): void
+    {
+        $book = $this->findOneBy(['id' => $id]);
+
+        // If the book can't be found
+        if (null === $book) {
+            return;
+        }
+
+        // Get the entity manager
+        $entityManager = $this->doctrine->getManager();
+
+        // Remove the book
+        $entityManager->remove($book);
+        $entityManager->flush();
+    }
+
+    /**
      * readAllBooks.
      *
      * Reads all books from the database and returns a array of books
      *
-     * @return array<string, array<int, array<string, int|string|null>>>
+     * @return array{
+     *  books: array<array{
+     *    id: int|null,
+     *    title: string|null,
+     *    isbn: string|null,
+     *    author: string|null,
+     *    img: string|null
+     *  }>
+     * }
      */
     public function readAllBooks(): array
     {
@@ -64,7 +171,15 @@ class BookRepository extends ServiceEntityRepository
     /**
      * readOneBook.
      *
-     * @return array<string, array<int|string, array<string, int|string|null>|int|string|null>>
+     * @return array{
+     *   book: array{
+     *     id: int,
+     *     title: string|null,
+     *     isbn: string|null,
+     *     author: string|null,
+     *     img: string|null
+     *   }
+     * }
      */
     public function readOneBook(int $id): array
     {
@@ -101,13 +216,21 @@ class BookRepository extends ServiceEntityRepository
     /**
      * readOneBookISBN.
      *
-     * @return array<string, array<int|string, array<string, int|string|null>|int|string|null>>
+     * @return array{
+     *   book: array{
+     *     id: int|null,
+     *     title: string|null,
+     *     isbn: string|null,
+     *     author: string|null,
+     *     img: string|null
+     *   }
+     * }
      */
     public function readOneBookISBN(string $isbn): array
     {
         $data = [
             'book' => [
-                'id' => 0,
+                'id' => -1,
                 'title' => '',
                 'isbn' => $isbn,
                 'author' => null,
@@ -134,29 +257,4 @@ class BookRepository extends ServiceEntityRepository
 
         return $data;
     }
-
-    //    /**
-    //     * @return Book[] Returns an array of Book objects
-    //     */
-    //    public function findByExampleField($value): array
-    //    {
-    //        return $this->createQueryBuilder('b')
-    //            ->andWhere('b.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('b.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
-
-    //    public function findOneBySomeField($value): ?Book
-    //    {
-    //        return $this->createQueryBuilder('b')
-    //            ->andWhere('b.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
 }

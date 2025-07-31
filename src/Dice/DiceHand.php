@@ -5,8 +5,7 @@ namespace App\Dice;
 class DiceHand
 {
     /**
-     * @var array<Dice>
-     *                  Is an array that contains the Dice objects
+     * @var array<Dice> Is an array that contains the Dice objects
      */
     private array $hand = [];
 

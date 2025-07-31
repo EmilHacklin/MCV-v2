@@ -2,6 +2,8 @@
 
 namespace App\Tests\Controller;
 
+use App\Repository\BookRepository;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Component\Routing\RouterInterface;
@@ -29,6 +31,9 @@ class JasonControllerTest extends WebTestCase
 
         // Send a GET request to the route
         $crawler = $client->request('GET', $url);
+
+        // $response = $client->getResponse();
+        // echo $response->getContent();
 
         // Assert the response status code
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
@@ -306,19 +311,139 @@ class JasonControllerTest extends WebTestCase
         $this->assertIsArray($data, 'Decoded JSON data is not an array.');
 
         // Verify that required keys exist
-        $this->assertArrayHasKey('player', $data);
-        $this->assertArrayHasKey('playerValue', $data);
-        $this->assertArrayHasKey('dealer', $data);
-        $this->assertArrayHasKey('dealerValue', $data);
-        $this->assertArrayHasKey('winner', $data);
+        $this->assertArrayHasKey('numOfPlayers', $data);
+        $this->assertArrayHasKey('playersCards', $data);
+        $this->assertArrayHasKey('playersHandValue', $data);
+        $this->assertArrayHasKey('dealerCards', $data);
+        $this->assertArrayHasKey('dealerHandValue', $data);
+        $this->assertArrayHasKey('gameStates', $data);
 
         // Assert is an array
-        $this->assertIsArray($data['player']);
-        $this->assertIsArray($data['dealer']);
+        $this->assertIsArray($data['playersCards']);
+        $this->assertIsArray($data['playersCards'][0]);
+        $this->assertIsArray($data['playersHandValue']);
+        $this->assertIsArray($data['dealerCards']);
+        $this->assertIsArray($data['gameStates']);
 
-        // Assert the deckCount is not empty
-        $this->assertNotEmpty($data['playerValue']);
-        $this->assertNotNull($data['dealerValue']);
-        $this->assertNotEmpty($data['winner']);
+        // Assert is not empty
+        $this->assertNotNull($data['numOfPlayers']);
+        $this->assertNotEmpty($data['playersCards'][0]);
+        $this->assertNotNull($data['playersHandValue'][0]);
+        $this->assertNotEmpty($data['dealerCards']);
+        $this->assertNotNull($data['dealerHandValue']);
+        $this->assertNotEmpty($data['gameStates']);
+        $this->assertNotNull($data['gameStates'][0]);
+    }
+
+    /**
+     * testApiLibraryBooks
+     *
+     * Test api/library/books route
+     *
+     * @return void
+     */
+    public function testApiLibraryBooks(): void
+    {
+        // Create a client to browse the application
+        $client = static::createClient();
+
+        // Retrieve router service
+        /** @var RouterInterface $router */
+        $router = static::getContainer()->get('router');
+
+        // Generate URL from route name
+        $url = $router->generate('api/library/books');
+
+        // Send a GET request to the route
+        $client->request('GET', $url);
+
+        // Assert the response status code
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+
+        // Get the response content
+        $content = $client->getResponse()->getContent();
+
+        $data = null;
+
+        // Decode JSON
+        if (is_string($content)) {
+            $data = json_decode($content, true);
+        }
+
+        // Assert that JSON decoding was successful
+        $this->assertNotNull($data, 'Failed to decode JSON.');
+        $this->assertIsArray($data, 'Decoded JSON data is not an array.');
+
+        // Verify that required keys exist
+        $this->assertArrayHasKey('books', $data);
+    }
+
+    /**
+     * testApiLibraryBookISBN
+     *
+     * Test api/library/book/isbn route
+     *
+     * @return void
+     */
+    public function testApiLibraryBookISBN(): void
+    {
+        // Create a client to browse the application
+        $client = static::createClient();
+
+        // Retrieve router service
+        /** @var RouterInterface $router */
+        $router = static::getContainer()->get('router');
+
+        // Boot the kernel
+        $kernel = self::bootKernel();
+
+        // Get the ManagerRegistry service from container
+        /** @var ManagerRegistry $doctrine */
+        $doctrine = $kernel->getContainer()->get('doctrine');
+        $bookRepository = new BookRepository($doctrine);
+
+        $data = $bookRepository->readAllBooks();
+
+        //If there is books in the library
+        $isbn = null;
+
+        if (count($data['books']) > 0) {
+            $isbn = $data['books'][0]['isbn'];
+        }
+
+        if (null === $isbn) {
+            $isbn = '0';
+        }
+
+        // Generate URL from route name
+        $url = $router->generate('api/library/book/isbn', ['isbn' => $isbn]);
+
+        // Send a GET request to the route
+        $client->request('GET', $url);
+
+        // Assert the response status code
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+
+        // Get the response content
+        $content = $client->getResponse()->getContent();
+
+        $data = null;
+
+        // Decode JSON
+        if (is_string($content)) {
+            $data = json_decode($content, true);
+        }
+
+        // Assert that JSON decoding was successful
+        $this->assertNotNull($data, 'Failed to decode JSON.');
+        $this->assertIsArray($data, 'Decoded JSON data is not an array.');
+
+        // Verify that required keys exist
+        $this->assertArrayHasKey('book', $data);
+        $this->assertArrayHasKey('id', $data['book']);
+        $this->assertArrayHasKey('title', $data['book']);
+        $this->assertArrayHasKey('isbn', $data['book']);
+        $this->assertArrayHasKey('author', $data['book']);
+        $this->assertArrayHasKey('img', $data['book']);
     }
 }

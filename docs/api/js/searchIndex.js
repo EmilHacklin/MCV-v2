@@ -1,174 +1,69 @@
 Search.appendIndex(
     [
                 {
-            "fqsen": "\\App\\Cards\\BlackJack",
-            "name": "BlackJack",
-            "summary": "BlackJack",
-            "url": "classes/App-Cards-BlackJack.html"
-        },                {
-            "fqsen": "\\App\\Cards\\BlackJack\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "__construct",
-            "url": "classes/App-Cards-BlackJack.html#method___construct"
-        },                {
-            "fqsen": "\\App\\Cards\\BlackJack\u003A\u003AsetupGame\u0028\u0029",
-            "name": "setupGame",
-            "summary": "setupGame",
-            "url": "classes/App-Cards-BlackJack.html#method_setupGame"
-        },                {
-            "fqsen": "\\App\\Cards\\BlackJack\u003A\u003AcalculateWinner\u0028\u0029",
-            "name": "calculateWinner",
-            "summary": "calculateWinner",
-            "url": "classes/App-Cards-BlackJack.html#method_calculateWinner"
-        },                {
-            "fqsen": "\\App\\Cards\\BlackJack\u003A\u003AplayDealer\u0028\u0029",
-            "name": "playDealer",
-            "summary": "playDealer",
-            "url": "classes/App-Cards-BlackJack.html#method_playDealer"
-        },                {
-            "fqsen": "\\App\\Cards\\BlackJack\u003A\u003AstateOfGame\u0028\u0029",
-            "name": "stateOfGame",
-            "summary": "stateOfGame",
-            "url": "classes/App-Cards-BlackJack.html#method_stateOfGame"
-        },                {
-            "fqsen": "\\App\\Cards\\BlackJack\u003A\u003AisPlayerBust\u0028\u0029",
-            "name": "isPlayerBust",
-            "summary": "isPlayerBust",
-            "url": "classes/App-Cards-BlackJack.html#method_isPlayerBust"
-        },                {
-            "fqsen": "\\App\\Cards\\BlackJack\u003A\u003AisDealerBust\u0028\u0029",
-            "name": "isDealerBust",
-            "summary": "isDealerBust",
-            "url": "classes/App-Cards-BlackJack.html#method_isDealerBust"
-        },                {
-            "fqsen": "\\App\\Cards\\BlackJack\u003A\u003AresetGame\u0028\u0029",
-            "name": "resetGame",
-            "summary": "resetGame",
-            "url": "classes/App-Cards-BlackJack.html#method_resetGame"
-        },                {
-            "fqsen": "\\App\\Cards\\BlackJack\u003A\u003AhitPlayer\u0028\u0029",
-            "name": "hitPlayer",
-            "summary": "hitPlayer",
-            "url": "classes/App-Cards-BlackJack.html#method_hitPlayer"
-        },                {
-            "fqsen": "\\App\\Cards\\BlackJack\u003A\u003AstayPlayer\u0028\u0029",
-            "name": "stayPlayer",
-            "summary": "stayPlayer",
-            "url": "classes/App-Cards-BlackJack.html#method_stayPlayer"
-        },                {
-            "fqsen": "\\App\\Cards\\BlackJack\u003A\u003A\u0024deck",
-            "name": "deck",
-            "summary": "",
-            "url": "classes/App-Cards-BlackJack.html#property_deck"
-        },                {
-            "fqsen": "\\App\\Cards\\BlackJack\u003A\u003A\u0024player",
-            "name": "player",
-            "summary": "",
-            "url": "classes/App-Cards-BlackJack.html#property_player"
-        },                {
-            "fqsen": "\\App\\Cards\\BlackJack\u003A\u003A\u0024dealer",
-            "name": "dealer",
-            "summary": "",
-            "url": "classes/App-Cards-BlackJack.html#property_dealer"
-        },                {
-            "fqsen": "\\App\\Cards\\BlackJack\u003A\u003A\u0024playerValue",
-            "name": "playerValue",
-            "summary": "",
-            "url": "classes/App-Cards-BlackJack.html#property_playerValue"
-        },                {
-            "fqsen": "\\App\\Cards\\BlackJack\u003A\u003A\u0024dealerValue",
-            "name": "dealerValue",
-            "summary": "",
-            "url": "classes/App-Cards-BlackJack.html#property_dealerValue"
-        },                {
-            "fqsen": "\\App\\Cards\\BlackJack\u003A\u003A\u0024dealerHidden",
-            "name": "dealerHidden",
-            "summary": "",
-            "url": "classes/App-Cards-BlackJack.html#property_dealerHidden"
-        },                {
-            "fqsen": "\\App\\Cards\\BlackJack\u003A\u003A\u0024playerBust",
-            "name": "playerBust",
-            "summary": "",
-            "url": "classes/App-Cards-BlackJack.html#property_playerBust"
-        },                {
-            "fqsen": "\\App\\Cards\\BlackJack\u003A\u003A\u0024dealerBust",
-            "name": "dealerBust",
-            "summary": "",
-            "url": "classes/App-Cards-BlackJack.html#property_dealerBust"
-        },                {
-            "fqsen": "\\App\\Cards\\BlackJack\u003A\u003A\u0024gameOver",
-            "name": "gameOver",
-            "summary": "",
-            "url": "classes/App-Cards-BlackJack.html#property_gameOver"
-        },                {
-            "fqsen": "\\App\\Cards\\BlackJack\u003A\u003A\u0024winner",
-            "name": "winner",
-            "summary": "",
-            "url": "classes/App-Cards-BlackJack.html#property_winner"
-        },                {
             "fqsen": "\\App\\Cards\\Card",
             "name": "Card",
-            "summary": "Card",
+            "summary": "Card.",
             "url": "classes/App-Cards-Card.html"
         },                {
             "fqsen": "\\App\\Cards\\Card\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "__construct",
+            "summary": "__construct.",
             "url": "classes/App-Cards-Card.html#method___construct"
         },                {
             "fqsen": "\\App\\Cards\\Card\u003A\u003AfindRank\u0028\u0029",
             "name": "findRank",
-            "summary": "findRank",
+            "summary": "findRank.",
             "url": "classes/App-Cards-Card.html#method_findRank"
         },                {
             "fqsen": "\\App\\Cards\\Card\u003A\u003AfindSuit\u0028\u0029",
             "name": "findSuit",
-            "summary": "findSuit",
+            "summary": "findSuit.",
             "url": "classes/App-Cards-Card.html#method_findSuit"
         },                {
             "fqsen": "\\App\\Cards\\Card\u003A\u003AfindValue\u0028\u0029",
             "name": "findValue",
-            "summary": "findValue",
+            "summary": "findValue.",
             "url": "classes/App-Cards-Card.html#method_findValue"
         },                {
             "fqsen": "\\App\\Cards\\Card\u003A\u003AcheckIfSuitValid\u0028\u0029",
             "name": "checkIfSuitValid",
-            "summary": "checkIfSuitValid",
+            "summary": "checkIfSuitValid.",
             "url": "classes/App-Cards-Card.html#method_checkIfSuitValid"
         },                {
             "fqsen": "\\App\\Cards\\Card\u003A\u003AgetRank\u0028\u0029",
             "name": "getRank",
-            "summary": "getRank",
+            "summary": "getRank.",
             "url": "classes/App-Cards-Card.html#method_getRank"
         },                {
             "fqsen": "\\App\\Cards\\Card\u003A\u003AsetRank\u0028\u0029",
             "name": "setRank",
-            "summary": "setRank",
+            "summary": "setRank.",
             "url": "classes/App-Cards-Card.html#method_setRank"
         },                {
             "fqsen": "\\App\\Cards\\Card\u003A\u003AgetSuit\u0028\u0029",
             "name": "getSuit",
-            "summary": "getSuit",
+            "summary": "getSuit.",
             "url": "classes/App-Cards-Card.html#method_getSuit"
         },                {
             "fqsen": "\\App\\Cards\\Card\u003A\u003AsetSuit\u0028\u0029",
             "name": "setSuit",
-            "summary": "setSuit",
+            "summary": "setSuit.",
             "url": "classes/App-Cards-Card.html#method_setSuit"
         },                {
             "fqsen": "\\App\\Cards\\Card\u003A\u003AgetValue\u0028\u0029",
             "name": "getValue",
-            "summary": "getValue",
+            "summary": "getValue.",
             "url": "classes/App-Cards-Card.html#method_getValue"
         },                {
             "fqsen": "\\App\\Cards\\Card\u003A\u003AgetString\u0028\u0029",
             "name": "getString",
-            "summary": "getString",
+            "summary": "getString.",
             "url": "classes/App-Cards-Card.html#method_getString"
         },                {
             "fqsen": "\\App\\Cards\\Card\u003A\u003ANO_RANK",
             "name": "NO_RANK",
-            "summary": "Constant\u0020strings\u0020for\u0020the\u0020no\u0020rank\u0020anc\u0020no\u0020suit\u0020message",
+            "summary": "Constant\u0020strings\u0020for\u0020the\u0020no\u0020rank\u0020anc\u0020no\u0020suit\u0020message.",
             "url": "classes/App-Cards-Card.html#constant_NO_RANK"
         },                {
             "fqsen": "\\App\\Cards\\Card\u003A\u003ANO_SUIT",
@@ -198,42 +93,42 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Cards\\CardGraphic",
             "name": "CardGraphic",
-            "summary": "CardGraphic",
+            "summary": "CardGraphic.",
             "url": "classes/App-Cards-CardGraphic.html"
         },                {
             "fqsen": "\\App\\Cards\\CardGraphic\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "__construct",
+            "summary": "__construct.",
             "url": "classes/App-Cards-CardGraphic.html#method___construct"
         },                {
             "fqsen": "\\App\\Cards\\CardGraphic\u003A\u003AfindGraphic\u0028\u0029",
             "name": "findGraphic",
-            "summary": "findGraphic",
+            "summary": "findGraphic.",
             "url": "classes/App-Cards-CardGraphic.html#method_findGraphic"
         },                {
             "fqsen": "\\App\\Cards\\CardGraphic\u003A\u003AsetRank\u0028\u0029",
             "name": "setRank",
-            "summary": "setRank",
+            "summary": "setRank.",
             "url": "classes/App-Cards-CardGraphic.html#method_setRank"
         },                {
             "fqsen": "\\App\\Cards\\CardGraphic\u003A\u003AsetSuit\u0028\u0029",
             "name": "setSuit",
-            "summary": "setSuite",
+            "summary": "setSuite.",
             "url": "classes/App-Cards-CardGraphic.html#method_setSuit"
         },                {
             "fqsen": "\\App\\Cards\\CardGraphic\u003A\u003AgetString\u0028\u0029",
             "name": "getString",
-            "summary": "getString",
+            "summary": "getString.",
             "url": "classes/App-Cards-CardGraphic.html#method_getString"
         },                {
             "fqsen": "\\App\\Cards\\CardGraphic\u003A\u003AGRAPHIC_REPRESENTATION",
             "name": "GRAPHIC_REPRESENTATION",
-            "summary": "Constant\u0020array\u0020containing\u0020the\u0020UTF\u002D8\u0020characters\u0020for\u0020the\u0020cards\u0020in\u0020a\u0020card\u0020playing\u0020deck",
+            "summary": "Constant\u0020array\u0020containing\u0020the\u0020UTF\u002D8\u0020characters\u0020for\u0020the\u0020cards\u0020in\u0020a\u0020card\u0020playing\u0020deck.",
             "url": "classes/App-Cards-CardGraphic.html#constant_GRAPHIC_REPRESENTATION"
         },                {
             "fqsen": "\\App\\Cards\\CardGraphic\u003A\u003ABLANK_CARD",
             "name": "BLANK_CARD",
-            "summary": "Constant\u0020character\u0020for\u0020blank\u0020card",
+            "summary": "Constant\u0020character\u0020for\u0020blank\u0020card.",
             "url": "classes/App-Cards-CardGraphic.html#constant_BLANK_CARD"
         },                {
             "fqsen": "\\App\\Cards\\CardGraphic\u003A\u003A\u0024graphic",
@@ -243,42 +138,42 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Cards\\CardHand",
             "name": "CardHand",
-            "summary": "CardHand",
+            "summary": "CardHand.",
             "url": "classes/App-Cards-CardHand.html"
         },                {
             "fqsen": "\\App\\Cards\\CardHand\u003A\u003AaddCard\u0028\u0029",
             "name": "addCard",
-            "summary": "addCard",
+            "summary": "addCard.",
             "url": "classes/App-Cards-CardHand.html#method_addCard"
         },                {
             "fqsen": "\\App\\Cards\\CardHand\u003A\u003AcardCount\u0028\u0029",
             "name": "cardCount",
-            "summary": "cardCount",
+            "summary": "cardCount.",
             "url": "classes/App-Cards-CardHand.html#method_cardCount"
         },                {
             "fqsen": "\\App\\Cards\\CardHand\u003A\u003AgetValue\u0028\u0029",
             "name": "getValue",
-            "summary": "getValueOfHand\u0027",
+            "summary": "getValueOfHand\u0027.",
             "url": "classes/App-Cards-CardHand.html#method_getValue"
         },                {
             "fqsen": "\\App\\Cards\\CardHand\u003A\u003AgetValueAceHigh\u0028\u0029",
             "name": "getValueAceHigh",
-            "summary": "getValueOfHandAceHigh",
+            "summary": "getValueOfHandAceHigh.",
             "url": "classes/App-Cards-CardHand.html#method_getValueAceHigh"
         },                {
             "fqsen": "\\App\\Cards\\CardHand\u003A\u003AgetBlackJackValue\u0028\u0029",
             "name": "getBlackJackValue",
-            "summary": "getBlackJackValueOfHand",
+            "summary": "getBlackJackValueOfHand.",
             "url": "classes/App-Cards-CardHand.html#method_getBlackJackValue"
         },                {
             "fqsen": "\\App\\Cards\\CardHand\u003A\u003AgetBlackJackValueAceHigh\u0028\u0029",
             "name": "getBlackJackValueAceHigh",
-            "summary": "getBlackJackValueOfHandAceHigh",
+            "summary": "getBlackJackValueOfHandAceHigh.",
             "url": "classes/App-Cards-CardHand.html#method_getBlackJackValueAceHigh"
         },                {
             "fqsen": "\\App\\Cards\\CardHand\u003A\u003AgetString\u0028\u0029",
             "name": "getString",
-            "summary": "getString",
+            "summary": "getString.",
             "url": "classes/App-Cards-CardHand.html#method_getString"
         },                {
             "fqsen": "\\App\\Cards\\CardHand\u003A\u003A\u0024hand",
@@ -288,52 +183,52 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Cards\\DeckOfCards",
             "name": "DeckOfCards",
-            "summary": "DeckOfCards",
+            "summary": "DeckOfCards.",
             "url": "classes/App-Cards-DeckOfCards.html"
         },                {
             "fqsen": "\\App\\Cards\\DeckOfCards\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "__construct",
+            "summary": "__construct.",
             "url": "classes/App-Cards-DeckOfCards.html#method___construct"
         },                {
             "fqsen": "\\App\\Cards\\DeckOfCards\u003A\u003AcreateDeck\u0028\u0029",
             "name": "createDeck",
-            "summary": "createDeck",
+            "summary": "createDeck.",
             "url": "classes/App-Cards-DeckOfCards.html#method_createDeck"
         },                {
             "fqsen": "\\App\\Cards\\DeckOfCards\u003A\u003AresetDeck\u0028\u0029",
             "name": "resetDeck",
-            "summary": "resetDeck",
+            "summary": "resetDeck.",
             "url": "classes/App-Cards-DeckOfCards.html#method_resetDeck"
         },                {
             "fqsen": "\\App\\Cards\\DeckOfCards\u003A\u003AshuffleDeck\u0028\u0029",
             "name": "shuffleDeck",
-            "summary": "shuffleDeck",
+            "summary": "shuffleDeck.",
             "url": "classes/App-Cards-DeckOfCards.html#method_shuffleDeck"
         },                {
             "fqsen": "\\App\\Cards\\DeckOfCards\u003A\u003AreshuffleDeck\u0028\u0029",
             "name": "reshuffleDeck",
-            "summary": "reshuffleDeck",
+            "summary": "reshuffleDeck.",
             "url": "classes/App-Cards-DeckOfCards.html#method_reshuffleDeck"
         },                {
             "fqsen": "\\App\\Cards\\DeckOfCards\u003A\u003AdrawCard\u0028\u0029",
             "name": "drawCard",
-            "summary": "drawCard",
+            "summary": "drawCard.",
             "url": "classes/App-Cards-DeckOfCards.html#method_drawCard"
         },                {
             "fqsen": "\\App\\Cards\\DeckOfCards\u003A\u003AcardCount\u0028\u0029",
             "name": "cardCount",
-            "summary": "cardCount",
+            "summary": "cardCount.",
             "url": "classes/App-Cards-DeckOfCards.html#method_cardCount"
         },                {
             "fqsen": "\\App\\Cards\\DeckOfCards\u003A\u003AgetString\u0028\u0029",
             "name": "getString",
-            "summary": "getString",
+            "summary": "getString.",
             "url": "classes/App-Cards-DeckOfCards.html#method_getString"
         },                {
             "fqsen": "\\App\\Cards\\DeckOfCards\u003A\u003ARANKS",
             "name": "RANKS",
-            "summary": "Constant\u0020arrays\u0020that\u0020contain\u0020all\u0020ranks\u0020and\u0020suites\u0020in\u0020the\u0020deck",
+            "summary": "Constant\u0020arrays\u0020that\u0020contain\u0020all\u0020ranks\u0020and\u0020suites\u0020in\u0020the\u0020deck.",
             "url": "classes/App-Cards-DeckOfCards.html#constant_RANKS"
         },                {
             "fqsen": "\\App\\Cards\\DeckOfCards\u003A\u003ASUITES",
@@ -370,6 +265,11 @@ Search.appendIndex(
             "name": "lucky",
             "summary": "",
             "url": "classes/App-Controller-BaseController.html#method_lucky"
+        },                {
+            "fqsen": "\\App\\Controller\\BaseController\u003A\u003Ametrics\u0028\u0029",
+            "name": "metrics",
+            "summary": "",
+            "url": "classes/App-Controller-BaseController.html#method_metrics"
         },                {
             "fqsen": "\\App\\Controller\\BlackJackController",
             "name": "BlackJackController",
@@ -411,45 +311,40 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-BookController.html"
         },                {
+            "fqsen": "\\App\\Controller\\BookController\u003A\u003AgetInputs\u0028\u0029",
+            "name": "getInputs",
+            "summary": "getInputs.",
+            "url": "classes/App-Controller-BookController.html#method_getInputs"
+        },                {
             "fqsen": "\\App\\Controller\\BookController\u003A\u003AsaveBook\u0028\u0029",
             "name": "saveBook",
-            "summary": "saveBook",
+            "summary": "saveBook.",
             "url": "classes/App-Controller-BookController.html#method_saveBook"
         },                {
             "fqsen": "\\App\\Controller\\BookController\u003A\u003AupdateBook\u0028\u0029",
             "name": "updateBook",
-            "summary": "updateBook",
+            "summary": "updateBook.",
             "url": "classes/App-Controller-BookController.html#method_updateBook"
         },                {
             "fqsen": "\\App\\Controller\\BookController\u003A\u003AdeleteBook\u0028\u0029",
             "name": "deleteBook",
-            "summary": "deleteBook",
+            "summary": "deleteBook.",
             "url": "classes/App-Controller-BookController.html#method_deleteBook"
-        },                {
-            "fqsen": "\\App\\Controller\\BookController\u003A\u003AsaveUploadedJpeg\u0028\u0029",
-            "name": "saveUploadedJpeg",
-            "summary": "saveUploadedJpeg",
-            "url": "classes/App-Controller-BookController.html#method_saveUploadedJpeg"
-        },                {
-            "fqsen": "\\App\\Controller\\BookController\u003A\u003AdeleteUploadedJpeg\u0028\u0029",
-            "name": "deleteUploadedJpeg",
-            "summary": "deleteUploadedJpeg",
-            "url": "classes/App-Controller-BookController.html#method_deleteUploadedJpeg"
         },                {
             "fqsen": "\\App\\Controller\\BookController\u003A\u003Alibrary\u0028\u0029",
             "name": "library",
             "summary": "",
             "url": "classes/App-Controller-BookController.html#method_library"
         },                {
-            "fqsen": "\\App\\Controller\\BookController\u003A\u003AcreateBook\u0028\u0029",
-            "name": "createBook",
+            "fqsen": "\\App\\Controller\\BookController\u003A\u003AcreateBookGET\u0028\u0029",
+            "name": "createBookGET",
             "summary": "",
-            "url": "classes/App-Controller-BookController.html#method_createBook"
+            "url": "classes/App-Controller-BookController.html#method_createBookGET"
         },                {
-            "fqsen": "\\App\\Controller\\BookController\u003A\u003AcreateBookPost\u0028\u0029",
-            "name": "createBookPost",
+            "fqsen": "\\App\\Controller\\BookController\u003A\u003AcreateBookPOST\u0028\u0029",
+            "name": "createBookPOST",
             "summary": "",
-            "url": "classes/App-Controller-BookController.html#method_createBookPost"
+            "url": "classes/App-Controller-BookController.html#method_createBookPOST"
         },                {
             "fqsen": "\\App\\Controller\\BookController\u003A\u003AshowAllBooks\u0028\u0029",
             "name": "showAllBooks",
@@ -466,15 +361,15 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-BookController.html#method_showAllBooksUpdate"
         },                {
-            "fqsen": "\\App\\Controller\\BookController\u003A\u003AshowAllBooksUpdateSpecific\u0028\u0029",
-            "name": "showAllBooksUpdateSpecific",
+            "fqsen": "\\App\\Controller\\BookController\u003A\u003AshowAllBooksUpdateGET\u0028\u0029",
+            "name": "showAllBooksUpdateGET",
             "summary": "",
-            "url": "classes/App-Controller-BookController.html#method_showAllBooksUpdateSpecific"
+            "url": "classes/App-Controller-BookController.html#method_showAllBooksUpdateGET"
         },                {
-            "fqsen": "\\App\\Controller\\BookController\u003A\u003AshowAllBooksUpdatePost\u0028\u0029",
-            "name": "showAllBooksUpdatePost",
+            "fqsen": "\\App\\Controller\\BookController\u003A\u003AshowAllBooksUpdatePOST\u0028\u0029",
+            "name": "showAllBooksUpdatePOST",
             "summary": "",
-            "url": "classes/App-Controller-BookController.html#method_showAllBooksUpdatePost"
+            "url": "classes/App-Controller-BookController.html#method_showAllBooksUpdatePOST"
         },                {
             "fqsen": "\\App\\Controller\\BookController\u003A\u003AshowAllBooksDeleteGET\u0028\u0029",
             "name": "showAllBooksDeleteGET",
@@ -485,6 +380,11 @@ Search.appendIndex(
             "name": "showAllBooksDeletePOST",
             "summary": "",
             "url": "classes/App-Controller-BookController.html#method_showAllBooksDeletePOST"
+        },                {
+            "fqsen": "\\App\\Controller\\BookController\u003A\u003AFILE_TYPES_SUPPORTED",
+            "name": "FILE_TYPES_SUPPORTED",
+            "summary": "",
+            "url": "classes/App-Controller-BookController.html#constant_FILE_TYPES_SUPPORTED"
         },                {
             "fqsen": "\\App\\Controller\\CardGameController",
             "name": "CardGameController",
@@ -683,22 +583,22 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Dice\\Dice\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "__construct",
+            "summary": "__construct.",
             "url": "classes/App-Dice-Dice.html#method___construct"
         },                {
             "fqsen": "\\App\\Dice\\Dice\u003A\u003Aroll\u0028\u0029",
             "name": "roll",
-            "summary": "roll",
+            "summary": "roll.",
             "url": "classes/App-Dice-Dice.html#method_roll"
         },                {
             "fqsen": "\\App\\Dice\\Dice\u003A\u003AgetValue\u0028\u0029",
             "name": "getValue",
-            "summary": "getValue",
+            "summary": "getValue.",
             "url": "classes/App-Dice-Dice.html#method_getValue"
         },                {
             "fqsen": "\\App\\Dice\\Dice\u003A\u003AgetString\u0028\u0029",
             "name": "getString",
-            "summary": "getString",
+            "summary": "getString.",
             "url": "classes/App-Dice-Dice.html#method_getString"
         },                {
             "fqsen": "\\App\\Dice\\Dice\u003A\u003A\u0024value",
@@ -713,17 +613,17 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Dice\\DiceGraphic\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "__construct",
+            "summary": "__construct.",
             "url": "classes/App-Dice-DiceGraphic.html#method___construct"
         },                {
             "fqsen": "\\App\\Dice\\DiceGraphic\u003A\u003AgetString\u0028\u0029",
             "name": "getString",
-            "summary": "getString",
+            "summary": "getString.",
             "url": "classes/App-Dice-DiceGraphic.html#method_getString"
         },                {
             "fqsen": "\\App\\Dice\\DiceGraphic\u003A\u003AGRAPHIC_REPRESENTATION",
             "name": "GRAPHIC_REPRESENTATION",
-            "summary": "Constant\u0020array\u0020that\u0020contain\u0020the\u0020graphic\u0020representation\u0020of\u0020a\u0020six\u0020sided\u0020dice",
+            "summary": "Constant\u0020array\u0020that\u0020contain\u0020the\u0020graphic\u0020representation\u0020of\u0020a\u0020six\u0020sided\u0020dice.",
             "url": "classes/App-Dice-DiceGraphic.html#constant_GRAPHIC_REPRESENTATION"
         },                {
             "fqsen": "\\App\\Dice\\DiceHand",
@@ -733,37 +633,37 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Dice\\DiceHand\u003A\u003AaddDie\u0028\u0029",
             "name": "addDie",
-            "summary": "addDie",
+            "summary": "addDie.",
             "url": "classes/App-Dice-DiceHand.html#method_addDie"
         },                {
             "fqsen": "\\App\\Dice\\DiceHand\u003A\u003AremoveDie\u0028\u0029",
             "name": "removeDie",
-            "summary": "removeDice",
+            "summary": "removeDice.",
             "url": "classes/App-Dice-DiceHand.html#method_removeDie"
         },                {
             "fqsen": "\\App\\Dice\\DiceHand\u003A\u003Aroll\u0028\u0029",
             "name": "roll",
-            "summary": "roll",
+            "summary": "roll.",
             "url": "classes/App-Dice-DiceHand.html#method_roll"
         },                {
             "fqsen": "\\App\\Dice\\DiceHand\u003A\u003AgetNumberDices\u0028\u0029",
             "name": "getNumberDices",
-            "summary": "getNumberDices",
+            "summary": "getNumberDices.",
             "url": "classes/App-Dice-DiceHand.html#method_getNumberDices"
         },                {
             "fqsen": "\\App\\Dice\\DiceHand\u003A\u003AgetValues\u0028\u0029",
             "name": "getValues",
-            "summary": "getValues",
+            "summary": "getValues.",
             "url": "classes/App-Dice-DiceHand.html#method_getValues"
         },                {
             "fqsen": "\\App\\Dice\\DiceHand\u003A\u003Asum\u0028\u0029",
             "name": "sum",
-            "summary": "sum",
+            "summary": "sum.",
             "url": "classes/App-Dice-DiceHand.html#method_sum"
         },                {
             "fqsen": "\\App\\Dice\\DiceHand\u003A\u003AgetString\u0028\u0029",
             "name": "getString",
-            "summary": "getString",
+            "summary": "getString.",
             "url": "classes/App-Dice-DiceHand.html#method_getString"
         },                {
             "fqsen": "\\App\\Dice\\DiceHand\u003A\u003A\u0024hand",
@@ -778,47 +678,47 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Entity\\Book\u003A\u003AgetId\u0028\u0029",
             "name": "getId",
-            "summary": "getId",
+            "summary": "getId.",
             "url": "classes/App-Entity-Book.html#method_getId"
         },                {
             "fqsen": "\\App\\Entity\\Book\u003A\u003AgetTitle\u0028\u0029",
             "name": "getTitle",
-            "summary": "getTitle",
+            "summary": "getTitle.",
             "url": "classes/App-Entity-Book.html#method_getTitle"
         },                {
             "fqsen": "\\App\\Entity\\Book\u003A\u003AsetTitle\u0028\u0029",
             "name": "setTitle",
-            "summary": "setTitle",
+            "summary": "setTitle.",
             "url": "classes/App-Entity-Book.html#method_setTitle"
         },                {
             "fqsen": "\\App\\Entity\\Book\u003A\u003AgetISBN\u0028\u0029",
             "name": "getISBN",
-            "summary": "getISBN",
+            "summary": "getISBN.",
             "url": "classes/App-Entity-Book.html#method_getISBN"
         },                {
             "fqsen": "\\App\\Entity\\Book\u003A\u003AsetISBN\u0028\u0029",
             "name": "setISBN",
-            "summary": "setISBN",
+            "summary": "setISBN.",
             "url": "classes/App-Entity-Book.html#method_setISBN"
         },                {
             "fqsen": "\\App\\Entity\\Book\u003A\u003AgetAuthor\u0028\u0029",
             "name": "getAuthor",
-            "summary": "getAuthor",
+            "summary": "getAuthor.",
             "url": "classes/App-Entity-Book.html#method_getAuthor"
         },                {
             "fqsen": "\\App\\Entity\\Book\u003A\u003AsetAuthor\u0028\u0029",
             "name": "setAuthor",
-            "summary": "setAuthor",
+            "summary": "setAuthor.",
             "url": "classes/App-Entity-Book.html#method_setAuthor"
         },                {
             "fqsen": "\\App\\Entity\\Book\u003A\u003AgetImg\u0028\u0029",
             "name": "getImg",
-            "summary": "getImg",
+            "summary": "getImg.",
             "url": "classes/App-Entity-Book.html#method_getImg"
         },                {
             "fqsen": "\\App\\Entity\\Book\u003A\u003AsetImg\u0028\u0029",
             "name": "setImg",
-            "summary": "setImg",
+            "summary": "setImg.",
             "url": "classes/App-Entity-Book.html#method_setImg"
         },                {
             "fqsen": "\\App\\Entity\\Book\u003A\u003A\u0024id",
@@ -853,27 +753,27 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Entity\\Product\u003A\u003AgetId\u0028\u0029",
             "name": "getId",
-            "summary": "getId",
+            "summary": "getId.",
             "url": "classes/App-Entity-Product.html#method_getId"
         },                {
             "fqsen": "\\App\\Entity\\Product\u003A\u003AgetName\u0028\u0029",
             "name": "getName",
-            "summary": "getName",
+            "summary": "getName.",
             "url": "classes/App-Entity-Product.html#method_getName"
         },                {
             "fqsen": "\\App\\Entity\\Product\u003A\u003AsetName\u0028\u0029",
             "name": "setName",
-            "summary": "setName",
+            "summary": "setName.",
             "url": "classes/App-Entity-Product.html#method_setName"
         },                {
             "fqsen": "\\App\\Entity\\Product\u003A\u003AgetValue\u0028\u0029",
             "name": "getValue",
-            "summary": "getValue",
+            "summary": "getValue.",
             "url": "classes/App-Entity-Product.html#method_getValue"
         },                {
             "fqsen": "\\App\\Entity\\Product\u003A\u003AsetValue\u0028\u0029",
             "name": "setValue",
-            "summary": "setValue",
+            "summary": "setValue.",
             "url": "classes/App-Entity-Product.html#method_setValue"
         },                {
             "fqsen": "\\App\\Entity\\Product\u003A\u003A\u0024id",
@@ -891,10 +791,160 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Entity-Product.html#property_value"
         },                {
+            "fqsen": "\\App\\Game\\BlackJack\\Dealer",
+            "name": "Dealer",
+            "summary": "Dealer.",
+            "url": "classes/App-Game-BlackJack-Dealer.html"
+        },                {
+            "fqsen": "\\App\\Game\\BlackJack\\Dealer\u003A\u003Aplay\u0028\u0029",
+            "name": "play",
+            "summary": "play.",
+            "url": "classes/App-Game-BlackJack-Dealer.html#method_play"
+        },                {
+            "fqsen": "\\App\\Game\\BlackJack\\Player",
+            "name": "Player",
+            "summary": "Player.",
+            "url": "classes/App-Game-BlackJack-Player.html"
+        },                {
+            "fqsen": "\\App\\Game\\BlackJack\\Player\u003A\u003AcheckIsBust\u0028\u0029",
+            "name": "checkIsBust",
+            "summary": "checkIsBust.",
+            "url": "classes/App-Game-BlackJack-Player.html#method_checkIsBust"
+        },                {
+            "fqsen": "\\App\\Game\\BlackJack\\Player\u003A\u003AcalculateHandValue\u0028\u0029",
+            "name": "calculateHandValue",
+            "summary": "calculateHandValue.",
+            "url": "classes/App-Game-BlackJack-Player.html#method_calculateHandValue"
+        },                {
+            "fqsen": "\\App\\Game\\BlackJack\\Player\u003A\u003A\u0024isBust",
+            "name": "isBust",
+            "summary": "",
+            "url": "classes/App-Game-BlackJack-Player.html#property_isBust"
+        },                {
+            "fqsen": "\\App\\Game\\BlackJack\\Player\u003A\u003AgetHandValue\u0028\u0029",
+            "name": "getHandValue",
+            "summary": "getHandValue.",
+            "url": "classes/App-Game-BlackJack-Player.html#method_getHandValue"
+        },                {
+            "fqsen": "\\App\\Game\\BlackJack\\Player\u003A\u003AaddCard\u0028\u0029",
+            "name": "addCard",
+            "summary": "addCard.",
+            "url": "classes/App-Game-BlackJack-Player.html#method_addCard"
+        },                {
+            "fqsen": "\\App\\Game\\BlackJack\\Player\u003A\u003A\u0024handValue",
+            "name": "handValue",
+            "summary": "",
+            "url": "classes/App-Game-BlackJack-Player.html#property_handValue"
+        },                {
+            "fqsen": "\\App\\Game\\BlackJack",
+            "name": "BlackJack",
+            "summary": "BlackJack.",
+            "url": "classes/App-Game-BlackJack.html"
+        },                {
+            "fqsen": "\\App\\Game\\BlackJack\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "__construct.",
+            "url": "classes/App-Game-BlackJack.html#method___construct"
+        },                {
+            "fqsen": "\\App\\Game\\BlackJack\u003A\u003AsetupGame\u0028\u0029",
+            "name": "setupGame",
+            "summary": "setupGame.",
+            "url": "classes/App-Game-BlackJack.html#method_setupGame"
+        },                {
+            "fqsen": "\\App\\Game\\BlackJack\u003A\u003AcalculateWinner\u0028\u0029",
+            "name": "calculateWinner",
+            "summary": "calculateWinner.",
+            "url": "classes/App-Game-BlackJack.html#method_calculateWinner"
+        },                {
+            "fqsen": "\\App\\Game\\BlackJack\u003A\u003AplayDealer\u0028\u0029",
+            "name": "playDealer",
+            "summary": "playDealer.",
+            "url": "classes/App-Game-BlackJack.html#method_playDealer"
+        },                {
+            "fqsen": "\\App\\Game\\BlackJack\u003A\u003AcheckIfDealersTurn\u0028\u0029",
+            "name": "checkIfDealersTurn",
+            "summary": "checkIfDealersTurn.",
+            "url": "classes/App-Game-BlackJack.html#method_checkIfDealersTurn"
+        },                {
+            "fqsen": "\\App\\Game\\BlackJack\u003A\u003AstateOfGame\u0028\u0029",
+            "name": "stateOfGame",
+            "summary": "stateOfGame.",
+            "url": "classes/App-Game-BlackJack.html#method_stateOfGame"
+        },                {
+            "fqsen": "\\App\\Game\\BlackJack\u003A\u003AisPlayerBust\u0028\u0029",
+            "name": "isPlayerBust",
+            "summary": "isPlayerBust.",
+            "url": "classes/App-Game-BlackJack.html#method_isPlayerBust"
+        },                {
+            "fqsen": "\\App\\Game\\BlackJack\u003A\u003AisDealerBust\u0028\u0029",
+            "name": "isDealerBust",
+            "summary": "isDealerBust.",
+            "url": "classes/App-Game-BlackJack.html#method_isDealerBust"
+        },                {
+            "fqsen": "\\App\\Game\\BlackJack\u003A\u003AresetGame\u0028\u0029",
+            "name": "resetGame",
+            "summary": "resetGame.",
+            "url": "classes/App-Game-BlackJack.html#method_resetGame"
+        },                {
+            "fqsen": "\\App\\Game\\BlackJack\u003A\u003AhitPlayer\u0028\u0029",
+            "name": "hitPlayer",
+            "summary": "hitPlayer.",
+            "url": "classes/App-Game-BlackJack.html#method_hitPlayer"
+        },                {
+            "fqsen": "\\App\\Game\\BlackJack\u003A\u003AstayPlayer\u0028\u0029",
+            "name": "stayPlayer",
+            "summary": "stayPlayer.",
+            "url": "classes/App-Game-BlackJack.html#method_stayPlayer"
+        },                {
+            "fqsen": "\\App\\Game\\BlackJack\u003A\u003AMAX_PLAYERS",
+            "name": "MAX_PLAYERS",
+            "summary": "",
+            "url": "classes/App-Game-BlackJack.html#constant_MAX_PLAYERS"
+        },                {
+            "fqsen": "\\App\\Game\\BlackJack\u003A\u003A\u0024numOfPlayers",
+            "name": "numOfPlayers",
+            "summary": "",
+            "url": "classes/App-Game-BlackJack.html#property_numOfPlayers"
+        },                {
+            "fqsen": "\\App\\Game\\BlackJack\u003A\u003A\u0024deck",
+            "name": "deck",
+            "summary": "",
+            "url": "classes/App-Game-BlackJack.html#property_deck"
+        },                {
+            "fqsen": "\\App\\Game\\BlackJack\u003A\u003A\u0024dealer",
+            "name": "dealer",
+            "summary": "",
+            "url": "classes/App-Game-BlackJack.html#property_dealer"
+        },                {
+            "fqsen": "\\App\\Game\\BlackJack\u003A\u003A\u0024players",
+            "name": "players",
+            "summary": "",
+            "url": "classes/App-Game-BlackJack.html#property_players"
+        },                {
+            "fqsen": "\\App\\Game\\BlackJack\u003A\u003A\u0024gameStates",
+            "name": "gameStates",
+            "summary": "\u002D2\u0020\u003D\u0020Stayed,\u0020\u002D1\u0020\u003D\u0020Undecided,\u00200\u0020\u003D\u0020Tie,\u00201\u0020\u003D\u0020Player,\u00202\u0020\u003D\u0020Dealer.",
+            "url": "classes/App-Game-BlackJack.html#property_gameStates"
+        },                {
+            "fqsen": "\\App\\Game\\BlackJack\u003A\u003A\u0024dealersTurn",
+            "name": "dealersTurn",
+            "summary": "",
+            "url": "classes/App-Game-BlackJack.html#property_dealersTurn"
+        },                {
             "fqsen": "\\App\\Kernel",
             "name": "Kernel",
             "summary": "",
             "url": "classes/App-Kernel.html"
+        },                {
+            "fqsen": "\\App\\Kernel\u003A\u003A\u0024instanceof",
+            "name": "instanceof",
+            "summary": "",
+            "url": "classes/App-Kernel.html#property_instanceof"
+        },                {
+            "fqsen": "\\App\\Kernel\u003A\u003A\u0024name",
+            "name": "name",
+            "summary": "",
+            "url": "classes/App-Kernel.html#property_name"
         },                {
             "fqsen": "\\App\\Repository\\BookRepository",
             "name": "BookRepository",
@@ -903,28 +953,48 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Repository\\BookRepository\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "__construct.",
             "url": "classes/App-Repository-BookRepository.html#method___construct"
         },                {
             "fqsen": "\\App\\Repository\\BookRepository\u003A\u003AreturnBook\u0028\u0029",
             "name": "returnBook",
-            "summary": "returnBook",
+            "summary": "returnBook.",
             "url": "classes/App-Repository-BookRepository.html#method_returnBook"
+        },                {
+            "fqsen": "\\App\\Repository\\BookRepository\u003A\u003AsaveBook\u0028\u0029",
+            "name": "saveBook",
+            "summary": "saveBook.",
+            "url": "classes/App-Repository-BookRepository.html#method_saveBook"
+        },                {
+            "fqsen": "\\App\\Repository\\BookRepository\u003A\u003AupdateBook\u0028\u0029",
+            "name": "updateBook",
+            "summary": "updateBook.",
+            "url": "classes/App-Repository-BookRepository.html#method_updateBook"
+        },                {
+            "fqsen": "\\App\\Repository\\BookRepository\u003A\u003AdeleteBook\u0028\u0029",
+            "name": "deleteBook",
+            "summary": "",
+            "url": "classes/App-Repository-BookRepository.html#method_deleteBook"
         },                {
             "fqsen": "\\App\\Repository\\BookRepository\u003A\u003AreadAllBooks\u0028\u0029",
             "name": "readAllBooks",
-            "summary": "readAllBooks",
+            "summary": "readAllBooks.",
             "url": "classes/App-Repository-BookRepository.html#method_readAllBooks"
         },                {
             "fqsen": "\\App\\Repository\\BookRepository\u003A\u003AreadOneBook\u0028\u0029",
             "name": "readOneBook",
-            "summary": "readOneBook",
+            "summary": "readOneBook.",
             "url": "classes/App-Repository-BookRepository.html#method_readOneBook"
         },                {
             "fqsen": "\\App\\Repository\\BookRepository\u003A\u003AreadOneBookISBN\u0028\u0029",
             "name": "readOneBookISBN",
-            "summary": "readOneBookISBN",
+            "summary": "readOneBookISBN.",
             "url": "classes/App-Repository-BookRepository.html#method_readOneBookISBN"
+        },                {
+            "fqsen": "\\App\\Repository\\BookRepository\u003A\u003A\u0024doctrine",
+            "name": "doctrine",
+            "summary": "",
+            "url": "classes/App-Repository-BookRepository.html#property_doctrine"
         },                {
             "fqsen": "\\App\\Repository\\ProductRepository",
             "name": "ProductRepository",
@@ -945,6 +1015,41 @@ Search.appendIndex(
             "name": "findByMinimumValue2",
             "summary": "Find\u0020all\u0020products\u0020having\u0020a\u0020value\u0020above\u0020the\u0020specified\u0020one\u0020with\u0020SQL.",
             "url": "classes/App-Repository-ProductRepository.html#method_findByMinimumValue2"
+        },                {
+            "fqsen": "\\App\\UploadManager",
+            "name": "UploadManager",
+            "summary": "",
+            "url": "classes/App-UploadManager.html"
+        },                {
+            "fqsen": "\\App\\UploadManager\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "__construct.",
+            "url": "classes/App-UploadManager.html#method___construct"
+        },                {
+            "fqsen": "\\App\\UploadManager\u003A\u003AsaveUploadedFile\u0028\u0029",
+            "name": "saveUploadedFile",
+            "summary": "saveUploadedFile.",
+            "url": "classes/App-UploadManager.html#method_saveUploadedFile"
+        },                {
+            "fqsen": "\\App\\UploadManager\u003A\u003AdeleteUploadedFile\u0028\u0029",
+            "name": "deleteUploadedFile",
+            "summary": "deleteUploadedFile.",
+            "url": "classes/App-UploadManager.html#method_deleteUploadedFile"
+        },                {
+            "fqsen": "\\App\\UploadManager\u003A\u003A\u0024projectDir",
+            "name": "projectDir",
+            "summary": "",
+            "url": "classes/App-UploadManager.html#property_projectDir"
+        },                {
+            "fqsen": "\\App\\UploadManager\u003A\u003A\u0024targetDirectory",
+            "name": "targetDirectory",
+            "summary": "",
+            "url": "classes/App-UploadManager.html#property_targetDirectory"
+        },                {
+            "fqsen": "\\App\\UploadManager\u003A\u003A\u0024targetDirectoryPath",
+            "name": "targetDirectoryPath",
+            "summary": "",
+            "url": "classes/App-UploadManager.html#property_targetDirectoryPath"
         },                {
             "fqsen": "\\",
             "name": "\\",
@@ -970,6 +1075,16 @@ Search.appendIndex(
             "name": "Entity",
             "summary": "",
             "url": "namespaces/app-entity.html"
+        },                {
+            "fqsen": "\\App\\Game\\BlackJack",
+            "name": "BlackJack",
+            "summary": "",
+            "url": "namespaces/app-game-blackjack.html"
+        },                {
+            "fqsen": "\\App\\Game",
+            "name": "Game",
+            "summary": "",
+            "url": "namespaces/app-game.html"
         },                {
             "fqsen": "\\App",
             "name": "App",

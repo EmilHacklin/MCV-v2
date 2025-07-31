@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Test\Repository;
+namespace App\Tests\Repository;
 
-use Exception;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\ProductRepository;
@@ -29,7 +28,7 @@ class ProductRepositoryTest extends KernelTestCase
 
         // Check if kernel is not null
         if ($kernel === null) {
-            throw new Exception('Kernel is not initialized.');
+            throw new \RuntimeException('Kernel is not initialized.');
         }
 
         // Access the container

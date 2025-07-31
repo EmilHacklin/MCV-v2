@@ -120,7 +120,9 @@ h1 {
   text-align: center;
   clear: both;
 }
-h2 {
+h2,
+h3,
+h4 {
   font-family: 'Times New Roman', Times, serif;
   text-align: center;
   clear: both;
@@ -188,6 +190,17 @@ pre {
 }
 .img-book {
   width: 5em;
+  border: 0.5em;
+  border-color: black;
+}
+.img-badge {
+  display: flex;
+  justify-content: center;
+}
+.img-metric {
+  display: block;
+  margin: auto;
+  width: 50em;
   border: 0.5em;
   border-color: black;
 }

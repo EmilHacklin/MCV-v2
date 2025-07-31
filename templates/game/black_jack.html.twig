@@ -8,24 +8,24 @@
     <h1>Dealer's Cards:</h1>
 
     <ul class="cardHand">
-        {% for card in dealer %}
+        {% for card in dealerCards %}
             <li class="card">{{ card }}</li>
         {% endfor %}
     </ul>
 
-    <h2>Value: {{ dealerValue }}</h2>
+    <h2>Value: {{ dealerHandValue }}</h2>
 
     <h1>Player's Cards:</h1>
 
     <ul class="cardHand">
-        {% for card in player %}
+        {% for card in playersCards[0] %}
             <li class="card">{{ card }}</li>
         {% endfor %}
     </ul>
 
-    <h2>Value: {{ playerValue }}</h2>
+    <h2>Value: {{ playersHandValue[0] }}</h2>
 
-    {% if winner == "Undecided"%}
+    {% if gameStates[0] == "Undecided"%}
         <form method="post" action="">
             <p>
                 <input type="submit" name="hit" value="Hit" 
@@ -35,10 +35,10 @@
             </p>
         </form>
     {% else %} 
-        {% if winner == "Tie"%}
-            <h1>The game is over, it resulted in a {{ winner }}</h1>
+        {% if gameStates[0] == "Tie"%}
+            <h1>The game is over, it resulted in a Tie</h1>
         {% else %}
-            <h1>The game is over, it resulted in a victory for the: {{ winner }}</h1>
+            <h1>The game is over, it resulted in a victory for the: {{ gameStates[0] }}</h1>
         {% endif %}
 
         <h2>Do you want to play again?</h2>
