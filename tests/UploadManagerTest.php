@@ -146,7 +146,7 @@ class UploadManagerTest extends WebTestCase
         $result = $this->uploadManager->saveUploadedFile($file, $fileTypesSupported);
 
         $this->assertNotNull($result);
-        $this->assertStringContainsString('/uploads/', $result);
+        $this->assertStringContainsString('/uploads/', /** @scrutinizer ignore-type */ $result);
     }
 
     /**

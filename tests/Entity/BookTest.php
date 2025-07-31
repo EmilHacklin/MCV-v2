@@ -49,8 +49,17 @@ class BookTest extends TestCase
         $book->setISBN(null);
         $book->setAuthor(null);
         $book->setImg(null);
-        $this->assertNull($book->getISBN());
-        $this->assertNull($book->getAuthor());
-        $this->assertNull($book->getImg());
+
+        /** @var string|null $isbn */
+        $isbn = $book->getISBN();
+        $this->assertNull($isbn);
+
+        /** @var string|null $author */
+        $author = $book->getAuthor();
+        $this->assertNull($author);
+
+        /** @var string|null $img */
+        $img = $book->getImg();
+        $this->assertNull($img);
     }
 }
