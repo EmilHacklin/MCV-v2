@@ -34,6 +34,7 @@ class BookTest extends TestCase
     public function testSetAndGetMethods(): void
     {
         $book = new Book();
+
         $book->setTitle("Test");
         $book->setISBN("1234567891234");
         $book->setAuthor("Test");
@@ -46,13 +47,21 @@ class BookTest extends TestCase
         $this->assertEquals("Test", $book->getImg());
 
         //Test the setters is null
-        $book = new Book();
         $book->setISBN(null);
         $book->setAuthor(null);
         $book->setImg(null);
 
-        $this->assertNull($book->getISBN());
-        $this->assertNull($book->getAuthor());
-        $this->assertNull($book->getImg());
+        /** @var string|null $isbn */
+        $isbn = $book->getISBN();
+        /** @var string|null $author */
+        $author = $book->getAuthor();
+        /** @var string|null $img */
+        $img = $book->getImg();
+
+        // @scrutinizer ignore-start
+        $this->assertNull($isbn);
+        $this->assertNull($author);
+        $this->assertNull($img);
+        // @scrutinizer ignore-end
     }
 }

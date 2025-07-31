@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1753974586">
-  <project timestamp="1753974586">
+<coverage generated="1753975920">
+  <project timestamp="1753975920">
     <file name="/home/ubuntu/dbwebbkurser/mvc/me/report/src/Cards/Card.php">
       <class name="App\Cards\Card" namespace="global">
         <metrics complexity="13" methods="11" coveredmethods="11" conditionals="0" coveredconditionals="0" statements="71" coveredstatements="71" elements="82" coveredelements="82"/>
@@ -903,23 +903,23 @@
       <line num="79" type="stmt" count="13"/>
       <line num="85" type="method" name="calculateWinner" visibility="private" complexity="5" crap="5" count="8"/>
       <line num="90" type="stmt" count="8"/>
-      <line num="91" type="stmt" count="4"/>
-      <line num="93" type="stmt" count="4"/>
+      <line num="91" type="stmt" count="3"/>
+      <line num="93" type="stmt" count="3"/>
       <line num="97" type="stmt" count="6"/>
       <line num="98" type="stmt" count="1"/>
       <line num="100" type="stmt" count="1"/>
       <line num="103" type="stmt" count="5"/>
       <line num="104" type="stmt" count="5"/>
       <line num="107" type="stmt" count="5"/>
-      <line num="108" type="stmt" count="1"/>
-      <line num="110" type="stmt" count="1"/>
-      <line num="113" type="stmt" count="4"/>
-      <line num="114" type="stmt" count="3"/>
-      <line num="116" type="stmt" count="3"/>
-      <line num="120" type="stmt" count="1"/>
+      <line num="108" type="stmt" count="2"/>
+      <line num="110" type="stmt" count="2"/>
+      <line num="113" type="stmt" count="3"/>
+      <line num="114" type="stmt" count="1"/>
+      <line num="116" type="stmt" count="1"/>
+      <line num="120" type="stmt" count="2"/>
       <line num="128" type="method" name="playDealer" visibility="private" complexity="2" crap="2" count="5"/>
       <line num="130" type="stmt" count="5"/>
-      <line num="131" type="stmt" count="4"/>
+      <line num="131" type="stmt" count="2"/>
       <line num="135" type="stmt" count="5"/>
       <line num="141" type="method" name="checkIfDealersTurn" visibility="private" complexity="2" crap="2" count="5"/>
       <line num="144" type="stmt" count="5"/>
@@ -941,20 +941,20 @@
       <line num="191" type="stmt" count="11"/>
       <line num="192" type="stmt" count="5"/>
       <line num="195" type="stmt" count="11"/>
-      <line num="197" type="stmt" count="4"/>
-      <line num="198" type="stmt" count="4"/>
+      <line num="197" type="stmt" count="5"/>
+      <line num="198" type="stmt" count="5"/>
       <line num="199" type="stmt" count="8"/>
-      <line num="200" type="stmt" count="1"/>
-      <line num="201" type="stmt" count="1"/>
-      <line num="202" type="stmt" count="7"/>
-      <line num="203" type="stmt" count="2"/>
-      <line num="204" type="stmt" count="2"/>
-      <line num="205" type="stmt" count="5"/>
-      <line num="206" type="stmt" count="5"/>
-      <line num="207" type="stmt" count="5"/>
+      <line num="200" type="stmt" count="2"/>
+      <line num="201" type="stmt" count="2"/>
+      <line num="202" type="stmt" count="6"/>
+      <line num="203" type="stmt" count="3"/>
+      <line num="204" type="stmt" count="3"/>
+      <line num="205" type="stmt" count="3"/>
+      <line num="206" type="stmt" count="3"/>
+      <line num="207" type="stmt" count="3"/>
       <line num="212" type="stmt" count="11"/>
-      <line num="213" type="stmt" count="7"/>
-      <line num="214" type="stmt" count="7"/>
+      <line num="213" type="stmt" count="8"/>
+      <line num="214" type="stmt" count="8"/>
       <line num="217" type="stmt" count="11"/>
       <line num="225" type="method" name="isPlayerBust" visibility="public" complexity="1" crap="1" count="3"/>
       <line num="227" type="stmt" count="3"/>
@@ -990,7 +990,7 @@
       <line num="15" type="method" name="play" visibility="public" complexity="2" crap="2" count="6"/>
       <line num="18" type="stmt" count="6"/>
       <line num="20" type="stmt" count="6"/>
-      <line num="24" type="stmt" count="5"/>
+      <line num="24" type="stmt" count="3"/>
       <metrics loc="27" ncloc="16" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="4" coveredelements="4"/>
     </file>
     <file name="/home/ubuntu/dbwebbkurser/mvc/me/report/src/Game/BlackJack/Player.php">
