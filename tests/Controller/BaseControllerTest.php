@@ -164,4 +164,60 @@ class BaseControllerTest extends WebTestCase
         // Assert that certain content exists in the response
         $this->assertStringContainsString('MVC: Metrics', $crawler->filter('title')->text());
     }
+
+    /**
+     * testOldMetrics
+     *
+     * Test old_metrics route
+     *
+     * @return void
+     */
+    public function testOldMetrics(): void
+    {
+        // Retrieve router service
+        /** @var RouterInterface $router */
+        $router = static::getContainer()->get('router');
+
+        //about
+
+        // Generate URL from route name
+        $url = $router->generate('old_metrics');
+
+        // Send a GET request to the route you want to test
+        $crawler = $this->client->request('GET', $url);
+
+        // Assert the response status code
+        $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
+
+        // Assert that certain content exists in the response
+        $this->assertStringContainsString('PhpMetrics report', $crawler->filter('title')->text());
+    }
+
+    /**
+     * testNewMetrics
+     *
+     * Test new_metrics route
+     *
+     * @return void
+     */
+    public function testNewMetrics(): void
+    {
+        // Retrieve router service
+        /** @var RouterInterface $router */
+        $router = static::getContainer()->get('router');
+
+        //about
+
+        // Generate URL from route name
+        $url = $router->generate('new_metrics');
+
+        // Send a GET request to the route you want to test
+        $crawler = $this->client->request('GET', $url);
+
+        // Assert the response status code
+        $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
+
+        // Assert that certain content exists in the response
+        $this->assertStringContainsString('PhpMetrics report', $crawler->filter('title')->text());
+    }
 }

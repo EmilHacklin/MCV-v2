@@ -271,6 +271,16 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-BaseController.html#method_metrics"
         },                {
+            "fqsen": "\\App\\Controller\\BaseController\u003A\u003AoldMetrics\u0028\u0029",
+            "name": "oldMetrics",
+            "summary": "",
+            "url": "classes/App-Controller-BaseController.html#method_oldMetrics"
+        },                {
+            "fqsen": "\\App\\Controller\\BaseController\u003A\u003AnewMetrics\u0028\u0029",
+            "name": "newMetrics",
+            "summary": "",
+            "url": "classes/App-Controller-BaseController.html#method_newMetrics"
+        },                {
             "fqsen": "\\App\\Controller\\BlackJackController",
             "name": "BlackJackController",
             "summary": "",
