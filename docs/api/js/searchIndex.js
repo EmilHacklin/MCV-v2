@@ -973,7 +973,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Repository\\BookRepository\u003A\u003AdeleteBook\u0028\u0029",
             "name": "deleteBook",
-            "summary": "",
+            "summary": "deleteBook.",
             "url": "classes/App-Repository-BookRepository.html#method_deleteBook"
         },                {
             "fqsen": "\\App\\Repository\\BookRepository\u003A\u003AreadAllBooks\u0028\u0029",

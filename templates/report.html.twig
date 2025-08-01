@@ -7,31 +7,38 @@
     <h1>Report</h1>
     <div class="row">
         <h2 id="Kmom01">Kmom01</h2>
+
         <p>
             I detta Komom så har vi börjat skapa en hemsida med PHP och ramverket Symphony. 
             Vi har lärt oss om att använda terminalen på en Linux distro för att installera en webbserver samt Git för att hantera versionskontroller. 
             Vidare har vi använt os av node.js för att installera Encore för att hantera dynamiska preprocessor som LESS.
         </p>
+
         <p>
             Jag har tidigare kunskaper inom objektorienterad programmering i ett antal olika språk som till exempel c++, java, c# för att nämna några få. 
             Så det var ingen stor förändring med att börja programmera.
         </p>
+
         <p>
             PHP:s modell att hantera klasser och objekt som många av tidigare nämnda programmeringsspråk. 
             Till den grad att om man utfört objektorienterad programmering tidigare så är det inga problem att hoppa rakt in i det. 
         </p>
+
         <p>
             Om man inte har gjort objektorienterad programmering tidigare så behöver man bara förstå att objekt är versioner av klasser men inte själva klassen i sig, på samma sätt som att en bil kan vara en Volvo men en Volvo är inte alla bilar. 
             Vidare så när man ändrar på variabler i objektet så ändras bara variablerna för det objektet.
         </p>
+
         <p>
             Dock hur enkelt jag hade att börja programmera så blev jag inte så nöjd med hur min sida ser ut, då jag stötte på flera problem med själva ramvärksdelen som gjorde att jag behövde om installera ramverket flera gånger. 
             Detta drog ut på tiden jag hade vilket gjorde att själva stylingen på sidan blev inte den bästa.
         </p>
+
         <p>
             Där emot så är själva koden för sidan mycket bättre samt så är det lätt att strukturera filerna till en lättförståelig hierarki i Symphony ramverket. 
             Då layouten av sidan byggs upp av twig template filer som kallar på resurser i assets mappen. 
         </p>
+
         <p>
             Om jag skulle säga en sak som står mest ut i vad jag lärt mig för denna Komom så skulle det vara Sympony i sin helhet då den förenklar byggandet av en webbsida. 
             Förutsatt att man inte sparar sina filer på Windows utan istället i Linux distron, som var orsaken till det flesta av mina problem.
@@ -39,77 +46,97 @@
     </div>
     <div class="row">
         <h2 id="Kmom02">Kmom02</h2>
+
         <p>
             Under detta Kmom så har vi arbetat med att skapa ett tärningsspel och en kortlek. 
             För att skap tärningspelet och kortleken så använde vi oss av klasser som ärver från andra kassar genom att bygga vidare på förälder klassen. 
         </p>
+
         <p>
             Vidare använde vi oss utav komposition för att en klass skall ha en eller flera instanser av en annan klass som medlemsvariabel.
         </p>
+
         <p>
             Vi använde inte oss av några interface för våra klasser då det inte var något vi vill ha just för våra basklasser Dice och Card. 
             Men om vi skulle använt ett interface så skulle vi göra det för att berätta om vad för metoder en klass som uppfyller interfacet utan att innehålla några basmetoder som våra Dice och Card klasser gör.
         </p>
+
         <p>
             Vidare använde vi inte några traits men vi skulle kunna använda dem för att klumpa ihop olika metoder för klasser att använda utan att skapa separata klassmetoder i varje klass man vill använda sig av dessa traits.
         </p>
+
         <p>
             Jag löste uppgiften att skapa klasser för korten genom att skapa klasserna Card, CardGraphic, CardHand och DeckOfCards.
         </p>
+
         <p>
             Card klassen sköter själva handlandet av ett kort, dess rank, dess färg osv. samt skriver ut en sträng som beskriver kortet.
         </p>
+
         <p>
             CardGraphic klassen bygger vidare på Card klassen genom att ärva den och sedan implementerar en grafisk representation av kortet. 
             Jag valde att använda mig av utf-8 karaktärer för korten men en annan väg vore att använda sig av bilder för att visa korten dok så föredrar jag min väg då den borde vara mindre prestandakrävande då karaktärer är mindre data än bilder.
         </p>
+
         <p>
             CardHand fungerar mest som en Array av Card objekt men har också funktionalitet för att räkna ut poängvärden av en hand kort.
         </p>
+
         <p>
             DeckOfCards bygger upp logiken för en 52 korts kortlek, då man kan blanda och dra kort från den samt återställa den när till exempel en runda kortspel är slut.
         </p>
+
         <p>
             Det gick mycket bra att bygge denna här Cards implementationen i Symphony, det gick särskilt bra att felsöka problem då felmeddelandena ledde snabbt till var problemen var. 
         </p>
+
         <p>
             Det som jam mest tycker jag har lärt mig om detta Kmom var mer om hur Symfoni fungerar och hur session fungerar mer en vad jag gjorde innan.
         </p>
     </div>
     <div class="row">
         <h2 id="Kmom03">Kmom03</h2>
+
         <p>
             Under detta Kmom så har vi skapat ett Black Jack kortspel genom att först modellera det med flödesdiagram och psudedokod. 
             Detta var något som jag inte ofta brukara göra då jag mest föredrar att bara börja skriva kod och iterera på den tills jag inte kan förbättra koden.
         </p>
+
         <p>
             Jag tror nog inte att skriva psuedokod är något som jag tycker hjälpte mig med implementeringen av min kod då för mig så känns den överflödig då jag får samma inblick av att skriva riktig kod eller av att kommentera kod.
         </p>
+
         <p>
             Flödesdiagram kan däremot vara ett smart verktyg för större eller krångligare uppgifter för att bryta ner dem till mindre delar. 
             Till exempel om man skall få en mer översiktlig bild av hur ett system skall fungera utan att behöva tänka på implementationen.
         </p>
+
         <p>
             Implementationen av Black Jack spelet blev att jag skapade en klass BlackJack som använde sig av klasserna vi skapade i förra Kmom med några små förändringar. 
             Då i detta Kmom så har vi använt oss av verktyg som phpstan och phpmd för att snygga upp vår kod så den följer mera kod standarden. 
             Detta gjorde att vissa av klasserna behövde förändras för att klara dessa verktygs kontrollerna.
         </p>
+
         <p>
             BlackJack klassen hanterar tre huvudvariabler vilka är kortleken av klass Deck och spelarens och dealerns kort händer av klassen CardHand. 
             När ett nytt spel skapas eller återställs så blandas kortleken, spelaren och dealern drar varsit kort tills de har två kort var i den årdningen.
         </p>
+
         <p>
             Sedan så frågas spelaren om han vill dra ett till kort (Hit) eller stanna (Stay), 
             om han drar ett kort så kalkyleras värdet av hans hand och om det är över 21 så är spelet slut och dealern vann annars frågas han igen.
         </p>
+
         <p>
             Om han i stället väljer någon gång att stanna så är det dealerns tur att spela. 
             Om hans hands värde är över 16 så stannar han annars drar han ett nytt kort. 
             Om dealer inte fick över 21 och den stannar så jämför värdet på spelarens och dealerns händer för att finna en vinnare eller om det blev lika.
         </p>
+
         <p>
             Det går nog inte att förbättra denna implementation så mycket men det går att implementera mer av Black Jack spelet till denna klass som att kunna satsa krediter och nya saker en spelare kan i stället göra som Double down, Split, Surrender eller Insurance.
         </p>
+
         <p>
             Att koda i detta kortspel i ramverket Symfony var rätt så enkelt förutom CSS delen då det tar mycket tid att i mitt fall göra en ändring i LESS fil bygga om den till CSS och sedan npm run build för varje ändring. 
             Det som jag tycker jag mest lärt mig denna Kmom är att bygga flödesdiagram för att få en bättre översikt av system.
@@ -117,38 +144,47 @@
     </div>
     <div class="row">
         <h2 id="Kmom04">Kmom04</h2>
+
         <p>
             I detta Kmom så har vi implementerat enhetstester med PHPUnit för att testa vår kod så den fungerar. 
             Jag har inte tidigare använt mig av enhetstester tidigare, jag hade trott att det skulle blivit jobbigt att lista ut vad man behövde testa. 
         </p>
+
         <p>
             Men med PHPUnit så skapar den en websida som visar exakt vad i koden som har testat och vad som inte har testats. 
             Det gör att det är lätt att skriva tester för vad som man behöver och inte för alla metoder då det kan på kallas på andra ställen.
         </p>
+
         <p>
             På detta sätt lyckades jag skapa tester för 100% av min kod och genom att skriva dessa tester fann jag flera ställen 
             i min kod som kunde förbättras på små sätt som till exempel namn på metoder eller variabler. 
         </p>
+
         <p>
             Jag lyckades också skapa enhetstester för våra Controllers trots att det var mycket svårare att skapa tester för dem då jag hela tiden stötte på problem, särskilt med tester för alla Exceptions. 
             Trots detta lyckades jag skapa tester för 100% av Controllers vilket var en bra sak då under skapandet av testerna så hittade jag fel i vissa Routs som jag inte hade upptäckt tidigare.
         </p>
+
         <p>
             Trots att det tog ett bra tag att skriva alla dessa tester så tyckte jag att min kod ändå var ganska testbar då jag inte upptäckte några särskilda svårigheter med att testa koden. 
             Detta kan nog märkas av att jag inte använde mig av många stubs och mockobjects för att testa koden.
         </p>
+
         <p>
             Dom flesta ändringarna jag behövde göra var mer att döpa om metoder eller variabler, 
             på ett ställe i JasonController så var en IF sats för att kolla om kortleken är tom fel så den aldrig trodde att kortleken var tom. 
         </p>
+
         <p>
             Detta är för övrigt en av det bästa exemplet för hur enhetstester kan användas för att finna fel. 
             Om jag inte gjort tester för Controllern så hade jag nog inte märkt att det fanns en bugg i koden såvida jag inte tryckt på att dra kort från API 52 gånger.
         </p>
+
         <p>
             Om det går att säga att testbar kod är “snygg och ren kod” så skulle jag säga att testbar kod är en del utav “snygg och ren kod” men inte helheten. 
             Bara för att kod är testbar så betyder inte det att koden automatiskt är “snygg och ren kod” utan det kan finnas kod som är testbar men inte är skrivet på ett bra sätt.
         </p>
+
         <p>
             Det som jag tycker jag lärt mig mest om för detta Kmom är att skriva enhetstester för 
             Symfony Controllers då det var något som jag definitivt inte visste om innan men har redan förbättrat min kod.
@@ -156,44 +192,97 @@
     </div>
     <div class="row">
         <h2 id="Kmom05">Kmom05</h2>
+
         <p>
             Under detta Kmom så har vi implementerat en databas till vår websida samt ett ORM (Object Relational Mapping) lager som sköter vår interaktion med databasen. 
             Jag valde att skapa en SQLite databas i stället för att koppla mig mot studentserverns MySQL eller MariaDB då dels det är enklare att jobba med en lokal databas. 
             Men mest för att när jag skulle börja med detta Kmom då jag var sen med uppgiften så var studentservern nere (troligen för underhåll) så jag inte kunde skapa ett konto.
         </p>
+
         <p>
             Det gick trots detta rätt så bra att jobba igenom övningen då jag inte stötte på några större problem. 
             Men ORM var ett mycket smidigt sätt att skapa en databas samt sätta upp en mall för att skriva frågor till databasen. 
         </p>
+
         <p>
             För själva applikationen för uppgiften så tyckte jag inte instruktionerna var det bästa för att komma i gång med själva uppgiften. 
             Det mesta var saker jag har gjort tidigare men instruktionen att spara en bild på boken till databasen var vag &quot;<i><strong>med deras titel, ISBN och författare samt en bild som representerar boken</strong></i>&quot;. 
         </p>
+
         <p>
             Förs trodde jag att detta betydde att jag skulle spara bilden rent i databasen som ett BLOB objekt 
             men när jag väl kom till delen att visa upp den insparade bilden så kunde jag inte lista ut hur jag kunde visa den i twig template filen.
         </p>
+
         <p>
             Till slut så kom jag fram till att spara bilderna i en fil /public/uploads/ och spara bildernas path i databasen var den bästa lösningen.
             Även om det krävde att controller filen blev större än jag skulle velat då logiken att för att spara och ta bort bilderna behövde ligga i controller namespace. 
         </p>
+
         <p>
             När det kom till Book klassen så behövde jag inte ändra mycket från template filen annat en att lägga till validering för set metoderna. 
             För BookRepository så lade jag till metoder föra att se alla böker eller för att hitta en specifik bok. 
             Men jag lade också en metod för att skapa ett Book objekt likt en konstruktör. 
             Anledningen till att jag gjorde detta var att jag inte visste om jag lade en konstruktör i Book, om den skulle leda till problem för tilldelningen av id då jag då skrev över default konstruktören.
         </p>
+
         <p>
             Att använda ett ORM för att ställa frågor till databasen gjorde det mycket enklare att jobba med den en om jag behövt skriva dem direkt till databasen. 
             Då jag inte behövde skapa SQL statements utan kunde i stället nästan behandla databasen som en klass med dess metoder. 
             Jag behövde inte heller skriva SQL för att skapa databasen och tabellerna vilket jag föredrog över att behöva manuella SQL statements som jag behövt göra förr.
         </p>
+        
         <p>
             Det som jag tycker mig ha lärt mig mest om i detta Kmom är att använda ORM för att hantera en databas på ett enklare sätt.
         </p>
     </div>
     <div class="row">
         <h2 id="Kmom06">Kmom06</h2>
+
+        <p>
+            Under detta Kmom så har vi använt oss av automatiserade tester som <q>PHPMetrics</q> och <q>Scrutinizer</q> för att testa vår kod. 
+            Sedan har vi använt oss av rapporterna från testerna för att finna svagheter i vår kod som vi kan åtgärda för att skapa en mera <q>Clean Code</q>. 
+            <q>Clean Code</q> som är mera läsbar och förståelig samt kan lättare underhålla vid kod förändringar.
+        </p>
+
+        <p>
+            <q>PHPMetrics</q> verktyget gick mycket enkelt att integrera och börja använda. 
+            Den enda förändringen jag behövde göra var att min <q>PHPUnit</q> test skapa en <q>junit.xml</q> fil för att den skulle kunna veta om resultatet från mina enhetstester.
+        </p>
+
+        <p>
+            <q>PHPMetrics</q> gav en bra överblick av ett antal olika mätvärden särskilt för att se komplexiteten av olika klasser och för att se vilka Composer dependencies som kan behövas uppdatera. 
+            Dok så värkar <q>PHPMetrics</q> vara buggad när det kom till att få översikt på <q>PHPUnit</q> tester då vissa tester inte visas trots att dom finns i <q>junit.xml filen.
+        </p>
+
+        <p>
+            <q>Scrutinizer</q> verktyget var mycket svårare att få fungera då <q>scrutinizer.yml</q> filen vi fick i övningen försökte köra <pre><code>composer phpUnit</code></pre> kommandot i stället för att bara ladda <q>coverage.clover</q> filen. 
+            Till sist så lyckades jag få den att fungera utan att köra <q>PHPUnit</q>.
+        </p>
+
+        <p>
+            Trots alla svårigheter med <q>Scrutinizer</q> så föredrar jag den över <q>PHPMetrics</q> då den ger en bättre bild av var i klasserna problem kan finnas då den ger information om klassmetoderna. 
+            Samt ger den enkla listor på var i koden <q>hot spots</q> finns få det finns listor vilka är de sämsta klasserna, operationerna samt vilka som är minst testade.
+        </p>
+
+        <p>
+            När jag väl fick <q>Scrutinizer</q> att fungera så fick jag en kodkvalité på 9,88 och en kodtekning på 72&#37;. 
+            Jag gillar verkligen hur <q>Scrutinizer</q> skapar dessa badges som på ett enkelt och snabbt sätt kan ge en överblick på hur bra koden är och hur mycket av koden enhetstestas.
+        </p>
+        
+        <p>
+            När det kommer till kodkvalité så håller jag med om att den nog kan mätas med kvalitémätvärden men frågan är om det sex C’erna som jag använde i min kodanalys räcker för att helt mäta kodkvalitén.
+        </p>
+
+        <p>
+            Jag torr dock inte att badges som <q>Scrutinizer</q> ger kan helt kan påvisa kodkvalitén då den klumpar in alla olika mätvärden till ett enda värde. 
+            Jag tror att det är ett bra sätt att ge en överblick men det ger inte helheten.
+        </p>
+
+        <p>
+            Det som jag tycker mig lärt mig denna Kmom är nog att vara mera konservativ när jag bestämmer mig för hur mycket arbete jag hinner göra. 
+            Detta Kmom tog mig konservativt 80 arbetstimmar att göra.
+        </p>
     </div>
     <div class="row">
         <h2 id="Kmom10">Kmom10</h2>

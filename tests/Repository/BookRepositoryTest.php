@@ -64,7 +64,7 @@ class BookRepositoryTest extends KernelTestCase
 
         // Find the smallest missing integer starting from 1
         $missingId = null;
-        for ($i = 1; ; $i++) {
+        for ($i = 1; true; $i++) {
             if (!in_array($i, $existingIds, true)) {
                 $missingId = $i;
                 break;
@@ -310,8 +310,7 @@ class BookRepositoryTest extends KernelTestCase
     {
         parent::tearDown();
 
-        if ($this->createdBookId !== null) {
-
+        if (null !== $this->createdBookId) {
             // Delete the book
             $this->repository->deleteBook($this->createdBookId);
 

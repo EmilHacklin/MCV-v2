@@ -194,7 +194,6 @@ class BlackJackTest extends TestCase
             'Player',
             $res['gameStates'][0]
         );
-
     }
 
     /**

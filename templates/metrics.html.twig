@@ -19,39 +19,51 @@
 
     <ul>
         <li>
-            Codestyle: handlar om att ha ett konstant format på hur koden skall se ut. 
-            Detta gäller för saker som linjeindragning, radavstånd, namnkonventioner som till exempel camleCase och kommentarer av kod. 
-            En bra <q>Codestyle</q> leder till bättre läsbarhet och underhållbarhet.
-            Detta ökar direkt värdet på koden då den minskar tiden det tar att förstå koden och förhindrar missförstånd.
+            <p>
+                Codestyle: handlar om att ha ett konstant format på hur koden skall se ut.
+                Detta gäller för saker som linjeindragning, radavstånd, namnkonventioner som till exempel camleCase och kommentarer av kod. 
+                En bra <q>Codestyle</q> leder till bättre läsbarhet och underhållbarhet.
+                Detta ökar direkt värdet på koden då den minskar tiden det tar att förstå koden och förhindrar missförstånd.
+            </p>
         </li>
         <li>
-            Coverage: mäter om hur mycket av koden testas av våra automatiserade enhetstester. 
-            Högre <q>Coverage</q> leder till att mera av koden testas vilket leder till färre buggar och till att förändringar i koden kommer till högre grad att fungera utan problem.
-            Detta gör att det blir enklare att underhålla koden på långt sikt.
+            <p>
+                Coverage: mäter om hur mycket av koden testas av våra automatiserade enhetstester. 
+                Högre <q>Coverage</q> leder till att mera av koden testas vilket leder till färre buggar och till att förändringar i koden kommer till högre grad att fungera utan problem.
+                Detta gör att det blir enklare att underhålla koden på långt sikt.
+            </p>
         </li>
         <li>
-            Complexity: representerar hur komplex vår kodlogik är. 
-            Lägre <q>Complexity</q> gör koden enklare att förstå, underhålla och har mindre chans att innehålla buggar.
+            <p>
+                Complexity: representerar hur komplex vår kodlogik är. 
+                Lägre <q>Complexity</q> gör koden enklare att förstå, underhålla och har mindre chans att innehålla buggar.
+            </p>
         </li>
         <li>
-            Cohesion: representerar hur relaterande funktioner är inom en klass. 
-            Högre <q>Cohesion</q> betyder att en klass har ett väl definierat ändamål och inte innehåller orelaterade funktioner. 
-            Detta leder till att koden blir mer återanvändbar och kan återanvändas mer.
+            <p>
+                Cohesion: representerar hur relaterande funktioner är inom en klass. 
+                Högre <q>Cohesion</q> betyder att en klass har ett väl definierat ändamål och inte innehåller orelaterade funktioner. 
+                Detta leder till att koden blir mer återanvändbar och kan återanvändas mer.
+            </p>
         </li>
         <li>
-            Coupling: beskriver hur stor grad av klasser är oberoende av varandra. 
-            Låg <q>Coupling</q> betyder att klasserna är oberoende av varandra vilket leder till att det är enklare att modifiera och testa utan att det påverkar annan kod.
+            <p>
+                Coupling: beskriver hur stor grad av klasser är oberoende av varandra. 
+                Låg <q>Coupling</q> betyder att klasserna är oberoende av varandra vilket leder till att det är enklare att modifiera och testa utan att det påverkar annan kod.
+            </p>
         </li>
         <li>
-            CRAP (Change Risk Anti-Patterns): samlar in hur stabilt koden är samt kvalitén på koden baserat på tidigare Metrics. 
-            Hög <q>CRAP</q> indikerar instabil kod som är svår att modifiera utan att påverka annan kod.
+            <p>
+                CRAP (Change Risk Anti-Patterns): samlar in hur stabilt koden är samt kvalitén på koden baserat på tidigare Metrics. 
+                Hög <q>CRAP</q> indikerar instabil kod som är svår att modifiera utan att påverka annan kod.
+            </p>
         </li>
     </ul>
 
-    <h2>Phpmetrics</h2>
+    <h2>PHPMetrics</h2>
 
     <p>
-        <a href="{{ relative_path('docs/old_metrics/index') }}">PHPMetrics repport</a>
+        <a href="{{ asset('docs/old_metrics/index') }}">PHPMetrics repport</a>
     </p>
     
     <p>
@@ -60,24 +72,37 @@
 
     <ul>
         <li>
-            Codestyle: PHPMetrics fokuserar primärt på strukturella mätvärden så <q>Codestyle</q> är inte relevant.
+            <p>
+                Codestyle: PHPMetrics fokuserar primärt på strukturella mätvärden så <q>Codestyle</q> är inte relevant.
+            </p>
         </li>
         <li>
-            Coverage: Rapporten som genereras värkar vara buggad så den skriver att klasser som testas inte testas men om man jämför med PHPUnit rapporten så testas dom vist. 
-            Trots detta så kan man se att jag glömde skriva enhetstester för uppgiften i Kmom05 och att dessa klasser (<q>Book</q>, <q>BookRepository</q> och <q>BookController</q>) kan behöva enhetstester.
+            <p>
+                Coverage: Rapporten som genereras värkar vara buggad så den skriver att klasser som testas inte testas men om man jämför med PHPUnit rapporten så testas dom vist. 
+                Trots detta så kan man se att jag glömde skriva enhetstester för uppgiften i Kmom05 och att dessa klasser (<q>Book</q>, <q>BookRepository</q> och <q>BookController</q>) kan behöva enhetstester.
+            </p>
         </li>
         <li>
-            Complexity: Enligt rapporten så är klassen <q>BookController</q> och <q>BlackJack</q> väldigt komplext då den både innehåller många metoder, metoderna själva är komplexa.
-            <img class="img-metric" src="{{ asset('img/php-metrics-complexity.png') }}" alt="Table of complexity metrics">
+            <p>
+                Complexity: Enligt rapporten så är klassen <q>BookController</q> och <q>BlackJack</q> väldigt komplext då den både innehåller många metoder, metoderna själva är komplexa.
+            </p>
+            
+            <img class="img-metric" src="{{ asset('img/old-php-metrics-complexity.png') }}" alt="Table of complexity metrics">
         </li>
         <li>
-            Cohesion: PHPMetrics värkar inte mäta <q>Cohesion</q> på klasserna så det är inte relevant.
+            <p>
+                Cohesion: PHPMetrics värkar inte mäta <q>Cohesion</q> på klasserna så det är inte relevant.
+            </p>
         </li>
         <li>
-            Coupling: Enligt rapporten så är klasserna som är mest beroende på andra klasser controllerklasserna då dem använder sig av mest andra klasser vilket inte är något som kan riktigt förbättras då det krävs för att fungera.
+            <p>
+                Coupling: Enligt rapporten så är klasserna som är mest beroende på andra klasser controllerklasserna då dem använder sig av mest andra klasser vilket inte är något som kan riktigt förbättras då det krävs för att fungera.
+            </p>
         </li>
         <li>
-            CRAP: PHPMetrics värkar inte mäta <q>CRAP </q> på klasserna så det är inte relevant.
+            <p>
+                CRAP: PHPMetrics värkar inte mäta <q>CRAP </q> på klasserna så det är inte relevant.
+            </p>
         </li>
     </ul>
 
@@ -86,8 +111,8 @@
     <div class="img-badge">
         <a href="https://scrutinizer-ci.com/g/EmilHacklin/MCV-v2/inspections/ba0ea4ed-2c47-439a-8084-39fc27a461be"><img src="{{ asset('img/old-quality-score.svg') }}", alt="Scrutinizer quality score"></a>
         <a href="https://scrutinizer-ci.com/g/EmilHacklin/MCV-v2/inspections/ba0ea4ed-2c47-439a-8084-39fc27a461be"><img src="{{ asset('img/old-coverage.svg') }}", alt="Scrutinizer coverage score"></a>
-        <a href="https://scrutinizer-ci.com/g/EmilHacklin/MCV-v2/inspections/ba0ea4ed-2c47-439a-8084-39fc27a461be/log"><img src="{{ asset('img/old-build.svg') }}", alt="Scrutinizer build"></a>
-        <a href="https://scrutinizer-ci.com/code-intelligence"><img src="{{ asset('img/old-code-intelligence.svg') }}", alt="Scrutinizer code inteligence"></a>
+        <a href="https://scrutinizer-ci.com/g/EmilHacklin/MCV-v2/inspections/ba0ea4ed-2c47-439a-8084-39fc27a461be/log"><img src="{{ asset('img/build.svg') }}", alt="Scrutinizer build"></a>
+        <a href="https://scrutinizer-ci.com/code-intelligence"><img src="{{ asset('img/code-intelligence.svg') }}", alt="Scrutinizer code inteligence"></a>
     </div>
     
 
@@ -97,25 +122,40 @@
 
     <ul>
         <li>
-            Codestyle:  Enligt rapporten så finns det <q>Codestyle</q> fel i klasserna <q>BlackJack</q> och <q>BlackJackTest</q> som behövs åtgärdas.
-            <img class="img-metric" src="{{ asset('img/scrutinizer-codestyle.png') }}" alt="Codestyle errors found">
+            <p>
+                Codestyle:  Enligt rapporten så finns det <q>Codestyle</q> fel i klasserna <q>BlackJack</q> och <q>BlackJackTest</q> som behövs åtgärdas.
+            </p>
+            
+            <img class="img-metric" src="{{ asset('img/old-scrutinizer-issues.png') }}" alt="Codestyle errors found">
         </li>
         <li>
-            Coverage: Samma problem med att jag saknar enhetstester för uppgiften i Kmom05 som i PHPMetrics sectionen.
+            <p>
+                Coverage: Samma problem med att jag saknar enhetstester för uppgiften i Kmom05 som i PHPMetrics sectionen.
+            </p>
         </li>
         <li>
-            Complexity: Enligt rapporten så är klassen <q>BookController</q> och <q>BlackJack</q> väldigt komplext vilket vi såg tidigare.
-            <img class="img-metric" src="{{ asset('img/scrutinizer-complexity.png') }}" alt="Table of complexity metrics">
+            <p>
+                Complexity: Enligt rapporten så är klassen <q>BookController</q> och <q>BlackJack</q> väldigt komplext vilket vi såg tidigare.
+            </p>
+            
+            <img class="img-metric" src="{{ asset('img/old-scrutinizer-complexity.png') }}" alt="Table of complexity metrics">
         </li>
         <li>
-            Cohesion: Scrutinizer värkar inte mäta <q>Cohesion</q> på klasserna så det är inte relevant.
+            <p>
+                Cohesion: Scrutinizer värkar inte mäta <q>Cohesion</q> på klasserna så det är inte relevant.
+            </p>
         </li>
         <li>
-            Coupling: Scrutinizer värkar inte mäta <q>Coupling</q> på klasserna så det är inte relevant.
+            <p>
+                Coupling: Scrutinizer värkar inte mäta <q>Coupling</q> på klasserna så det är inte relevant.
+            </p>
         </li>
         <li>
-            CRAP:  Enligt rapporten så är <q>BookController</q> classens <q>uppdateBook</q> och <q>saveUploadedJPEG</q> metoderna mest CRAP.
-            <img class="img-metric" src="{{ asset('img/scrutinizer-complexity.png') }}" alt="Table of complexity metrics">
+            <p>
+                CRAP:  Enligt rapporten så är <q>BookController</q> classens <q>uppdateBook</q> och <q>saveUploadedJPEG</q> metoderna mest CRAP.
+            </p>
+            
+            <img class="img-metric" src="{{ asset('img/old-scrutinizer-CRAP.png') }}" alt="Table of complexity metrics">
         </li>
     </ul>
 
@@ -129,7 +169,8 @@
 
     <p>
         Jag skall fixa alla problem som Scrutinizer på visade med min kod då dem stämmer från små fel som att inte strikt jämföra i IF satser eller inte deklarera Implicite dependencies.
-        Jag tycker detta är ett enkelt sätt att förbättra koden det kommer att ha en större förbättring på <q>Codestyle</q> mätvärdet.
+        Jag tycker detta är ett enkelt sätt att förbättra koden. 
+        Det kommer att ha en större förbättring på <q>Codestyle</q> mätvärdet.
     </p>
 
     <h3>Minska komplexiteten</h3>
@@ -155,17 +196,195 @@
 
     <h2>Utverdering av förbättringarna</h2>
 
-    <h3>Phpmetrics</h3>
+    <h3>PHPMetrics</h3>
+
+    <p>
+        <a href="{{ asset('docs/old_metrics/index') }}">Old PHPMetrics repport</a>
+    </p>
+
+    <p>
+        <a href="{{ asset('docs/new_metrics/index') }}">New PHPMetrics repport</a>
+    </p>
+
+    <h4>Analys</h4>
+
+    <ul>
+        <li>
+            <p>
+                Complexity:
+            </p>
+            
+            <p>
+                Old Complexity:
+            </p>
+
+            <img class="img-metric" src="{{ asset('img/old-php-metrics-complexity.png') }}" alt="Table of complexity metrics">
+
+            <p>
+                New Complexity:
+            </p>
+
+            <img class="img-metric" src="{{ asset('img/new-php-metrics-complexity.png') }}" alt="Table of complexity metrics">
+
+            <p>
+                Om man jämför den gamla <q>Complexity</q> mätvärden mot den nya mätvärderna så ser vi att komplexiteten för <q>BookController</q> har minskat drastiskt.
+            </p>
+
+            <p>
+                Komplexiteten i klassen har nästan halverats då jag bröt ut funktionerna för att hantera bilderna till sin egen klass och lagt visa funktioner för att manipulera databasen i <q>BookRepository</q> klassen.
+            </p>
+
+            <p>
+                På andra sidan har <q>BlackJack</q> klassen blivit ca 50&#37; trots att jag bröt player och dealer till sin egen klass. 
+                Detta är troligen för att jag lade till funktionalitet för att ha flera spelare som förberedelse för nästa Kmom uppgift.
+            </p>
+            
+            <p>
+                Detta värkar ha motverkat alla förbättringar som kunde ha skett på grund utav de nya klasserna.
+            </p>
+
+            <p>
+                Som ett resultat så minskade medel <q>Complexity</q> mätvärden inte så mycket som jag skulle trott men dom minskade i varje mätvärde så jag skulle säga att målet att <q>Minska komplexiteten</q> har fullgjorts.
+            </p>
+        </li>
+        <li>
+            <p>
+                Coupling: Det har inte skett några större förändringar i <q>Coupling</q> annat en att <q>BlackJack</q> klassen är beroende på mera klasser en tidigare.
+            </p>
+        </li>
+    </ul>
 
     <h3>Scrutinizer</h3>
 
+    <h4>Old Result</h4>
+
     <div class="img-badge">
-        <a href="https://scrutinizer-ci.com/g/EmilHacklin/MCV-v2/?branch=main"><img src="https://scrutinizer-ci.com/g/EmilHacklin/MCV-v2/badges/quality-score.png?b=main", alt="Scrutinizer quality score"></a>
-        <a href="https://scrutinizer-ci.com/g/EmilHacklin/MCV-v2/?branch=main"><img src="https://scrutinizer-ci.com/g/EmilHacklin/MCV-v2/badges/coverage.png?b=main", alt="Scrutinizer coverage score"></a>
-        <a href="https://scrutinizer-ci.com/g/EmilHacklin/MCV-v2/build-status/main"><img src="https://scrutinizer-ci.com/g/EmilHacklin/MCV-v2/badges/code-intelligence.svg?b=main", alt="Scrutinizer build"></a>
-        <a href="https://scrutinizer-ci.com/code-intelligence"><img src="{{ asset('img/old-code-intelligence.svg') }}", alt="Scrutinizer code inteligence"></a>
+        <a href="https://scrutinizer-ci.com/g/EmilHacklin/MCV-v2/inspections/ba0ea4ed-2c47-439a-8084-39fc27a461be"><img src="{{ asset('img/old-quality-score.svg') }}", alt="Scrutinizer quality score"></a>
+        <a href="https://scrutinizer-ci.com/g/EmilHacklin/MCV-v2/inspections/ba0ea4ed-2c47-439a-8084-39fc27a461be"><img src="{{ asset('img/old-coverage.svg') }}", alt="Scrutinizer coverage score"></a>
+        <a href="https://scrutinizer-ci.com/g/EmilHacklin/MCV-v2/inspections/ba0ea4ed-2c47-439a-8084-39fc27a461be/log"><img src="{{ asset('img/build.svg') }}", alt="Scrutinizer build"></a>
+        <a href="https://scrutinizer-ci.com/code-intelligence"><img src="{{ asset('img/code-intelligence.svg') }}", alt="Scrutinizer code inteligence"></a>
     </div>
 
+    <h4>New Result</h4>
+
+    <div class="img-badge">
+        <a href="https://scrutinizer-ci.com/g/EmilHacklin/MCV-v2/inspections/bd2cc46a-db60-4c46-bc6f-044b0b6e5571"><img src="{{ asset('img/new-quality-score.svg') }}", alt="Scrutinizer quality score"></a>
+        <a href="https://scrutinizer-ci.com/g/EmilHacklin/MCV-v2/inspections/bd2cc46a-db60-4c46-bc6f-044b0b6e5571"><img src="{{ asset('img/new-coverage.svg') }}", alt="Scrutinizer coverage score"></a>
+        <a href="https://scrutinizer-ci.com/g/EmilHacklin/MCV-v2/inspections/bd2cc46a-db60-4c46-bc6f-044b0b6e5571/log"><img src="{{ asset('img/build.svg') }}", alt="Scrutinizer build"></a>
+        <a href="https://scrutinizer-ci.com/code-intelligence"><img src="{{ asset('img/code-intelligence.svg') }}", alt="Scrutinizer code inteligence"></a>
+    </div>
+
+    <h4>Analys</h4>
+
+    <ul>
+        <li>
+            <p>
+                Codestyle:
+            </p>
+
+            <p>
+                Old Isuess:
+            </p>
+
+            <img class="img-metric" src="{{ asset('img/old-scrutinizer-issues.png') }}" alt="Codestyle errors found">
+
+            <p>
+                New Isuess:
+            </p>
+
+            <img class="img-metric" src="{{ asset('img/new-scrutinizer-issues.png') }}" alt="Codestyle errors found">
+
+            <p>
+                Jag åtgärdade alla 16 issues som Scrutinizer flaggade och alla nya issues som kom upp. 
+                Detta förbättrade mitt <q>Codestyle</q> mätvärdet och uppfyllt målet att <q>Fixa issues</q>.
+            </p>
+        </li>
+        <li>
+            <p>
+                Coverage: Jag har skrivit mera enhetstester som har ökat min kodtekning från 72&#37; 
+                <img src="{{ asset('img/old-coverage.svg') }}", alt="Scrutinizer coverage score">
+                till 97&#37;
+                <img src="{{ asset('img/new-coverage.svg') }}", alt="Scrutinizer coverage score">
+                . 
+                Detta hör ökat mitt <q>Coverage</q> mätvärde och uppfyllt målet att <q>Öka kodtekningen</q>.
+            </p>
+        </li>
+        <li>
+            <p>
+                Complexity:
+            </p>
+
+            <p>
+                Old Complexity:
+            </p>
+
+            <img class="img-metric" src="{{ asset('img/old-scrutinizer-complexity.png') }}" alt="Table of complexity metrics">
+
+            <p>
+                New Complexity:
+            </p>
+            
+            <img class="img-metric" src="{{ asset('img/new-scrutinizer-complexity.png') }}" alt="Table of complexity metrics">
+
+            <p>
+                Som vi kan se så blev <q>Complexity</q> mätvärden mindre för <q>BookController</q> klassen men mätvärdet för <q>BlackJack</q> klassen blev högre med 10 poäng.
+            </p>
+
+            <p>
+                Om jag inte visste om att medel mätvärderna hade gåt ner från PHPMetrics så hade jag inte vetat om att mina förbättringar gjort någon skillnad. 
+                Men då jag vet det så skulle jag säga att målet att <q>Minska komplexiteten</q> har fullgjorts.
+            </p>
+        </li>
+        <li>
+            <p>
+                CRAP:
+            </p>
+
+            <p>
+                Old CRAP:
+            </p>
+
+            <img class="img-metric" src="{{ asset('img/old-scrutinizer-CRAP.png') }}" alt="Table of complexity metrics">
+
+            <p>
+                New CRAP:
+            </p>
+
+            <img class="img-metric" src="{{ asset('img/new-scrutinizer-CRAP.png') }}" alt="Table of complexity metrics">
+
+            <p>
+                Som vi se så har <q>BookController</q> classens <q>uppdateBook</q> så har des <q>CRAP </q> mätvärde gåt ner från 72 till 11.38. 
+                Det är en massiv förbättring och det blir bara bättre för <q>saveUploadedJPEG</q> metoden.
+            </p>
+            
+            <p>
+                <q>saveUploadedJPEG</q> metoden som nu ligger under klassen <q>UploadManager</q> och kallas <q>saveUploadedFile</q> har des <q>CRAP </q> mätvärde gåt ner från 72 till 5.
+            </p>
+
+            <p>
+                Då dessa metoder har haft en sådan förbättring så anser jag att målet att <q> Mindre CRAP</q> har fullgjorts.
+            </p>
+        </li>
+    </ul>
+
     <h2>Diskussion</h2>
+
+    <p>
+        Att använda kodkvalitets mätvärden och verktyg som PHPMetrics och Scrutinizer för att finna svagheter i koden fungerade väldigt bra då det var relativt lätt att finna dessa fel. 
+    </p>
+
+    <p>
+        Men jag skulle säga att Scrutinizer är det bättre verktyget då den ger information om enskilda metoder i klasserna vilket gör det ännu lättare att finna svagheter. 
+        Vidare så utför den sina egna tester för att finna <q>Codestyle</q> fel.
+    </p>
+
+    <p>
+        Att sedan förbättra koden med hjälp av denna kunskap för att skapa mera <q>Clean Code</q> som gör det lättare att läsa, förstå och underhålla koden är något som jag kan se stora fördelar med.
+    </p>
+
+    <p>
+        Som exempel på fördelar så kan man lättare samarbeta med andra då koden blir mera lättläst så kan andra snabbare sätta sig in och börja göra ändringar. 
+        Jag ser inga större nackdelar en möjligen säkerhetsskäl i Scrutinizer fall då man måste dela koden till en tredje part.
+    </p>
 </div>
 {% endblock %}
