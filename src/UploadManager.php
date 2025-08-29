@@ -6,7 +6,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class UploadManager
 {
-    private string $projectDir;
+    private string $targetPath;
     private string $targetDirectory;
     private string $targetDirectoryPath;
 
@@ -15,11 +15,11 @@ class UploadManager
      *
      * @return void
      */
-    public function __construct(string $projectDir, string $targetDirectory = '/uploads')
+    public function __construct(string $targetPath, string $targetDirectory = '/uploads')
     {
-        $this->projectDir = $projectDir;
+        $this->targetPath = $targetPath;
         $this->targetDirectory = ltrim($targetDirectory, '/');
-        $this->targetDirectoryPath = rtrim($this->projectDir.'/public/'.$this->targetDirectory, '/');
+        $this->targetDirectoryPath = rtrim($this->targetPath.$this->targetDirectory, '/');
 
         // Make sure the directory exists
         if (!is_dir($this->targetDirectoryPath)) {
@@ -32,9 +32,33 @@ class UploadManager
     }
 
     /**
+     * getTargetPath.
+     */
+    public function getTargetPath(): string
+    {
+        return $this->targetPath;
+    }
+
+    /**
+     * getTargetDirectory.
+     */
+    public function getTargetDirectory(): string
+    {
+        return $this->targetDirectory;
+    }
+
+    /**
+     * getTargetDirectoryPath.
+     */
+    public function getTargetDirectoryPath(): string
+    {
+        return $this->targetDirectoryPath;
+    }
+
+    /**
      * saveUploadedFile.
      *
-     * Saves the uploaded file to the /public/uploads folder and returns the path
+     * Saves the uploaded file to the targetPath/targetFolder and returns the path
      *
      * @param array<string> $fileTypesSupported
      *
@@ -81,7 +105,7 @@ class UploadManager
     public function deleteUploadedFile(string $filePath): bool
     {
         // Full path to the file
-        $fullPath = $this->projectDir.'/public'.$filePath;
+        $fullPath = $this->targetPath.$filePath;
 
         // Check if file exists
         if (!file_exists($fullPath)) {

@@ -1,0 +1,25 @@
+{% extends "proj/base.html.twig" %}
+
+{% block title %}Black Jack Project: Player Creation{% endblock %}
+
+{% block main %}
+<h1>Player creation</h1>
+
+<p>
+    Please name the players or leave blank for default name, hit submit when ready
+</p>
+
+<form method="post" action="">
+    <input type="hidden" id="numOfPlayers" name="numOfPlayers" value="{{numOfPlayers}}">
+    {% for name in players %}
+        <p>
+            <label for="player{{loop.index}}">Name for Player {{loop.index}}</label>
+            <input type="text" id="player{{loop.index}}" name="Player_{{loop.index}}" value="{{name}}">
+        </p>
+    {% endfor %}
+    <p>
+        <input type="submit" name="submit" value="submit" 
+        onClick="this.form.action='{{ path('proj_BlackJack_init') }}';">
+    </p>
+</form>
+{% endblock %}

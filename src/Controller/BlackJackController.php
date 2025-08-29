@@ -29,6 +29,11 @@ class BlackJackController extends AbstractController
         /** @var BlackJack $blackJack */
         $blackJack = $session->get('black_jack') ?? new BlackJack();
 
+        // If dealer don't have cards === new BlackJack
+        if (0 === count($blackJack->getDealer()->getString())) {
+            $blackJack->newGame();
+        }
+
         $session->set('black_jack', $blackJack);
 
         $data = $blackJack->stateOfGame();
@@ -42,6 +47,11 @@ class BlackJackController extends AbstractController
     ): Response {
         /** @var BlackJack $blackJack */
         $blackJack = $session->get('black_jack') ?? new BlackJack();
+
+        // If dealer don't have cards === new BlackJack
+        if (0 === count($blackJack->getDealer()->getString())) {
+            $blackJack->newGame();
+        }
 
         $blackJack->hitPlayer();
 
@@ -64,6 +74,11 @@ class BlackJackController extends AbstractController
         /** @var BlackJack $blackJack */
         $blackJack = $session->get('black_jack') ?? new BlackJack();
 
+        // If dealer don't have cards === new BlackJack
+        if (0 === count($blackJack->getDealer()->getString())) {
+            $blackJack->newGame();
+        }
+
         $blackJack->stayPlayer();
 
         $session->set('black_jack', $blackJack);
@@ -78,7 +93,7 @@ class BlackJackController extends AbstractController
         /** @var BlackJack $blackJack */
         $blackJack = $session->get('black_jack') ?? new BlackJack();
 
-        $blackJack->resetGame();
+        $blackJack->newGame();
 
         $session->set('black_jack', $blackJack);
 

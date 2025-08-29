@@ -71,9 +71,14 @@ class BookController extends AbstractController
             return;
         }
 
+        // Save new image
         /** @var string $projectDir */
         $projectDir = $this->getParameter('kernel.project_dir');
-        $uploadManager = new UploadManager($projectDir);
+
+        // Construct the path to src/var
+        $targetFolder = $projectDir.'/src/var';
+
+        $uploadManager = new UploadManager($targetFolder);
 
         try {
             $img = $uploadManager->saveUploadedFile($file, self::FILE_TYPES_SUPPORTED);
@@ -154,7 +159,11 @@ class BookController extends AbstractController
         // Save new image
         /** @var string $projectDir */
         $projectDir = $this->getParameter('kernel.project_dir');
-        $uploadManager = new UploadManager($projectDir);
+
+        // Construct the path to src/var
+        $targetFolder = $projectDir.'/src/var';
+
+        $uploadManager = new UploadManager($targetFolder);
 
         try {
             $img = $uploadManager->saveUploadedFile($file, self::FILE_TYPES_SUPPORTED);
@@ -217,7 +226,11 @@ class BookController extends AbstractController
         $img = $book->getImg();
         /** @var string $projectDir */
         $projectDir = $this->getParameter('kernel.project_dir');
-        $uploadManager = new UploadManager($projectDir);
+
+        // Construct the path to src/var
+        $targetFolder = $projectDir.'/src/var';
+
+        $uploadManager = new UploadManager($targetFolder);
 
         if (null !== $img) {
             if (!$uploadManager->deleteUploadedFile($img)) {

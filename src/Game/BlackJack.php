@@ -4,6 +4,7 @@ namespace App\Game;
 
 use App\Cards\DeckOfCards;
 use App\Game\BlackJack\Dealer;
+use App\Game\BlackJack\GameLogic;
 use App\Game\BlackJack\Player;
 
 /**
@@ -12,20 +13,16 @@ use App\Game\BlackJack\Player;
 class BlackJack
 {
     public const MAX_PLAYERS = 7;
+    public const MINIMUM_BET = 50;
+
+    private GameLogic $gameLogic;
     private int $numOfPlayers;
-    private DeckOfCards $deck;
-    private Dealer $dealer;
     /**
      * @var array<Player> Is an array that contains BlackJackPlayer objects
      */
     private array $players;
-    /**
-     * -2 = Stayed, -1 = Undecided, 0 = Tie, 1 = Player, 2 = Dealer.
-     *
-     * @var array<int> Is an array that contains the outcomes of the players games
-     */
-    private array $gameStates;
-    private bool $dealersTurn;
+    private Dealer $dealer;
+    private DeckOfCards $deck;
 
     /**
      * __construct.
@@ -49,172 +46,103 @@ class BlackJack
         $this->dealer = new Dealer();
         for ($i = 0; $i < $this->numOfPlayers; ++$i) {
             $this->players[$i] = new Player();
-            $this->gameStates[$i] = -1;
         }
 
-        $this->deck->shuffleDeck();
-
-        $this->setupGame();
+        // Needs to be last or can create error if accessing any BlackJack properties before set
+        $this->gameLogic = new GameLogic($this);
     }
 
     /**
-     * setupGame.
+     * drawUpdate.
+     */
+    private function drawUpdate(int $index): void
+    {
+        if ($this->players[$index]->isBust()) {
+            $this->players[$index]->setGameState(Player::DEALER_WIN);
+            $this->players[$index]->resetBet();
+            $this->gameLogic->checkIfDealersTurn();
+        }
+
+        if (Player::DOUBLE_DOWN === $this->players[$index]->getGameState()) {
+            $this->gameLogic->checkIfDealersTurn();
+        }
+    }
+
+    /**
+     * getNumOfPlayers.
+     */
+    public function getNumOfPlayers(): int
+    {
+        return $this->numOfPlayers;
+    }
+
+    /**
+     * getPlayers.
      *
-     * Sets up a game of Black Jack by dealing out the cards and setting upp the variables
+     * @return array<Player>
      */
-    private function setupGame(): void
+    public function getPlayers(): array
     {
-        // For 2 rounds of dealing a card
-        for ($round = 0; $round < 2; ++$round) {
-            for ($i = 0; $i < $this->numOfPlayers; ++$i) {
-                $this->players[$i]->addCard($this->deck->drawCard());
-            }
-            $this->dealer->addCard($this->deck->drawCard());
-        }
-
-        for ($i = 0; $i < $this->numOfPlayers; ++$i) {
-            $this->gameStates[$i] = -1;
-        }
-
-        $this->dealersTurn = false;
+        return $this->players;
     }
 
     /**
-     * calculateWinner.
+     * getDealer.
      */
-    private function calculateWinner(int $index): void
+    public function getDealer(): Dealer
     {
-        // Stayed = -2, -1 = Undecided, 0 = Tie, 1 = Player, 2 = Dealer
+        return $this->dealer;
+    }
 
-        // The winner is already decided
-        if (2 === $this->gameStates[$index]) {
-            $this->gameStates[$index] = 2;
+    /**
+     * getDeck.
+     */
+    public function getDeck(): DeckOfCards
+    {
+        return $this->deck;
+    }
 
+    /**
+     * setPlayers.
+     *
+     * @param array<Player> $players
+     */
+    public function setPlayers(array $players): void
+    {
+        // If not to many players
+        if (self::MAX_PLAYERS >= count($players)) {
+            $this->players = $players;
+            $this->numOfPlayers = count($players);
+        }
+    }
+
+    /**
+     * setPlayer.
+     */
+    public function setPlayer(int $index, Player $player): void
+    {
+        // If index is out of bounds
+        if ($index < 0 or $index >= $this->numOfPlayers) {
             return;
         }
 
-        // If dealer is bust: player wins
-        if (true === $this->dealer->isBust()) {
-            $this->gameStates[$index] = 1;
-
-            return;
-        }
-
-        $playerHandValue = $this->players[$index]->getHandValue();
-        $dealerHandValue = $this->dealer->getHandValue();
-
-        // Both are not busts, compare their hand values
-        if ($playerHandValue > $dealerHandValue) {
-            $this->gameStates[$index] = 1; // player wins
-
-            return; // Exit early after setting result
-        }
-
-        if ($playerHandValue < $dealerHandValue) {
-            $this->gameStates[$index] = 2; // dealer wins
-
-            return; // Exit early after setting result
-        }
-
-        // If neither of the above conditions matched, hand values are equal
-        $this->gameStates[$index] = 0; // tie
+        $this->players[$index] = $player;
     }
 
     /**
-     * playDealer.
-     *
-     * The logic for the dealer to play
+     * setDealer.
      */
-    private function playDealer(): void
+    public function setDealer(Dealer $dealer): void
     {
-        while (true === $this->dealer->play()) {
-            $this->dealer->addCard($this->deck->drawCard());
-        }
-
-        // Update the state of game
-        $this->stateOfGame();
+        $this->dealer = $dealer;
     }
 
     /**
-     * checkIfDealersTurn.
+     * setDeck.
      */
-    private function checkIfDealersTurn(): void
+    public function setDeck(DeckOfCards $deck): void
     {
-        // Check if all players are done
-        $allPlayersDone = !in_array(-1, $this->gameStates, true);
-
-        if (true === $allPlayersDone) {
-            $this->dealersTurn = true;
-            $this->playDealer();
-        }
-    }
-
-    /**
-     * stateOfGame.
-     *
-     * Returns the current game state.
-     *
-     * @return array
-     *               Descriptive list of array contents:
-     *               - numOfPlayers (string)
-     *               - playersCards (array<int, array<string>>)
-     *               - playersHandValue (array<string>)
-     *               - dealerCards (array<string>)
-     *               - dealerHandValue (string)
-     *               - gameStates (array<string>)
-     *
-     * @phpstan-return array{
-     *   numOfPlayers: string,
-     *   playersCards: array<int, array<string>>,
-     *   playersHandValue: array<string>,
-     *   dealerCards: array<string>,
-     *   dealerHandValue: string,
-     *   gameStates: array<string>
-     * }
-     */
-    public function stateOfGame(): array
-    {
-        $data = [
-            'numOfPlayers' => strval($this->numOfPlayers),
-            'playersCards' => [],
-            'playersHandValue' => [],
-            'dealerCards' => $this->dealer->getString(),
-            'dealerHandValue' => strval($this->dealer->getHandValue()),
-            'gameStates' => [],
-        ];
-
-        for ($i = 0; $i < $this->numOfPlayers; ++$i) {
-            $data['playersCards'][$i] = $this->players[$i]->getString();
-            $data['playersHandValue'][$i] = strval($this->players[$i]->getHandValue());
-
-            // If all players are done
-            if (true === $this->dealersTurn) {
-                $this->calculateWinner($i);
-            }
-
-            switch ($this->gameStates[$i]) {
-                case -1:
-                    $data['gameStates'][$i] = 'Undecided';
-                    break;
-                case 0:
-                    $data['gameStates'][$i] = 'Tie';
-                    break;
-                case 1:
-                    $data['gameStates'][$i] = 'Player';
-                    break;
-                case 2:
-                    $data['gameStates'][$i] = 'Dealer';
-                    break;
-            }
-        }
-
-        // If all players are not done
-        if (false === $this->dealersTurn) {
-            $data['dealerCards'] = [$this->dealer->getString()[0], '🂠'];
-            $data['dealerHandValue'] = '0';
-        }
-
-        return $data;
+        $this->deck = $deck;
     }
 
     /**
@@ -238,42 +166,49 @@ class BlackJack
     }
 
     /**
-     * resetGame.
+     * newGame.
      *
-     * Resets the game to a new game
+     * Sets up a new game
+     *
+     * @param array<int, int> $bets
      */
-    public function resetGame(): void
+    public function newGame(array $bets = []): void
     {
-        $this->dealer = new Dealer();
-        $this->players = [];
-        for ($i = 0; $i < $this->numOfPlayers; ++$i) {
-            $this->players[] = new Player();
-        }
-
-        $this->deck->reshuffleDeck();
-
-        $this->setupGame();
+        $this->gameLogic->newGame($bets);
     }
 
     /**
-     * hitPlayer.
+     * stateOfGame.
+     *
+     * Returns the current game state.
+     *
+     * @return array
+     *               Descriptive list of array contents:
+     *               - numOfPlayers (int)
+     *               - playersNames (array<string>)
+     *               - playersCards (array<int, array<string>>)
+     *               - playersHandValue (array<string>)
+     *               - playersCredits (array<string>)
+     *               - playersBets (array<string>)
+     *               - dealerCards (array<string>)
+     *               - dealerHandValue (string)
+     *               - gameStates (array<string>)
+     *
+     * @phpstan-return array{
+     *   numOfPlayers: int,
+     *   playersNames: array<string>,
+     *   playersCards: array<int, array<string>>,
+     *   playersHandValue: array<string>,
+     *   playersCredits: array<string>,
+     *   playersBets: array<string>,
+     *   dealerCards: array<string>,
+     *   dealerHandValue: string,
+     *   gameStates: array<string>
+     * }
      */
-    public function hitPlayer(int $index = 0): void
+    public function stateOfGame(): array
     {
-        // If index is out of bounds
-        if ($index < 0 or $index >= $this->numOfPlayers) {
-            return;
-        }
-
-        // Stops drawing new cards if game is over
-        if (-1 === $this->gameStates[$index]) {
-            $this->players[$index]->addCard($this->deck->drawCard());
-
-            if ($this->players[$index]->isBust()) {
-                $this->gameStates[$index] = 2;
-                $this->checkIfDealersTurn();
-            }
-        }
+        return $this->gameLogic->stateOfGame();
     }
 
     /**
@@ -287,9 +222,48 @@ class BlackJack
         }
 
         // If game not over
-        if (-1 === $this->gameStates[$index]) {
-            $this->gameStates[$index] = -2;
-            $this->checkIfDealersTurn();
+        if (Player::UNDECIDED === $this->players[$index]->getGameState()) {
+            $this->players[$index]->setGameState(Player::STAYED);
+            $this->gameLogic->checkIfDealersTurn();
+        }
+    }
+
+    /**
+     * hitPlayer.
+     */
+    public function hitPlayer(int $index = 0): void
+    {
+        // If index is out of bounds
+        if ($index < 0 or $index >= $this->numOfPlayers) {
+            return;
+        }
+
+        // Stops drawing new cards if game is over
+        if (Player::UNDECIDED === $this->players[$index]->getGameState()) {
+            $this->players[$index]->addCard($this->deck->drawCard());
+
+            $this->drawUpdate($index);
+        }
+    }
+
+    public function doubleDownPlayer(int $index = 0): void
+    {
+        // If index is out of bounds
+        if ($index < 0 or $index >= $this->numOfPlayers) {
+            return;
+        }
+
+        // Can't double down if game is over
+        if (Player::UNDECIDED === $this->players[$index]->getGameState() and 2 === count($this->players[$index]->getString())) {
+            // Double bet
+            $currentBet = $this->players[$index]->getBet();
+            $this->players[$index]->increaseBet($currentBet);
+
+            $this->players[$index]->addCard($this->deck->drawCard());
+
+            $this->players[$index]->setGameState(Player::DOUBLE_DOWN);
+
+            $this->drawUpdate($index);
         }
     }
 }

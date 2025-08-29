@@ -1,0 +1,68 @@
+{% extends "proj/base.html.twig" %}
+
+{% block title %}Black Jack Project: {% endblock %}
+
+{% block main %}
+    <div class="column">
+        {{ include('flash.html.twig') }}
+        <h1>BlackJack</h1>
+
+        <h2>Rules of the game</h2>
+
+        <ul>
+            <li>Objective: The goal of the game is to have a higher value hand then the dealer without going over 21.</li>
+            <li>Deck: The deck used is a standard 52 card deck.</li>
+            <li>Value: The values of the cards is the same as the face value except for ace's, jack's, queen's and king's.</li>
+            <li>Ace's: Ace's is valued as 1 or 11 depending on which gives the larger hand value without going over 21.</li>
+            <li>Jack's, queen's and king's: The value of all of these cards is 10.</li>
+            <li>Bust: If the value of a hand is lager then 21 the hand is a bust.</li>
+            <li>Tie: If the dealer and the player end up with equal value of their hands.</li>
+            <li>BlackJack: If the value of a hand att the game start is 21 (Ace and a 10 value card) it is called a BlackJack.</li>
+            <li>
+                <h3>Dealer:</h3>
+                <ul>
+                    <li>The dealer have some inbuilt advantages and disadvantages over a players</li>
+                    <li>Advantage: The players gets to chose what to do first and if the player draws and goes bust the dealer wins.</li>
+                    <li>Disadvantage: The dealer can only draw cards until it's hand value is greater then 16.</li>
+                </ul>
+            </li>
+        </ul>
+            
+        <h2>Player Creation:</h2>
+
+        <ul>
+            <li>Number of players: When starting the game you get to chose between 1 to 3 players.</li>
+            <li>Name: You will then be asked to name these players.</li>
+            <li>Credits: Each player starts with 1000 credit they can bet with.</li>
+        </ul>
+
+        <h2>Game start:</h2>
+
+        <ul>
+            <li>Bet: Each player will be asked to place a bet, the minimum bet is 50 credits.</li>
+            <li>Dealing the cards: The game starts with the players and dealer drawing two cards each but only one of the dealers cards is reveled.</li>
+        </ul>
+        
+        <h2>Player actions:</h2>
+
+        <ul>
+            <li>Stay: The player can stay and not draw any cards. Then it is the next player or dealers turn.</li>
+            <li>Hit: The player draws a new card. Unless the player went bust they can hit or stay.</li>
+            <li>
+                Double Down: If it is the players first action they can double down. <br>
+                If they double down they double the bet and draw a new card. <br>
+                Then it is the next player or dealers turn.
+            </li>
+        </ul>
+
+        <p>
+            For more information about the project please consult the <a href="{{ path('proj_doc') }}">Documentation</a>.
+        </p>
+
+        <h2>Press here to play Black Jack</h2>
+
+        <p><a href="{{ path('proj_player_init', {'num': 1}) }}">One Player</a></p>
+        <p><a href="{{ path('proj_player_init', {'num': 2}) }}">Two Player</a></p>
+        <p><a href="{{ path('proj_player_init', {'num': 3}) }}">Three Player</a></p>
+    </div>
+{% endblock %}

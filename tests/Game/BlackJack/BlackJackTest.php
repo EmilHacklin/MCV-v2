@@ -2,6 +2,8 @@
 
 namespace App\Tests\Game;
 
+use App\Cards\Card;
+use App\Cards\DeckOfCards;
 use App\Game\BlackJack;
 use App\Game\BlackJack\Dealer;
 use App\Game\BlackJack\Player;
@@ -25,6 +27,8 @@ class BlackJackTest extends TestCase
     {
         $blackJack = new BlackJack();
         $this->assertInstanceOf(BlackJack::class, $blackJack);
+
+        $blackJack->newGame();
 
         $res = $blackJack->stateOfGame();
         $this->assertEquals("1", $res["numOfPlayers"]);
@@ -65,6 +69,8 @@ class BlackJackTest extends TestCase
     {
         $blackJack = new BlackJack();
 
+        $blackJack->newGame();
+
         $playerBust = $blackJack->isPlayerBust();
         $this->assertEquals(false, $playerBust);
 
@@ -73,41 +79,92 @@ class BlackJackTest extends TestCase
     }
 
     /**
-     * testHit
+     * testSettersAndGetters
      *
-     * Test the hit action of the player
+     * Test the setters and getters
      *
      * @return void
      */
-    public function testHit(): void
+    public function testSettersAndGetters(): void
     {
         $blackJack = new BlackJack();
 
-        $blackJack->hitPlayer();
-        $res = $blackJack->stateOfGame();
+        $deck = new DeckOfCards();
+        $deck->drawCard();
 
-        $this->assertEquals(3, count($res["playersCards"][0]));
+        //Test setDeck
+        $blackJack->setDeck($deck);
 
-        while ($blackJack->isPlayerBust() === false) {
-            $blackJack->hitPlayer();
+        //Test get
+        $deckCopy = $blackJack->getDeck();
+        $this->assertEquals(51, count($deckCopy->getString()));
+
+        //Test setPlayers
+        $player = new Player();
+        $player->setGameState(Player::STAYED);
+        $player->addCard(new Card("A", "Spade"));
+        $player->addCard(new Card("King", "Spade"));
+
+        $blackJack->setPlayers([$player, $player]);
+
+        //Test getPlayers
+        $players = $blackJack->getPlayers();
+        $numOfPlayers = $blackJack->getNumOfPlayers();
+        $this->assertEquals(2, count($players));
+        $this->assertEquals(2, $numOfPlayers);
+
+        //Test setPlayer
+        $players[1]->addCard(new Card("A", "Spade"));
+        $blackJack->setPlayer(1, $players[1]);
+
+        $players = $blackJack->getPlayers();
+        $numOfPlayers = $blackJack->getNumOfPlayers();
+        $this->assertEquals(2, count($players));
+        $this->assertEquals(2, $numOfPlayers);
+
+        //Test setPlayer out of bounds
+        $blackJack->setPlayer(2, $player);
+
+        $players = $blackJack->getPlayers();
+        $this->assertEquals(3, count($players[1]->getString()));
+
+        //Test setDealer
+        $dealer = new Dealer();
+        $dealer->addCard(new Card("10", "Heart"));
+        $dealer->addCard(new Card("10", "Heart"));
+
+        $blackJack->setDealer($dealer);
+
+        //Test getDealer
+        $dealerCopy = $blackJack->getDealer();
+        $this->assertEquals(2, count($dealerCopy->getString()));
+
+        //Check if to many players
+        $players = [];
+        for ($i = 0; $i <= BlackJack::MAX_PLAYERS; $i++) {
+            $players[] = $player;
         }
 
-        $res = $blackJack->stateOfGame();
-        $this->assertEquals("Dealer", $res["gameStates"][0]);
+        $blackJack->setPlayers([$player]);
 
-        $blackJack->hitPlayer(-1);
+        $players = $blackJack->getPlayers();
+        $numOfPlayers = $blackJack->getNumOfPlayers();
+        $this->assertEquals(1, count($players));
+        $this->assertEquals(1, $numOfPlayers);
     }
 
     /**
-     * testStay
+     * testStayPlayer
      *
      * Test the stay action of the player
      *
      * @return void
      */
-    public function testStay(): void
+    public function testStayPlayer(): void
     {
         $blackJack = new BlackJack();
+
+        $blackJack->newGame();
 
         $blackJack->stayPlayer();
 
@@ -119,174 +176,61 @@ class BlackJackTest extends TestCase
     }
 
     /**
-     * testResetGame
+     * testHitPlayer
+     *
+     * Test the hit action of the player
      *
      * @return void
      */
-    public function testResetGame(): void
+    public function testHitPlayer(): void
     {
         $blackJack = new BlackJack();
 
-        $blackJack->stayPlayer();
+        $blackJack->newGame();
 
-        $res = $blackJack->stateOfGame();
+        $blackJack->hitPlayer();
 
-        $this->assertNotEquals("Undecided", $res["gameStates"][0]);
+        $player = $blackJack->getPlayers()[0];
 
-        $blackJack->resetGame();
+        $this->assertEquals(3, count($player->getString()));
 
-        $res = $blackJack->stateOfGame();
+        //Check if gone bust
+        while ($blackJack->isPlayerBust() === false) {
+            $blackJack->hitPlayer();
+        }
 
-        $this->assertEquals("Undecided", $res["gameStates"][0]);
+        $player = $blackJack->getPlayers()[0];
+        $this->assertEquals(0, $player->getBet());
+
+        //Check if index out of bound
+        $blackJack->hitPlayer(-1);
     }
 
     /**
-     * testDealerBust
+     * testDoubleDownPlayer
      *
-     * Test if dealer can be busted and player wins
-     *
-     * @return void
-     */
-    public function testDealerBust(): void
-    {
-        // Create mocks for Dealer and Player
-        $dealerMock = $this->createMock(Dealer::class);
-        $playerMock = $this->createMock(Player::class);
-
-        // Set up the Player mock to return a hand value of 20 (not bust)
-        $playerMock->method('getHandValue')->willReturn(20);
-        $playerMock->method('isBust')->willReturn(false);
-        $playerMock->method('getString')->willReturn(['🂡', '🂢']);
-
-        // Set up the Dealer mock to return a hand value > 21 (bust)
-        $dealerMock->method('getHandValue')->willReturn(22);
-        $dealerMock->method('isBust')->willReturn(true);
-        $dealerMock->method('getString')->willReturn(['🂠', '🂠']);
-
-        $blackJack = new BlackJack();
-
-        // Inject mocked Dealer and Player into the game
-        $reflection = new \ReflectionClass($blackJack);
-
-        // Set the dealer mock
-        $dealerProperty = $reflection->getProperty('dealer');
-        $dealerProperty->setAccessible(true);
-        $dealerProperty->setValue($blackJack, $dealerMock);
-
-        // Set the player mock
-        $playersProperty = $reflection->getProperty('players');
-        $playersProperty->setAccessible(true);
-        $playersProperty->setValue($blackJack, [$playerMock]);
-
-        // Invoke the private calculateWinner method via reflection
-        $method = $reflection->getMethod('calculateWinner');
-        $method->setAccessible(true);
-        $method->invoke($blackJack, 0);
-
-        // Get the game state
-        $res = $blackJack->stateOfGame();
-
-        // Assert dealer is bust
-        $this->assertTrue($blackJack->isDealerBust());
-
-        // Assert that the player wins since dealer busts
-        $this->assertEquals(
-            'Player',
-            $res['gameStates'][0]
-        );
-    }
-
-    /**
-     * testPlayerWin
+     * Test the double down action of the player
      *
      * @return void
      */
-    public function testPlayerWin(): void
+    public function testDoubleDownPlayer(): void
     {
-        // Create mocks for Dealer and Player
-        $dealerMock = $this->createMock(Dealer::class);
-        $playerMock = $this->createMock(Player::class);
-
-        // Set up the Player mock to return a hand value of 20
-        $playerMock->method('getHandValue')->willReturn(20);
-        $playerMock->method('isBust')->willReturn(false);
-        $playerMock->method('getString')->willReturn(['🂡', '🂢']);
-
-        // Set up the Dealer mock to return a hand value 17
-        $dealerMock->method('getHandValue')->willReturn(17);
-        $dealerMock->method('isBust')->willReturn(false);
-        $dealerMock->method('getString')->willReturn(['🂠', '🂠']);
-
         $blackJack = new BlackJack();
 
-        // Inject mocked Dealer and Player into the game
-        $reflection = new \ReflectionClass($blackJack);
+        $blackJack->newGame();
 
-        // Set the dealer mock
-        $dealerProperty = $reflection->getProperty('dealer');
-        $dealerProperty->setAccessible(true);
-        $dealerProperty->setValue($blackJack, $dealerMock);
+        $blackJack->doubleDownPlayer();
 
-        // Set the player mock
-        $playersProperty = $reflection->getProperty('players');
-        $playersProperty->setAccessible(true);
-        $playersProperty->setValue($blackJack, [$playerMock]);
+        $player = $blackJack->getPlayers()[0];
 
-        // Invoke the private calculateWinner method via reflection
-        $method = $reflection->getMethod('calculateWinner');
-        $method->setAccessible(true);
-        $method->invoke($blackJack, 0);
+        $this->assertEquals(3, count($player->getString()));
 
-        // Get the game state
-        $res = $blackJack->stateOfGame();
+        (true === $player->isBust()) ?
+            $this->assertEquals(Player::DEFAULT_STARTING_CREDITS - (BlackJack::MINIMUM_BET * 2), $player->getCredits()) :
+            $this->assertGreaterThanOrEqual(Player::DEFAULT_STARTING_CREDITS - (BlackJack::MINIMUM_BET * 2), $player->getCredits());
 
-        $this->assertEquals('Player', $res['gameStates'][0]);
-    }
+        $blackJack->newGame();
 
-    /**
-     * testTie
-     *
-     * @return void
-     */
-    public function testTie(): void
-    {
-        // Create mocks for Dealer and Player
-        $dealerMock = $this->createMock(Dealer::class);
-        $playerMock = $this->createMock(Player::class);
-
-        // Set up the Player mock to return a hand value of 20
-        $playerMock->method('getHandValue')->willReturn(20);
-        $playerMock->method('isBust')->willReturn(false);
-        $playerMock->method('getString')->willReturn(['🂡', '🂢']);
-
-        // Set up the Dealer mock to return a hand value 20
-        $dealerMock->method('getHandValue')->willReturn(20);
-        $dealerMock->method('isBust')->willReturn(false);
-        $dealerMock->method('getString')->willReturn(['🂠', '🂠']);
-
-        $blackJack = new BlackJack();
-
-        // Inject mocked Dealer and Player into the game
-        $reflection = new \ReflectionClass($blackJack);
-
-        // Set the dealer mock
-        $dealerProperty = $reflection->getProperty('dealer');
-        $dealerProperty->setAccessible(true);
-        $dealerProperty->setValue($blackJack, $dealerMock);
-
-        // Set the player mock
-        $playersProperty = $reflection->getProperty('players');
-        $playersProperty->setAccessible(true);
-        $playersProperty->setValue($blackJack, [$playerMock]);
-
-        // Invoke the private calculateWinner method via reflection
-        $method = $reflection->getMethod('calculateWinner');
-        $method->setAccessible(true);
-        $method->invoke($blackJack, 0);
-
-        // Get the game state
-        $res = $blackJack->stateOfGame();
-
-        $this->assertEquals('Tie', $res['gameStates'][0]);
+        $blackJack->doubleDownPlayer(-1);
     }
 }

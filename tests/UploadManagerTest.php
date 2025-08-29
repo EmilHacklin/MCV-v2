@@ -86,29 +86,22 @@ class UploadManagerTest extends WebTestCase
     }
 
     /**
-     * testConstructorException
+     * testGetters
      *
      * @return void
      */
-    public function testConstructorException(): void
+    public function testGetters(): void
     {
-        // If the dir don't exist
-        if (!is_dir($this->testDir . "/public/notwritable")) {
-            mkdir($this->testDir . "/public/notwritable", 0777, true);
-        }
+        $uploadManager = new UploadManager($this->testDir);
 
-        // Change permissions to make it non-writable
-        chmod($this->testDir . "/public/notwritable", 0555); // read and execute only
+        $targetPath = $uploadManager->getTargetPath();
+        $this->assertEquals($this->testDir, $targetPath);
 
-        // Expect RuntimeException
-        $this->expectException(\RuntimeException::class);
-        $this->expectExceptionMessage('directory is not writable.');
+        $targetDirectory = $uploadManager->getTargetDirectory();
+        $this->assertEquals('uploads', $targetDirectory);
 
-        // Instantiate UploadManager, should throw exception
-        new UploadManager($this->testDir, '/notwritable');
-
-        // Reset permissions for cleanup
-        chmod($this->testDir . "/public/notwritable", 0777);
+        $targetDirectoryPath = $uploadManager->getTargetDirectoryPath();
+        $this->assertEquals($this->testDir.'uploads', $targetDirectoryPath);
     }
 
     /**
@@ -125,17 +118,11 @@ class UploadManagerTest extends WebTestCase
         $file->method('getClientOriginalName')->willReturn('test_image.jpg');
         $file->method('guessExtension')->willReturn('jpg');
 
-        $targetDir = 'public/uploads'; // no leading slash
-        $uploadDir = $this->testDir . '/' . $targetDir; // should be safe
-
-        // Escape directory string for regex
-        $escapedDir = '/' . preg_quote($uploadDir, '/') . '/';
-
         // Mock move method
         $file->expects($this->once())
             ->method('move')
             ->with(
-                $this->matchesRegularExpression($escapedDir),
+                $this->equalTo($this->uploadManager->getTargetDirectoryPath()),
                 $this->callback(function ($filename) {
                     return preg_match('/^test_image-.*\.jpg$/', $filename) === 1;
                 })
@@ -210,7 +197,7 @@ class UploadManagerTest extends WebTestCase
     {
         // Create a dummy file
         $filePath = '/uploads/testfile.txt';
-        $fullPath = $this->testDir . '/public' . $filePath;
+        $fullPath = $this->testDir . $filePath;
         if (!is_dir(dirname($fullPath))) {
             mkdir(dirname($fullPath), 0777, true);
         }

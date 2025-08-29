@@ -1,0 +1,94 @@
+{% extends "proj/base.html.twig" %}
+
+{% block title %}Project Black Jack: Game{% endblock %}
+
+{% block main %}
+{{ include('flash.html.twig') }}
+{% if true == newGame %}
+    <h1>Enter bets for new game</h1>
+
+    <p>
+        Please enter the bets for the players, hit submit when ready
+    </p>
+
+    <form method="post" action="">
+        <input type="hidden" id="numOfPlayers" name="numOfPlayers" value="{{numOfPlayers}}">
+        {% set minBet = constant('App\\Game\\BlackJack::MINIMUM_BET') %}
+        {% for index in range(0, numOfPlayers - 1) %}
+            <p>
+                {{playersNames[index]}}'s' Credits: {{playersCredits[index]}}
+            </p>
+            <p>
+                <Label for="{{index}}">{{playersNames[index]}}'s' Bet: </Label>
+                <input type="number" id="{{index}}" name="{{index}}" min="{{minBet}}" value="50">
+            </p>
+        {% endfor %}
+            <p>
+                <input type="submit" name="submit" value="submit" 
+                onClick="this.form.action='{{ path('proj_BlackJack_Bet') }}';">
+            </p>
+    </form>
+{% else %}
+    <h1>Dealer's Cards:</h1>
+
+    <ul class="cardHand">
+        {% for card in dealerCards %}
+            <li class="card">{{ card }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Value: {{ dealerHandValue }}</h2>
+
+    <h1>Player's Cards:</h1>
+
+    <div style="display: flex;">
+        {% set width = (1 / numOfPlayers) * 100 %}
+        {% for index in range(0, numOfPlayers - 1) %}
+            <div style="width: {{width}}%;">
+                <h2>{{playersNames[index]}}'s Cards</h2>
+                <ul class="cardHand">
+                    {% for card in playersCards[index] %}
+                        <li class="card">{{ card }}</li>
+                    {% endfor %}
+                </ul>
+                <h3>Value: {{ playersHandValue[index] }}</h3>
+                <h3>Credits: {{playersCredits[index]}}</h3>
+                <h3>Bet: {{playersBets[index]}}</h3>
+                {% if gameStates[index] != "Undecided" %}
+                    {% if gameStates[index] == "Tie"%}
+                        <h1>The game is over, it resulted in a Tie</h1>
+                    {% else %}
+                        <h1>The {{playersNames[index]}}'s' game is over, it resulted in a victory for the: {{gameStates[index]}}</h1>
+                    {% endif %}
+                {% elseif index == playerTurn %}
+                    <form method="post" action="">
+                        <p>
+                            <input type="submit" name="stay" value="Stay" 
+                            onClick="this.form.action='{{ path('proj_BlackJack_Stay') }}';">
+                            <input type="submit" name="hit" value="Hit" 
+                            onClick="this.form.action='{{ path('proj_BlackJack_Hit') }}';">
+                            {% if 2 == playersCards[index]|length %}
+                                <input type="submit" name="double_down" value="Double Down" 
+                                onClick="this.form.action='{{ path('proj_BlackJack_DoubleDown') }}';">
+                            {% endif %}
+                        </p>
+                    </form>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+
+    {% if playerTurn == numOfPlayers %}
+        <h2>Do you want to play again?</h2>
+                
+        <form method="post" action="">
+            <p>
+                <input type="submit" name="yes" value="Yes" 
+                onClick="this.form.action='{{ path('proj_BlackJack_NewGame') }}';">
+                <input type="submit" name="No" value="No" 
+                onClick="this.form.action='{{ path('proj_start') }}';this.form.method='get';">
+            </p>
+        </form>
+    {% endif %}
+{% endif %}
+{% endblock %}

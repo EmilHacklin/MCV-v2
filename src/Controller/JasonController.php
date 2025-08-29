@@ -208,6 +208,11 @@ class JasonController extends AbstractController
         /** @var BlackJack $blackJack */
         $blackJack = $session->get('black_jack') ?? new BlackJack();
 
+        // If dealer don't have cards === new BlackJack
+        if (0 === count($blackJack->getDealer()->getString())) {
+            $blackJack->newGame();
+        }
+
         $data = $blackJack->stateOfGame();
 
         $response = new JsonResponse($data);

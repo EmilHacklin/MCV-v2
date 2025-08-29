@@ -171,12 +171,6 @@
 </h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
-    <a class="" href="classes/App-UploadManager.html#property_projectDir">$projectDir</a>
-    <span>
-                        &nbsp;: string            </span>
-</dt>
-
-            <dt class="phpdocumentor-table-of-contents__entry -property -private">
     <a class="" href="classes/App-UploadManager.html#property_targetDirectory">$targetDirectory</a>
     <span>
                         &nbsp;: string            </span>
@@ -184,6 +178,12 @@
 
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
     <a class="" href="classes/App-UploadManager.html#property_targetDirectoryPath">$targetDirectoryPath</a>
+    <span>
+                        &nbsp;: string            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -private">
+    <a class="" href="classes/App-UploadManager.html#property_targetPath">$targetPath</a>
     <span>
                         &nbsp;: string            </span>
 </dt>
@@ -211,6 +211,27 @@
 <dd>deleteUploadedFile.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/App-UploadManager.html#method_getTargetDirectory">getTargetDirectory()</a>
+    <span>
+                                &nbsp;: string    </span>
+</dt>
+<dd>getTargetDirectory.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/App-UploadManager.html#method_getTargetDirectoryPath">getTargetDirectoryPath()</a>
+    <span>
+                                &nbsp;: string    </span>
+</dt>
+<dd>getTargetDirectoryPath.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/App-UploadManager.html#method_getTargetPath">getTargetPath()</a>
+    <span>
+                                &nbsp;: string    </span>
+</dt>
+<dd>getTargetPath.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/App-UploadManager.html#method_saveUploadedFile">saveUploadedFile()</a>
     <span>
                                 &nbsp;: string|null    </span>
@@ -230,44 +251,6 @@
             <a href="classes/App-UploadManager.html#properties" class="headerlink"><i class="fas fa-link"></i></a>
 
         </h3>
-                    <article
-        class="
-            phpdocumentor-element
-            -property
-            -private
-                                                                    "
->
-    <h4 class="phpdocumentor-element__name" id="property_projectDir">
-        $projectDir
-        <a href="classes/App-UploadManager.html#property_projectDir" class="headerlink"><i class="fas fa-link"></i></a>
-
-        <span class="phpdocumentor-element__modifiers">
-                                            </span>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/UploadManager.php"><a href="files/src-uploadmanager.html"><abbr title="src/UploadManager.php">UploadManager.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">9</span>
-
-    </aside>
-
-    
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-        <span class="phpdocumentor-signature__visibility">private</span>
-            <span class="phpdocumentor-signature__type">string</span>
-    <span class="phpdocumentor-signature__name">$projectDir</span>
-    </code>
-
-    
-    
-    
-
-    
-
-    
-
-</article>
                     <article
         class="
             phpdocumentor-element
@@ -344,6 +327,44 @@
     
 
 </article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -private
+                                                                    "
+>
+    <h4 class="phpdocumentor-element__name" id="property_targetPath">
+        $targetPath
+        <a href="classes/App-UploadManager.html#property_targetPath" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                            </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/UploadManager.php"><a href="files/src-uploadmanager.html"><abbr title="src/UploadManager.php">UploadManager.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">9</span>
+
+    </aside>
+
+    
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+        <span class="phpdocumentor-signature__visibility">private</span>
+            <span class="phpdocumentor-signature__type">string</span>
+    <span class="phpdocumentor-signature__name">$targetPath</span>
+    </code>
+
+    
+    
+    
+
+    
+
+    
+
+</article>
             </section>
 
             <section class="phpdocumentor-methods">
@@ -374,7 +395,7 @@
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$projectDir</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$targetDirectory</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;/uploads&#039;</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+                    <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$targetPath</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$targetDirectory</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;/uploads&#039;</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -383,7 +404,7 @@
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$projectDir</span>
+                <span class="phpdocumentor-signature__argument__name">$targetPath</span>
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
@@ -418,7 +439,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/UploadManager.php"><a href="files/src-uploadmanager.html"><abbr title="src/UploadManager.php">UploadManager.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">81</span>
+    <span class="phpdocumentor-element-found-in__line">105</span>
 
     </aside>
 
@@ -467,6 +488,123 @@
             -public
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_getTargetDirectory">
+        getTargetDirectory()
+        <a href="classes/App-UploadManager.html#method_getTargetDirectory" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/UploadManager.php"><a href="files/src-uploadmanager.html"><abbr title="src/UploadManager.php">UploadManager.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">45</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">getTargetDirectory.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">getTargetDirectory</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+    
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getTargetDirectoryPath">
+        getTargetDirectoryPath()
+        <a href="classes/App-UploadManager.html#method_getTargetDirectoryPath" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/UploadManager.php"><a href="files/src-uploadmanager.html"><abbr title="src/UploadManager.php">UploadManager.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">53</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">getTargetDirectoryPath.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">getTargetDirectoryPath</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+    
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getTargetPath">
+        getTargetPath()
+        <a href="classes/App-UploadManager.html#method_getTargetPath" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/UploadManager.php"><a href="files/src-uploadmanager.html"><abbr title="src/UploadManager.php">UploadManager.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">37</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">getTargetPath.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">getTargetPath</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+    
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_saveUploadedFile">
         saveUploadedFile()
         <a href="classes/App-UploadManager.html#method_saveUploadedFile" class="headerlink"><i class="fas fa-link"></i></a>
@@ -475,7 +613,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/UploadManager.php"><a href="files/src-uploadmanager.html"><abbr title="src/UploadManager.php">UploadManager.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">43</span>
+    <span class="phpdocumentor-element-found-in__line">67</span>
 
     </aside>
 
@@ -488,7 +626,7 @@
     <div class="phpdocumentor-label-line">
         </div>
     
-        <section class="phpdocumentor-description"><p>Saves the uploaded file to the /public/uploads folder and returns the path</p>
+        <section class="phpdocumentor-description"><p>Saves the uploaded file to the targetPath/targetFolder and returns the path</p>
 </section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
@@ -636,9 +774,9 @@
                             <li class="phpdocumentor-on-this-page-section__title">Properties</li>
                 <li>
                     <ul class="phpdocumentor-list -clean">
-                                                    <li class=""><a href="classes/App-UploadManager.html#property_projectDir">$projectDir</a></li>
                                                     <li class=""><a href="classes/App-UploadManager.html#property_targetDirectory">$targetDirectory</a></li>
                                                     <li class=""><a href="classes/App-UploadManager.html#property_targetDirectoryPath">$targetDirectoryPath</a></li>
+                                                    <li class=""><a href="classes/App-UploadManager.html#property_targetPath">$targetPath</a></li>
                                             </ul>
                 </li>
             
@@ -647,6 +785,9 @@
                 <ul class="phpdocumentor-list -clean">
                                             <li class=""><a href="classes/App-UploadManager.html#method___construct">__construct()</a></li>
                                             <li class=""><a href="classes/App-UploadManager.html#method_deleteUploadedFile">deleteUploadedFile()</a></li>
+                                            <li class=""><a href="classes/App-UploadManager.html#method_getTargetDirectory">getTargetDirectory()</a></li>
+                                            <li class=""><a href="classes/App-UploadManager.html#method_getTargetDirectoryPath">getTargetDirectoryPath()</a></li>
+                                            <li class=""><a href="classes/App-UploadManager.html#method_getTargetPath">getTargetPath()</a></li>
                                             <li class=""><a href="classes/App-UploadManager.html#method_saveUploadedFile">saveUploadedFile()</a></li>
                                     </ul>
             </li>
