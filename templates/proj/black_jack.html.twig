@@ -18,10 +18,12 @@
             <p>
                 {{playersNames[index]}}'s' Credits: {{playersCredits[index]}}
             </p>
-            <p>
-                <Label for="{{index}}">{{playersNames[index]}}'s' Bet: </Label>
-                <input type="number" id="{{index}}" name="{{index}}" min="{{minBet}}" value="50">
-            </p>
+            {% if playersCredits[index] != "0" %}
+                <p>
+                    <Label for="{{index}}">{{playersNames[index]}}'s' Bet: </Label>
+                    <input type="number" id="{{index}}" name="{{index}}" min="{{minBet}}" value="50">
+                </p>
+            {% endif %}
         {% endfor %}
             <p>
                 <input type="submit" name="submit" value="submit" 
