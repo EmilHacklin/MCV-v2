@@ -48,7 +48,7 @@
                 <h2>{{playersNames[index]}}'s Cards</h2>
                 <ul class="cardHand">
                     {% for card in playersCards[index] %}
-                        <li class="card">{{ card }}</li>
+                        <li><span class="card">{{ card }}</span></li>
                     {% endfor %}
                 </ul>
                 <h3>Value: {{ playersHandValue[index] }}</h3>
@@ -56,11 +56,13 @@
                 <h3>Bet: {{playersBets[index]}}</h3>
                 {% if gameStates[index] != "Undecided" %}
                     {% if gameStates[index] == "Tie"%}
-                        <h1>The game is over, it resulted in a Tie</h1>
+                        <h3>The game is over, it resulted in a Tie</h3>
+                    {% elseif gameStates[index] == "Player" or gameStates[index] == "Dealer" %}
+                        <h3>{{playersNames[index]}}'s' game is over, it resulted in a victory for the: {{gameStates[index]}}</h3>
                     {% else %}
-                        <h1>The {{playersNames[index]}}'s' game is over, it resulted in a victory for the: {{gameStates[index]}}</h1>
+                        <h3>The game is not over, waiting for the other players</h3>
                     {% endif %}
-                {% elseif index == playerTurn %}
+                {% elseif index == playerTurn%}
                     <form method="post" action="">
                         <p>
                             <input type="submit" name="stay" value="Stay" 

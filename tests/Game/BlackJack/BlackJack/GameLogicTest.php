@@ -78,7 +78,7 @@ class GameLogicTest extends TestCase
      */
     public function testStateOfGameAndCheckIfDealersTurn(): void
     {
-        $blackJack = new BlackJack(1);
+        $blackJack = new BlackJack();
         $gameLogic = new GameLogic($blackJack);
 
         $gameLogic->newGame();

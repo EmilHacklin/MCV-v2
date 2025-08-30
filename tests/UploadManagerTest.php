@@ -101,7 +101,7 @@ class UploadManagerTest extends WebTestCase
         $this->assertEquals('uploads', $targetDirectory);
 
         $targetDirectoryPath = $uploadManager->getTargetDirectoryPath();
-        $this->assertEquals($this->testDir.'uploads', $targetDirectoryPath);
+        $this->assertEquals($this->testDir.'/uploads', $targetDirectoryPath);
     }
 
     /**
@@ -133,7 +133,7 @@ class UploadManagerTest extends WebTestCase
         $result = $this->uploadManager->saveUploadedFile($file, $fileTypesSupported);
 
         $this->assertNotNull($result);
-        $this->assertStringContainsString('/uploads/', /** @scrutinizer ignore-type */ $result);
+        $this->assertStringContainsString('.jpg', /** @scrutinizer ignore-type */ $result);
     }
 
     /**
@@ -196,20 +196,20 @@ class UploadManagerTest extends WebTestCase
     public function testDeleteUploadedFile(): void
     {
         // Create a dummy file
-        $filePath = '/uploads/testfile.txt';
-        $fullPath = $this->testDir . $filePath;
+        $fileName = 'testfile.txt';
+        $fullPath = $this->testDir . '/uploads/'. $fileName;
         if (!is_dir(dirname($fullPath))) {
             mkdir(dirname($fullPath), 0777, true);
         }
         file_put_contents($fullPath, 'test');
 
-        $result = $this->uploadManager->deleteUploadedFile($filePath);
+        $result = $this->uploadManager->deleteUploadedFile($fileName);
 
         $this->assertTrue($result);
         $this->assertFalse(file_exists($fullPath));
 
         // Test if the file don't exists
-        $result = $this->uploadManager->deleteUploadedFile($filePath);
+        $result = $this->uploadManager->deleteUploadedFile($fileName);
 
         $this->assertFalse($result);
     }

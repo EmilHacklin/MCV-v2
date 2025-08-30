@@ -75,8 +75,8 @@ class BookController extends AbstractController
         /** @var string $projectDir */
         $projectDir = $this->getParameter('kernel.project_dir');
 
-        // Construct the path to src/var
-        $targetFolder = $projectDir.'/src/var';
+        // Construct the path to /var
+        $targetFolder = $projectDir.'/var';
 
         $uploadManager = new UploadManager($targetFolder);
 
@@ -160,8 +160,8 @@ class BookController extends AbstractController
         /** @var string $projectDir */
         $projectDir = $this->getParameter('kernel.project_dir');
 
-        // Construct the path to src/var
-        $targetFolder = $projectDir.'/src/var';
+        // Construct the path to /var
+        $targetFolder = $projectDir.'/var';
 
         $uploadManager = new UploadManager($targetFolder);
 
@@ -227,8 +227,8 @@ class BookController extends AbstractController
         /** @var string $projectDir */
         $projectDir = $this->getParameter('kernel.project_dir');
 
-        // Construct the path to src/var
-        $targetFolder = $projectDir.'/src/var';
+        // Construct the path to /var
+        $targetFolder = $projectDir.'/var';
 
         $uploadManager = new UploadManager($targetFolder);
 

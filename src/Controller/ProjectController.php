@@ -104,6 +104,18 @@ class ProjectController extends AbstractController
 
         $data = $blackJack->stateOfGame();
 
+        // If it is any of the players turn
+        if ($playerTurn < $data['numOfPlayers']) {
+            // If the player is broke skip them
+            if (true === $blackJack->isPlayerBroke($playerTurn)) {
+                ++$playerTurn;
+                $session->set('proj_playerTurn', $playerTurn);
+
+                return $this->redirectToRoute('proj_BlackJack_game');
+            }
+        }
+
+        // Add data
         $data['newGame'] = $newGame;
         $data['playerTurn'] = $playerTurn;
 
@@ -250,6 +262,7 @@ class ProjectController extends AbstractController
     ): Response {
         // Save to session
         $session->set('proj_newGame', true);
+        $session->set('proj_playerTurn', 0);
 
         return $this->redirectToRoute('proj_BlackJack_game');
     }

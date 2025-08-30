@@ -1,5 +1,13 @@
 {% extends "base.html.twig" %}
 
+{% block stylesheets %}
+    {{ encore_entry_link_tags('proj') }}
+{% endblock %}
+
+{% block siteTitle %}
+    <span class="site-title">Project Black Jack</span>
+{% endblock %}
+
 {% block body %}
 <div class="column" style="width: 70%">
     {% block main %}
@@ -9,6 +17,7 @@
     <h2>Links</h2>
     <ul>
         <li><a href="{{ path('proj_start') }}">Project Start Page</a></li>
+        <li><a href="{{ path('proj_doc') }}">Project Documentation</a></li>
         <li><a href="{{ path('proj_player_init', {'num': 1}) }}">One Player</a></li>
         <li><a href="{{ path('proj_player_init', {'num': 2}) }}">Two Player</a></li>
         <li><a href="{{ path('proj_player_init', {'num': 3}) }}">Three Player</a></li>

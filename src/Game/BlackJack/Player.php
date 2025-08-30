@@ -52,6 +52,7 @@ class Player extends CardHand
     public function dropHand(): void
     {
         $this->hand = [];
+        $this->handValue = 0;
     }
 
     /**
@@ -203,26 +204,17 @@ class Player extends CardHand
      */
     public function setGameState(int $gameState): void
     {
-        switch ($gameState) {
-            case self::DOUBLE_DOWN:
-                $this->gameState = self::DOUBLE_DOWN;
-                break;
-            case self::STAYED:
-                $this->gameState = self::STAYED;
-                break;
-            case self::UNDECIDED:
-                $this->gameState = self::UNDECIDED;
-                break;
-            case self::TIE:
-                $this->gameState = self::TIE;
-                break;
-            case self::PLAYER_WIN:
-                $this->gameState = self::PLAYER_WIN;
-                break;
-            case self::DEALER_WIN:
-                $this->gameState = self::DEALER_WIN;
-                break;
-        }
+        // Map Player game states
+        $gameStateMap = [
+            Player::DOUBLE_DOWN => Player::DOUBLE_DOWN,
+            Player::STAYED => Player::STAYED,
+            Player::UNDECIDED => Player::UNDECIDED,
+            Player::TIE => Player::TIE,
+            Player::PLAYER_WIN => Player::PLAYER_WIN,
+            Player::DEALER_WIN => Player::DEALER_WIN,
+        ];
+
+        $this->gameState = $gameStateMap[$gameState] ?? 404;
     }
 
     /**

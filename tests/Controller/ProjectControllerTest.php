@@ -200,7 +200,7 @@ class ProjectControllerTest extends WebTestCase
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
 
         // Assert that certain content exists in the response
-        $this->assertStringContainsString('Black Jack Project:', $crawler->filter('title')->text());
+        $this->assertStringContainsString('Project Black Jack', $crawler->filter('title')->text());
     }
 
     /**
@@ -262,7 +262,7 @@ class ProjectControllerTest extends WebTestCase
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
 
         // Assert that certain content exists in the response
-        $this->assertStringContainsString('Black Jack Project: Player Creation', $crawler->filter('title')->text());
+        $this->assertStringContainsString('Project Black Jack: Player Creation', $crawler->filter('title')->text());
     }
 
     /**

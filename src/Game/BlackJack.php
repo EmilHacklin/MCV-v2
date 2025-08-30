@@ -152,7 +152,27 @@ class BlackJack
      */
     public function isPlayerBust(int $index = 0): bool
     {
+        // If index is out of bounds
+        if ($index < 0 or $index >= $this->numOfPlayers) {
+            return true;
+        }
+
         return $this->players[$index]->isBust();
+    }
+
+    /**
+     * isPlayerBroke.
+     *
+     * Returns if the player is broke
+     */
+    public function isPlayerBroke(int $index = 0): bool
+    {
+        // If index is out of bounds
+        if ($index < 0 or $index >= $this->numOfPlayers) {
+            return true;
+        }
+
+        return $this->players[$index]->isBroke();
     }
 
     /**

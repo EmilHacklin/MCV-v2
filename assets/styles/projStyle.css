@@ -1,0 +1,183 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+body {
+  background-color: #4b4b4b;
+  margin: 0;
+  padding: 0;
+  color: #e6e6e6;
+}
+footer {
+  display: flex;
+  flex: 0 1 auto;
+  width: 100%;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  background-color: black;
+}
+h1 {
+  font-family: 'Times New Roman', Times, serif;
+  text-align: center;
+  clear: both;
+}
+h2,
+h3,
+h4,
+h5 {
+  font-family: 'Times New Roman', Times, serif;
+  text-align: center;
+  clear: both;
+}
+p {
+  font-family: 'Courier New', Courier, monospace;
+  text-align: center;
+}
+a {
+  color: #96fa64;
+}
+ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+input {
+  font-size: 1em;
+}
+.wrapper {
+  display: flex;
+  /* displays flex-items (children) inline */
+  flex-direction: column;
+  /* stacks them vertically */
+  height: 100%;
+  /* needs to take the parents height, alternative: body {display: flex} */
+}
+.site-head {
+  flex: 0 1 auto;
+}
+.site-header {
+  background-image: url('../images/chips.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.site-title {
+  font-family: 'Times New Roman', Times, serif;
+  color: #0f14c8;
+  font-size: 5em;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+.site-menu {
+  display: flex;
+  width: 100%;
+  background-color: black;
+}
+.site-menu ul {
+  flex-direction: row;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  border: 0.5em;
+  border-color: black;
+}
+.site-menu li {
+  float: left;
+}
+.site-menu li :hover {
+  background-color: black;
+  text-decoration: underline;
+}
+.site-menu li a {
+  display: block;
+  background-color: black;
+  text-decoration: none;
+  text-align: center;
+  color: #ffffff;
+  padding: 2em;
+}
+.content {
+  border-left: 0.5em;
+  border-right: 0.5em;
+  border-top: 0;
+  border-bottom: 0;
+  border-style: groove;
+  border-color: black;
+  margin-left: 5em;
+  margin-right: 5em;
+  background-color: rgba(29, 125, 29, 0.9);
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  /* takes the remaining height of the "wrapper" div */
+  overflow: auto;
+  /* to scroll just the "main" div */
+}
+.column {
+  padding-left: 5em;
+  padding-right: 5em;
+  height: 100%;
+  /* takes the visible area of the "main" div */
+  width: 100%;
+}
+.column .row {
+  border: 0.5em;
+}
+.img-logo {
+  flex: 40%;
+}
+.img-logo img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 5em;
+}
+.linkList {
+  flex: 60%;
+}
+.linkList ul {
+  list-style: none;
+  padding: 0;
+  border: 0.5em;
+  border-color: black;
+}
+.linkList ul a {
+  color: #e6e6e6;
+}
+.cardHand,
+.deck {
+  flex-direction: row;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0em, 1em, 0em , 0em;
+}
+.card {
+  font-size: 5em;
+  background-color: #e6e6e6;
+  color: black;
+  line-height: 1;
+  display: inline-block;
+  margin: 0.01em;
+}
+.flash-notice {
+  padding: 0.5em;
+  color: #004085;
+  background-color: #cce5ff;
+  border-color: #b8daff;
+}
+.flash-notice:before {
+  content: "ⓘ";
+}
+.flash-warning {
+  padding: 0.5em;
+  color: #856404;
+  background-color: #fff3cd;
+  border-color: #ffeeba;
+}
+.flash-warning:before {
+  content: "⚠";
+}

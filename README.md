@@ -7,7 +7,7 @@
 [![Build Status](https://scrutinizer-ci.com/g/EmilHacklin/MCV-v2/badges/build.png?b=main)](https://scrutinizer-ci.com/g/EmilHacklin/MCV-v2/build-status/main)
 [![Code Intelligence Status](https://scrutinizer-ci.com/g/EmilHacklin/MCV-v2/badges/code-intelligence.svg?b=main)](https://scrutinizer-ci.com/code-intelligence)
 
-Detta är report webbdidan för kursen DV1608, denna sida inehåller alla raporter för kursen samt uppgifter.
+Detta är report webbdidan för kursen DV1608, denna sida inehåller alla raporter för kursen samt uppgifter och ett Black Jack projekt.
 
 ## Installations guide
 

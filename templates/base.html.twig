@@ -3,21 +3,23 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}MVC{% endblock %}</title>
-        <link rel="icon" href="{{ asset('img/favoicon.ico') }}">
+        <link rel="icon" href="{{ asset('img/favicon.ico') }}">
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
 
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
+            {# {% block importmap %}{{ importmap('app') }}{% endblock %} #}
         {% endblock %}
     </head>
     <body>
         <div class="wrapper">
             <div class="site-head">
                 <header class="site-header">
-                    <span class="site-title">MVC: site</span>
+                    {% block siteTitle %}
+                        <span class="site-title">MVC: site</span>
+                    {% endblock %}
                 </header>
                 <div class="site-menu">
                     <nav>

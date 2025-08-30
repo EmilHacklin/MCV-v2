@@ -128,6 +128,7 @@ class GameLogic
         $numOfPlayers = $this->blackjack->getNumOfPlayers();
 
         // Reset game
+        $this->isDealersTurn = false;
         $dealer->dropHand();
         $deck->reshuffleDeck();
 
@@ -136,6 +137,7 @@ class GameLogic
             // Reset the player
             $players[$i]->resetBet();
             $players[$i]->dropHand();
+            $players[$i]->setGameState(Player::UNDECIDED);
 
             // If the player is broke skip
             if (true === $players[$i]->isBroke()) {
@@ -201,6 +203,16 @@ class GameLogic
         $dealer = $this->blackjack->getDealer();
         $numOfPlayers = $this->blackjack->getNumOfPlayers();
 
+        // Map Player game states to strings
+        $gameStateMap = [
+            Player::DOUBLE_DOWN => 'Double Down',
+            Player::STAYED => 'Stayed',
+            Player::UNDECIDED => 'Undecided',
+            Player::TIE => 'Tie',
+            Player::PLAYER_WIN => 'Player',
+            Player::DEALER_WIN => 'Dealer',
+        ];
+
         $data = [
             'numOfPlayers' => $numOfPlayers,
             'playersNames' => [],
@@ -220,21 +232,9 @@ class GameLogic
             $data['playersCredits'][$i] = strval($players[$i]->getCredits());
             $data['playersBets'][$i] = strval($players[$i]->getBet());
 
-            $roundState = $players[$i]->getGameState();
-            switch ($roundState) {
-                case Player::UNDECIDED:
-                    $data['gameStates'][$i] = 'Undecided';
-                    break;
-                case Player::TIE:
-                    $data['gameStates'][$i] = 'Tie';
-                    break;
-                case Player::PLAYER_WIN:
-                    $data['gameStates'][$i] = 'Player';
-                    break;
-                case Player::DEALER_WIN:
-                    $data['gameStates'][$i] = 'Dealer';
-                    break;
-            }
+            $gameState = $players[$i]->getGameState();
+            // Use the mapping array to get the string
+            $data['gameStates'][$i] = $gameStateMap[$gameState] ?? 'Unknown';
         }
 
         // If all players are not done
@@ -263,7 +263,8 @@ class GameLogic
 
         for ($i = 0; $i < $numOfPlayers; ++$i) {
             $roundState = $players[$i]->getGameState();
-            if (Player::UNDECIDED === $roundState) {
+            // If undecided and not broke
+            if (Player::UNDECIDED === $roundState and false === $players[$i]->isBroke()) {
                 $allPlayersDone = false;
                 break;
             }

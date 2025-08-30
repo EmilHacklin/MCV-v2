@@ -14,7 +14,7 @@
             <th>Author</th>
         </tr>
         <tr>
-            <td><img src="{{ relative_path(book['img']|default('/uploads/default.jpg'))}}" alt="Cover image of {{ book['title'] }}" class="img-book"></td>
+            <td><img src="{{ path('file_uploads', {'filename': book['img']}) }}" alt="Cover image of {{ book['title'] }}" class="img-book"></td>
             <td>{{ book['title'] }}</td>
             <td>{{ book['isbn'] }}</td>
             <td>{{ book['author'] }}</td>

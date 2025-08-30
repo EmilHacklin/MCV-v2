@@ -74,8 +74,18 @@ class BlackJackTest extends TestCase
         $playerBust = $blackJack->isPlayerBust();
         $this->assertEquals(false, $playerBust);
 
+        $playerBroke = $blackJack->isPlayerBroke();
+        $this->assertEquals(false, $playerBroke);
+
         $dealerBust = $blackJack->isDealerBust();
         $this->assertEquals(false, $dealerBust);
+
+        //Test if index out of bounds
+        $playerBust = $blackJack->isPlayerBust(-1);
+        $this->assertEquals(true, $playerBust);
+
+        $playerBroke = $blackJack->isPlayerBroke(-1);
+        $this->assertEquals(true, $playerBroke);
     }
 
     /**

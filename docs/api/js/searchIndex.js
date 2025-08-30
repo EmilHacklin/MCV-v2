@@ -641,6 +641,16 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-ProjectController.html#method_blackJackNewGame"
         },                {
+            "fqsen": "\\App\\Controller\\UploadController",
+            "name": "UploadController",
+            "summary": "",
+            "url": "classes/App-Controller-UploadController.html"
+        },                {
+            "fqsen": "\\App\\Controller\\UploadController\u003A\u003AserveUpload\u0028\u0029",
+            "name": "serveUpload",
+            "summary": "",
+            "url": "classes/App-Controller-UploadController.html#method_serveUpload"
+        },                {
             "fqsen": "\\App\\Dice\\Dice",
             "name": "Dice",
             "summary": "",
@@ -1136,6 +1146,11 @@ Search.appendIndex(
             "summary": "isPlayerBust.",
             "url": "classes/App-Game-BlackJack.html#method_isPlayerBust"
         },                {
+            "fqsen": "\\App\\Game\\BlackJack\u003A\u003AisPlayerBroke\u0028\u0029",
+            "name": "isPlayerBroke",
+            "summary": "isPlayerBroke.",
+            "url": "classes/App-Game-BlackJack.html#method_isPlayerBroke"
+        },                {
             "fqsen": "\\App\\Game\\BlackJack\u003A\u003AisDealerBust\u0028\u0029",
             "name": "isDealerBust",
             "summary": "isDealerBust.",
@@ -1295,6 +1310,11 @@ Search.appendIndex(
             "name": "__construct",
             "summary": "__construct.",
             "url": "classes/App-UploadManager.html#method___construct"
+        },                {
+            "fqsen": "\\App\\UploadManager\u003A\u003AsanitizeFilename\u0028\u0029",
+            "name": "sanitizeFilename",
+            "summary": "sanitizeFilename.",
+            "url": "classes/App-UploadManager.html#method_sanitizeFilename"
         },                {
             "fqsen": "\\App\\UploadManager\u003A\u003AgetTargetPath\u0028\u0029",
             "name": "getTargetPath",

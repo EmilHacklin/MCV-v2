@@ -19,7 +19,7 @@ class UploadManager
     {
         $this->targetPath = $targetPath;
         $this->targetDirectory = ltrim($targetDirectory, '/');
-        $this->targetDirectoryPath = rtrim($this->targetPath.$this->targetDirectory, '/');
+        $this->targetDirectoryPath = rtrim($this->targetPath.'/'.$this->targetDirectory, '/');
 
         // Make sure the directory exists
         if (!is_dir($this->targetDirectoryPath)) {
@@ -29,6 +29,19 @@ class UploadManager
         if (!is_writable($this->targetDirectoryPath)) {
             throw new \RuntimeException($this->targetDirectory.' directory is not writable.');
         }
+    }
+
+    /**
+     * sanitizeFilename.
+     */
+    private function sanitizeFilename(string $filename): string
+    {
+        // Replace all non-alphanumeric characters with underscores
+        /** @var string $sanitized */
+        $sanitized = preg_replace('/[^A-Za-z0-9_]/', '_', $filename);
+
+        // Convert to lowercase
+        return strtolower($sanitized);
     }
 
     /**
@@ -62,11 +75,11 @@ class UploadManager
      *
      * @param array<string> $fileTypesSupported
      *
-     * @return string|null string containing filePath if successful null if failed
+     * @return string|null string containing filename if successful null if failed
      */
     public function saveUploadedFile(?UploadedFile $file, array $fileTypesSupported): ?string
     {
-        $filePath = null;
+        $newFilename = null;
 
         if ($file instanceof UploadedFile && $file->isValid()) {
             // Check if file is of allowed type
@@ -77,20 +90,18 @@ class UploadManager
 
             /** @var string $originalFilename */
             $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
-            $safeFilename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename);
+            $safeFilename = $this->sanitizeFilename($originalFilename);
             $newFilename = $safeFilename.'-'.uniqid().'.'.$file->guessExtension();
 
             // Move the file to the directory
             try {
                 $file->move($this->targetDirectoryPath, $newFilename);
-                // Save $newFilename and path to database
-                $filePath = '/'.$this->targetDirectory.'/'.$newFilename;
             } catch (\Exception $e) {
                 throw new \RuntimeException('Error uploading file: '.$e->getMessage());
             }
         }
 
-        return $filePath;
+        return $newFilename;
     }
 
     /**
@@ -98,14 +109,14 @@ class UploadManager
      *
      * Deletes the file at the given path within the target directory.
      *
-     * @param string $filePath The relative path to the image, e.g., '/uploads/filename.jpg'
+     * @param string $fileName The filename filename.jpg'
      *
      * @return bool True if deletion was successful, false otherwise
      */
-    public function deleteUploadedFile(string $filePath): bool
+    public function deleteUploadedFile(string $fileName): bool
     {
         // Full path to the file
-        $fullPath = $this->targetPath.$filePath;
+        $fullPath = $this->targetDirectoryPath.'/'.$fileName;
 
         // Check if file exists
         if (!file_exists($fullPath)) {
