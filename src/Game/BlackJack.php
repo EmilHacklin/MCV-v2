@@ -61,6 +61,8 @@ class BlackJack
             $this->players[$index]->setGameState(Player::DEALER_WIN);
             $this->players[$index]->resetBet();
             $this->gameLogic->checkIfDealersTurn();
+
+            return;
         }
 
         if (Player::DOUBLE_DOWN === $this->players[$index]->getGameState()) {

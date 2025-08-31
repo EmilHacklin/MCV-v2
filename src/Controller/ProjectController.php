@@ -150,10 +150,9 @@ class ProjectController extends AbstractController
         for ($i = 0; $i < $numOfPlayers; ++$i) {
             /** @var int|null $bet */
             $bet = $request->request->get("$i");
-            if (null === $bet) {
-                $bet = BlackJack::MINIMUM_BET; // default bet if blank
+            if (null !== $bet) {
+                $bets[$i] = $bet;
             }
-            $bets[] = $bet;
         }
 
         $blackJack->newGame($bets);

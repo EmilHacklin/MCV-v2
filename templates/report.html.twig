@@ -286,6 +286,73 @@
     </div>
     <div class="row">
         <h2 id="Kmom10">Kmom10</h2>
+        <p>
+            Som slut projekt för denna kurs så har jag valt att skapa ett Black Jack projekt som hanterar satsningar i <q>pengar</q> och följer alla regler för Black Jack. 
+            Dels för att jag tyckte det vore en rolig saka att göra. 
+            Dels då jag hade tidigare i kursen implementerat delar av ett Black Jack spel vilket skulle göra det enklare att implementera hela projektet.
+            Då detta var viktigt för mig då jag tidigare haft svårigheter att göra Kmom inom den projekterade tiden av 20 timmar ofta så tog det dubbelt så lång tid för mig.
+        </p>
+        <p>
+            Trots att jag hade kod sedan tidigare som jag kunde använda så krävde projektets krav att hantera pengar som jag kallade <q>credits</q> och gör satsningar som jag kallade <q>bet</q> att jag nästan börjar om från början.
+        </p>
+        <p>
+            Jag började med ”Player” klassen att lägga in nya variabler för <q>credits</q>, <q>bet</q> och <q>gameState</q> som tidigare fanns i <q>BlackJack</q> klassen. 
+            Sedan så skapade jag getters för dem och setters för <q>credits</q> och <q>gameState</q>. 
+            För <q>bet</q> så skapade jag metoder för att öka bet då man inte kan satsa mindre en tidigare samt en metod för att återställa satsningen till 0.
+        </p>
+        <p>
+            <q>BlackJack</q> klassen fick nog mest förändringar av klasserna. 
+            Den första kom ifrån att det första man gör i en runda black jack är att satsa pengar och inte dra kort så behövde jag ta bort denna funktion från konstruktören. 
+        </p>
+        <p>
+            Så jag skapade en metod kallad <q>newGame</q> som tog in en array med bets och kombinerade funktioner från metoderna <q>setupGame</q> och <q>resetGame</q> som den ersatte.
+        </p>
+        <p>
+            Jag lade till en metod för att kolla om en spelare har slut på pengar <q>isPlayerBroke</q> och sedan lade till en metod för att kunna dubbla insatsen <q>playerDoubleDown</q>. 
+            Sedan så skapade jag en privat metod <q>drawUpdate</q> som ut utför kod varje gång en spelare drar ett kort.
+        </p>
+        <p>
+            Men den största förändringen jag gjorde till klassen var att jag bröt ut spel logiken till en ny klass kallad <q>GameLogic</q>. 
+            Så dem publika klasserna <q>newGame</q> och <q>stateOfGame</q> flyttades över så det enda som finns kvar är att den kallar på <q>GameLogic</q> metoderna av samma namn. 
+            Också överfördes privata metoderna <q>calculateWinner</q>, <q>playDealer</q> och <q>checkIfDealersTurn</q> som blev publik med flytten. 
+            Som slut så skapade jag getters och setters för variablerna i klassen.
+        </p>
+        <p>
+            Den nya klassen <q>GameLogic</q> behövde modifiera metoderna från <q>BlackJack</q> samt för att inkludera pengar och satsningar. 
+            <q>calculateWinner</q> behövde hantera om spelaren winner eller förlorar pengar och <q>stateOfGame</q> behövde inkludera pengar och satsningar in i data som skickas tillbaka.
+        </p>
+        <p>
+            Under förändringarna i koden så uppdaterade jag mina enhets tester och skrev nya för nya metoder och klasser. 
+            Detta gjorde att alla klasser fick 100% i phpUnit enhetstesterna trots alla förändringarna.
+        </p>
+        <p>
+            Sedan så skrev jag en <q>ProjectController</q> för att skapa routes till sidorna <q>/proj</q>, <q>/proj/about</q>, <q>/proj/PlayerCreation</q> och <q>/proj/blackjack/game</q> samt POST sidor för att olika formulär.  
+            Jag skrev tester för kontrollen men det blev bara ≈93% kodtäckning.
+        </p>
+        <p>
+            Som tema för projektet så skapade jag en ny CSS för att skapa en unik stil för projektet. 
+            Jag bytte ut bannern mot casinochips, ändrade bakgrunden till en grå färg med en grön bakgrund för huvuddelen så det påminner om en grön spelmatta man ofta har på Black Jack bord med mera.
+        </p>
+        <p>
+            Projektet som en helhet gick ganska lätt att genomföra men det tog ändå rätt så long tid att göra då jag spenderade ca 50–60 timmar att göra det. 
+            Det var mer att även då jag inte gjorde ett stort projekt så tog det ändå ca 20 timmar at göra koden ca 10 timmar att skriva tester och 20–30 timmar att göra en kontroll, mall och CSS med att leta buggar. 
+            Jag vet inte om det är bara jag som är långsam eller om det är något som gör att det tar extra tid att göra detta men jag tyckte att trots den tid det tog så var det ett rimligt stort projekt. 
+        </p>
+        <p>
+            Under denna kurs så har vi haft mycket bra material och föreläsningar som gör det enkelt att förstå informationen i kursens olika moment. 
+            Övningarna var också bra genomtänkta då dom blev som en guide för hur man kan göra saker för det momentet. 
+        </p>
+        <p>
+            Där emot så kan jag tycka att uppgifterna kan vara nästan för stora. 
+            Det var nästan inget Kmom när jag tyckte att jag hade gott om tid att göra uppgifterna och kunde använda tiden för att experimentera med. 
+            Utan det var i stället att man behövde använda all tid till att utföra den minimala kriterierna för att utföra uppgiften. 
+        </p>
+        <p>
+            Trots detta så tycker jag att det var en kurs där jag lärt mig mycket och jag skulle rekommenderat denna kurs till alla som vill lära sig om webprogrammering inom ramverk då den ger en bra bild av hur sådan utveckling sker i arbetslivet. 
+        </p>
+        <p>
+            På en skala av 1–10 så skulle jag ge denna kurs en 7’a, det är en bra kurs som ger ut viktiga erfarenheter men den går på en sådan hög takt att det känns bättre om man läste den på heltid i stället för halvtid.
+        </p>
     </div>
 </div>
 {% endblock %}
